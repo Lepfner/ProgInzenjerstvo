@@ -1,13 +1,15 @@
 import '../src/Styles/App.css';
+import ProfileSetup from './components/profileSetup/profileSetup';
 
 function App() {
   return (
-    <div className="App">
+  <div className="App">
       <header className="App-header">
         BRUNOV BRANCH
       </header>
-    </div>
-  );
-}
+    
+  </div>
+   
+   );}
 
-export default App;
+export default ProfileSetup;
