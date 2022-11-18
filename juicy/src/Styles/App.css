@@ -17,3 +17,13 @@ a{
 
 }
 
+input:focus{
+  outline:none;
+}
+
+.validate:required:invalid{
+  border: 1px solid red
+}
+
+
+
