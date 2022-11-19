@@ -1,10 +1,10 @@
 import '../src/Styles/App.css';
+import Dashboard from './components/dashboard/MainMenu'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
+      <Dashboard/>
     </div>
   );
 }
