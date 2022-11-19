@@ -9,11 +9,10 @@ const Layout = ({ children }) => {
     >
       <div
         className="absolute top-0 right-0 bottom-0 w-1/3 bg-orange-500"
-        style={{ background:"F1890F" }}
       />
       <div
-        className="w-3/5 bg-gray-200 rounded-3xl p-8 
-                   flex z-10 boxShadowContainer"
+        className="bg-gray-200 rounded-3xl p-8 max-w-4xl
+                   flex z-10 boxShadowContainer w-4/5 lg:w-3/5 md:w-3/5 sm:w-4/5"
       >
         {children}
       <Outlet/>
