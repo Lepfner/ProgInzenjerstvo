@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setEmail("");
     setPassword("");
   };
-
+  
   return (
     <div
       className="flex flex-col justify-center pl-8 pb-12 
@@ -28,8 +29,9 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            className={`${email !== "" ? `validate` : ""
-              } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
+            className={`${
+              email !== "" ? `validate` : ""
+            } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
           />
           <p>Password:</p>
           <input
@@ -38,8 +40,9 @@ const Login = () => {
             minLength={7}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
-            className={`${password !== "" ? `validate` : ""
-              } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
+            className={`${
+              password !== "" ? `validate` : ""
+            } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
           />
           <div className="flex  lg:gap-8 flex-row md:flex-row gap-2 max-sm:flex-col ">
             <button
@@ -49,15 +52,15 @@ const Login = () => {
             >
               LOGIN
             </button>
-            <Link to="/SignUp" className="no-underline">
-              <button
-                type="button"
-                className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white 
+
+            <button
+              type="button"
+              className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white 
                           hover:bg-orange-600"
-              >
-                SIGN-UP
-              </button>
-            </Link>
+              onClick={() => navigate("/SignUp")}
+            >
+              SIGN-UP
+            </button>
           </div>
         </form>
         <div
@@ -69,9 +72,7 @@ const Login = () => {
           </p>
 
           <p className="text mb-4 font-bold w-4/5 lg:pl-4 max-sm:pl-0">
-            <Link to="/Recovery">
-              Forgot password?
-            </Link>
+            <Link to="/Recovery">Forgot password?</Link>
           </p>
         </div>
       </div>
