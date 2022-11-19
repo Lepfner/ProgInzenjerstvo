@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const Confirmation = () => {
 
@@ -6,7 +7,7 @@ const Confirmation = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(isNaN(+authCode)) {
+    if (isNaN(+authCode)) {
       //Task: Ubacit bolji handler ukoliko unos nije broj
       alert("Error! Not a number");
       setAuthCode("");
@@ -30,9 +31,8 @@ const Confirmation = () => {
             maxLength={6}
             onChange={(e) => setAuthCode(e.target.value)}
             type="text"
-            className={`${
-              authCode !== "" ? `validate` : ""
-            } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
+            className={`${authCode !== "" ? `validate` : ""
+              } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
           />
           <div className="flex  lg:gap-8 flex-row md:flex-row gap-2 max-sm:flex-col ">
             <button
@@ -41,12 +41,14 @@ const Confirmation = () => {
             >
               SEND
             </button>
-            <button
-              type="submit"
-              className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white hover:bg-orange-600"
-            >
-              BACK
-            </button>
+            <Link to="/SignUp" className="no-underline">
+              <button
+                type="button"
+                className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white hover:bg-orange-600"
+              >
+                BACK
+              </button>
+            </Link>
           </div>
         </form>
         <div

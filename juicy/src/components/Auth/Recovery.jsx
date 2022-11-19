@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Recovery = () => {
   const [email, setEmail] = useState("");
@@ -19,9 +20,8 @@ const Recovery = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            className={`${
-              email !== "" ? `validate` : ""
-            } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
+            className={`${email !== "" ? `validate` : ""
+              } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
           />
           <div className="flex lg:gap-8 flex-row md:flex-row gap-2 max-sm:flex-col ">
             <button
@@ -30,12 +30,14 @@ const Recovery = () => {
             >
               SEND
             </button>
-            <button
-              type="submit"
-              className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white hover:bg-orange-600"
-            >
-              BACK
-            </button>
+            <Link to="/Login" className="no-underline">
+              <button
+                type="button"
+                className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white hover:bg-orange-600"
+              >
+                BACK
+              </button>
+            </Link>
           </div>
         </form>
         <div

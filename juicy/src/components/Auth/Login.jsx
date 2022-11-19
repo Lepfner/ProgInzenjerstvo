@@ -28,9 +28,8 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            className={`${
-              email !== "" ? `validate` : ""
-            } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
+            className={`${email !== "" ? `validate` : ""
+              } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
           />
           <p>Password:</p>
           <input
@@ -39,9 +38,8 @@ const Login = () => {
             minLength={7}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
-            className={`${
-              password !== "" ? `validate` : ""
-            } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
+            className={`${password !== "" ? `validate` : ""
+              } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
           />
           <div className="flex  lg:gap-8 flex-row md:flex-row gap-2 max-sm:flex-col ">
             <button
@@ -51,13 +49,15 @@ const Login = () => {
             >
               LOGIN
             </button>
-            <button
-              type="submit"
-              className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white 
+            <Link to="/SignUp" className="no-underline">
+              <button
+                type="button"
+                className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white 
                           hover:bg-orange-600"
-            >
-              SIGN-UP
-            </button>
+              >
+                SIGN-UP
+              </button>
+            </Link>
           </div>
         </form>
         <div
