@@ -25,7 +25,7 @@ const SignUp = () => {
       className="flex flex-col justify-center pl-8 pb-12 
                   lg:w-full md:w-full max-sm:pl-0 pb-8 w-full"
     >
-      {isRegisterd ? (
+      {!isRegisterd ? (
         <>
           <h1 className="lg:text-6xl mb-2 md: text-5xl sm: text-4xl">
             SIGN-UP:
