@@ -11,7 +11,7 @@ const Recovery = () => {
   };
 
   return (
-    <div className=" flex flex-col justify-center pl-8 pb-12 lg:w-full md:w-full max-sm:pl-0 pb-8 w-full">
+    <div className="flex flex-col justify-center pl-8 pb-12 lg:w-full max-sm:pl-0 pb-8">
       <h1 className="lg:text-5xl mb-2 md: text-5xl sm: text-4xl">RECOVERY:</h1>
       <div className="w-full flex flex-col lg:text-lg md:flex-row text-base sm:flex-col ">
         <form className="lg: w-4/5 max-md:w-full" onSubmit={handleSubmit}>

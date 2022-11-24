@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Confirmation = () => {
-
   const [authCode, setAuthCode] = useState("");
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setAuthCode("");
-  }
-  
+  };
+
   return (
-    <div className=" flex flex-col justify-center pl-8 pb-12 lg:w-5/6 md:w-full max-sm:pl-0 pb-8 w-full">
-      <h1 className="text-4xl mb-2 lg:text-4xl max-sm:text-2xl">CONFIRMATION:</h1>
+    <div className=" flex flex-col justify-center pl-8 pb-12 lg:w-full max-sm:pl-0 pb-8">
+      <h1 className="text-4xl mb-2 lg:text-4xl max-sm:text-2xl">
+        CONFIRMATION:
+      </h1>
       <div className="w-full flex flex-col lg:text-lg md:flex-row text-base sm:flex-col ">
         <form className="lg: w-4/5 max-md:w-full" onSubmit={handleSubmit}>
           <p>6-digit code:</p>
@@ -40,9 +41,9 @@ const Confirmation = () => {
             <button
               type="button"
               className="block bg-orange-500 px-4 rounded-md text-white p-2 mt-4 hover:bg-orange-600"
-              onClick={()=>navigate("/SignUp")}
+              onClick={() => navigate("/SignUp")}
             >
-                  BACK
+              BACK
             </button>
           </div>
         </form>
@@ -58,6 +59,6 @@ const Confirmation = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Confirmation
+export default Confirmation;
