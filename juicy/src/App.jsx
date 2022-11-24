@@ -20,7 +20,6 @@ function App() {
           <Route path="/SignUp" element={<SignUp />}/>
           <Route path="/Confirmation" element={<Confirmation />}/>
           <Route path="/Recovery" element={<Recovery />}/>
-          <Route path="/Success" element={<SuccessPage />}/>
         </Route>
       </Routes>
     </BrowserRouter>
