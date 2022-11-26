@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SuccessPage from "./SuccessPage";
+import { toast } from "react-hot-toast";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,6 +12,8 @@ const Login = () => {
     e.preventDefault();
     setEmail("");
     setPassword("");
+    setIsLoggedIn(true);
+    toast.loading("Pending...");
   };
 
   return (
@@ -23,7 +26,7 @@ const Login = () => {
           <h1 className="lg:text-6xl mb-2 md: text-5xl sm: text-4xl">LOGIN:</h1>
           <div
             className="w-full flex flex-col lg:text-lg md:flex-row text-base 
-       sm:flex-col "
+                        sm:flex-col "
           >
             <form className="lg: w-4/5 max-md:w-full" onSubmit={handleSubmit}>
               <p>E-mail:</p>
@@ -51,7 +54,7 @@ const Login = () => {
                 <button
                   type="submit"
                   className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white 
-              hover:bg-orange-600"
+                              hover:bg-orange-600"
                 >
                   LOGIN
                 </button>
@@ -59,7 +62,7 @@ const Login = () => {
                 <button
                   type="button"
                   className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white 
-              hover:bg-orange-600"
+                             hover:bg-orange-600"
                   onClick={() => navigate("/SignUp")}
                 >
                   SIGN-UP
@@ -68,7 +71,7 @@ const Login = () => {
             </form>
             <div
               className=" flex flex-col items-center border-solid border-2  border-l-orange-500 
-          lg:h-52 pt-6 md:w-2/5 max-sm:h-auto pt-0 mt-4"
+                          lg:h-52 pt-6 md:w-2/5 max-sm:h-auto pt-0 mt-4"
             >
               <p className="text mb-4 font-bold w-4/5 lg:pl-4 max-sm:pl-0">
                 Login using e-mail and password

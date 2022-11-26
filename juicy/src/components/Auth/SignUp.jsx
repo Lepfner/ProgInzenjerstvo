@@ -8,16 +8,15 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [isRegisterd, setIsRegisterd] = useState(false);
-  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
-      setError("Passwords do not match!");
       toast.error("Passwords do not match!");
       return;
     }
-    toast.loading("Pending...");
+    setIsRegisterd(true);
+    toast.loading("Pending...")
   };
 
   return (
@@ -32,7 +31,7 @@ const SignUp = () => {
           </h1>
           <div
             className="w-full flex flex-col lg:text-lg md:flex-row text-base 
-      sm:flex-col "
+                       sm:flex-col "
           >
             <form className="lg: w-4/5 max-md:w-full" onSubmit={handleSubmit}>
               <p>E-mail:</p>
