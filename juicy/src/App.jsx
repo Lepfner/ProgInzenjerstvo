@@ -7,7 +7,6 @@ import {
   Confirmation,
   Recovery,
   AdminLogin,
-  SuccessPage,
 } from "./components/Auth";
 
 function App() {
