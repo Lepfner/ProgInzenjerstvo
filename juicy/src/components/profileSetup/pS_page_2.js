@@ -3,19 +3,21 @@ import React , {Compontent} from 'react'
 const PS2 = ({page, setPage}) => {
   return (
     <div className="card">
-    <div className="step-title">Step2</div> 
+    <div className="step-title">Step2</div>
+    <div>Status:</div> 
+    <select>
+    <option value="unmarried">unmarried</option>
+    <option value="married">married</option>  
+    
+    </select>
+    <div>Nationality:</div> 
     <input
       type="text"
-      placeholder="placeholder"
       className="form-group"
-    />
-    <input
-      type="text"
-      className="form-group"
       placeholder="placeholder"
     />
-    <input
-      type="text"
+    <div>Religion:</div> 
+    <textarea
       className="form-group"
       placeholder="placeholder"
     />

@@ -51,6 +51,7 @@
     font-size: 1rem;
     padding: 0.25em;
   }
+  
   .step-title {
     margin: 0;
     margin-bottom: 1rem;
@@ -69,6 +70,7 @@
     display: flex;
     align-content: space-between;
   }
+  
   button {
     background-color: orange;
     border: 2px solid gray;
@@ -83,3 +85,10 @@
   textarea {
     height: 5rem;
   }
+.delete{
+  font-size: 8 px;
+  border: 1px solid gray;
+  padding: 0.5rem;
+
+
+}
