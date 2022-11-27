@@ -15,7 +15,7 @@ const PS2 = ({ page, setPage }) => {
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
         placeholder="placeholder"
       />
-      <div className=" ">Religion:</div>
+      <div className="mb-2">Religion:</div>
       <textarea
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
         placeholder="placeholder"

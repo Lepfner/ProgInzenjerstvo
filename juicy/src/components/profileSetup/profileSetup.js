@@ -17,8 +17,8 @@ function ProfileSetup() {
     <div className="w-full flex flex-col items-center justify-between">
       <div className="h-24 w-full bg-orange-500 mb-8" />
       <div
-        className="h-full flex flex-col justify-center  
-                     border-orange-500 border-x-[2rem] border-b-[2rem] border-t-[1rem] rounded-xl z-0
+        className="h-full flex flex-col justify-center max-w-[75%]
+                     outline outline-orange-500 outline-[1rem] rounded-xl z-0
                      lg:w-4/5 md:w-4/5"
       >
         <div className="w-full rounded-xl p-12 z-10">

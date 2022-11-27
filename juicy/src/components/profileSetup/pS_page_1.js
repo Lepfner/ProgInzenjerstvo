@@ -1,6 +1,6 @@
-import React , {Compontent} from 'react'
+import React, { Compontent } from "react";
 
-const PS1 = ({page, setPage}) => {
+const PS1 = ({ page, setPage }) => {
   return (
     <div className="flex justify-center items-center flex-col lg: w-4/5 max-md:w-full">
       <div className="step-title text-xl mb-4">Step 1</div>
@@ -60,6 +60,5 @@ const PS1 = ({page, setPage}) => {
 
     // ZNAM DA NE IZGLEDA KA PUNO AL SAN NASA NES ODAKLE DA "POSUĐUJEM" PA CU IDUCI PUT PUNO VISE NAPRAVIT
   );
-
-}
-export default PS1
+};
+export default PS1;

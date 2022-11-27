@@ -6,7 +6,7 @@ import React, { Compontent } from "react";
 
 const Tag = (props) => (
   <div
-    className="flex justify-between p-2 h-auto rounded-lg m-4 bg-gray-300 w-1/3 break-all"
+    className="flex justify-between p-2 h-auto rounded-lg m-2 bg-gray-300  break-all lg:w-[30%]"
     {...props}
   />
 );
@@ -46,6 +46,8 @@ class TagsInput extends React.Component {
       if (this.props.value.indexOf(newTag) === -1) {
         this.props.value.push(newTag);
         this.setState({ newTag: "" });
+      } else {
+        alert("već postoji taj tag!");
       }
       e.target.value = "";
     }
@@ -60,22 +62,26 @@ class TagsInput extends React.Component {
 
   render() {
     return (
-      <div className="w-full">
-        <div>
-          {this.props.value.map((tag, index) => (
-            <Tag key={index}>
-              {tag}
-              <Delete onClick={this.handleRemoveTag} />
-            </Tag>
-          ))}
-          <input
+      <div className="w-full"> 
+      <input
             type="text"
-            className="h-14 px-2 rounded-lg bg-gray-300 w-full"
+            className="h-14 px-2 my-2 rounded-lg bg-gray-300 w-full"
             onChange={this.handleChange}
             onKeyDown={this.handleKeyDown}
           />
+          <Help>hit 'Enter' to add</Help>
+        <div>
+          <div className="flex flex-wrap max-sm:flex-col ">
+            {this.props.value.map((tag, index) => (
+              <Tag key={index}>
+                {tag}
+                <Delete onClick={this.handleRemoveTag} />
+              </Tag>
+            ))}
+          </div>
+         
         </div>
-        <Help>hit 'Enter' to add</Help>
+        
       </div>
     );
   }
