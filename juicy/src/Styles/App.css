@@ -1,14 +1,26 @@
-.App {
-  text-align: center;
+.boxShadowContainer{
+  box-shadow: 7px 8px 7px -2px rgba(0,0,0,0.42);
+  min-height:42%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+*{
+  font-family: 'Varela Round'
+}
+
+h1{
+  font-weight: 600;
+}
+
+a{
+  color:blue;
+  text-decoration: underline;
+
+}
+
+input:focus{
+  outline:none;
+}
+
+.validate:required:invalid{
+  border: 1px solid red
 }
