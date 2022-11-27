@@ -1,4 +1,4 @@
-import React, { Compontent } from "react";
+import React from "react";
 
 //
 // ZAO MI JE MORA SAN

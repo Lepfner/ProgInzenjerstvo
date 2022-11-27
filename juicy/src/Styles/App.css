@@ -24,6 +24,3 @@ input:focus{
 .validate:required:invalid{
   border: 1px solid red
 }
-
-
-

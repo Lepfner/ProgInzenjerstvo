@@ -1,4 +1,4 @@
-import React, { Compontent } from "react";
+import React from "react";
 import { useState } from "react";
 import PS1 from "./pS_page_1";
 import PS2 from "./pS_page_2";
@@ -30,10 +30,10 @@ function ProfileSetup() {
                   page === 0
                     ? "25%"
                     : page === 1
-                    ? "50%"
-                    : page === 2
-                    ? "75%"
-                    : "100%",
+                      ? "50%"
+                      : page === 2
+                        ? "75%"
+                        : "100%",
               }}
             ></div>
           </div>

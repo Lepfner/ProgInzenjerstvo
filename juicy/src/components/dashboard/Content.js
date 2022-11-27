@@ -10,13 +10,13 @@ export default function Content() {
   })
 
   return (
-    <div>
+    <>
         <Search search={(q)=>setQuery(q)}/>
         <div className='h-screen relative'>
           <div className='bg-orange-500 absolute w-3/4 h-96 ml-52 mt-32'>
 
           </div>
         </div>
-    </div>
+    </>
   )
 }
