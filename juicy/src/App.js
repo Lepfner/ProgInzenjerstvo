@@ -1,4 +1,5 @@
 import '../src/Styles/App.css';
+import ProfileSetup from './components/profileSetup/profileSetup';
 import Dashboard from './components/dashboard/MainMenu'
 
 function App() {
