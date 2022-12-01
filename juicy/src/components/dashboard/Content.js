@@ -12,8 +12,8 @@ export default function Content() {
   return (
     <>
         <Search search={(q)=>setQuery(q)}/>
-        <div className='h-screen relative'>
-          <div className='bg-orange-500 absolute w-3/4 h-96 ml-52 mt-32'>
+        <div className='h-3/4 relative w-full flex justify-center items-center'>
+          <div className='bg-orange-500 w-3/4 h-3/4'>
 
           </div>
         </div>

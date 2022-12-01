@@ -5,13 +5,13 @@ import Sidebar from './Sidebar'
 
 export default function MainMenu() {
     return (
-        <div>
+        <div className='h-screen w-full'>
             <Header />
-            <div className='h-full w-full'>
-                <div className="float-left w-1/12 h-screen relative">
+            <div className='h-5/6 w-full flex'>
+                <div className=" h-full flex flex-col justify-center lg:w-1/12 md: w-2/12">
                     <Sidebar/>
                 </div>
-                <div className="float-right w-11/12 h-screen">
+                <div className="h-full lg:w-11/12 md: w-10/12">
                     <Content/>
                 </div>
             </div>

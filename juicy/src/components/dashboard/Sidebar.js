@@ -4,7 +4,7 @@ import { faUser, faBars, faSquareCaretDown } from '@fortawesome/free-solid-svg-i
 
 export default function Sidebar() {
     return (
-        <div className='bg-orange-500 absolute bottom-1/3 w-full h-1/2 grid items-center border-solid rounded-r-3xl'>
+        <div className='bg-orange-500 w-full h-1/2 flex min-h-[2rem] flex-col justify-around items-center border-solid rounded-r-3xl'>
             <div>
             <FontAwesomeIcon id="logoIcon" className='hover:animate-pulse' icon={faBars} size="2x"/>
             </div>
