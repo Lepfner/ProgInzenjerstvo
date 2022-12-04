@@ -1,7 +1,7 @@
 import "./Styles/App.css";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import AuthLayout from "./components/Auth/AuthLayout.jsx";
-import Dashboard from "./components/Dashboard/MainMenu"
+import Dashboard from "./components/dashboard/MainMenu.js"
 import ProfileSetup from "./components/profileSetup/profileSetup";
 import {
   Login,
@@ -22,7 +22,7 @@ function App() {
           <Route path="/Confirmation" element={<Confirmation />}/>
           <Route path="/Recovery" element={<Recovery />}/>
         </Route>
-        <Route path="/Dashboard" element={<Dashboard/>}/>
+        <Route path="/Main" element={<Dashboard/>}/>
         <Route path="/Setup" element={<ProfileSetup/>}/>
       </Routes>
     </BrowserRouter>
