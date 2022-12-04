@@ -8,14 +8,13 @@ const PS1 = ({
   updateData,
   handleSubmit,
 }) => {
-
   return (
     <form
       className="flex justify-center items-center flex-col lg: w-4/5 max-md:w-full"
       onSubmit={handleSubmit}
     >
-      <div className=" lg:text-3xl mb-2 md: text-2xl sm: text-xl">Name:</div>
-      <div className="text-xl mb-4">Step 1</div>
+      <p className="text-xl mb-4">Step 1</p>
+      <p className=" lg:text-3xl mb-2 md: text-2xl sm: text-xl">Name:</p>
 
       <input
         required
@@ -25,7 +24,7 @@ const PS1 = ({
         placeholder="placeholder"
         className="h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
       />
-      <div className=" lg:text-3xl mb-2 md: text-2xl sm: text-xl">Surname:</div>
+      <p className=" lg:text-3xl mb-2 md: text-2xl sm: text-xl">Surname:</p>
       <input
         required
         value={surname}
@@ -44,7 +43,7 @@ const PS1 = ({
         type="date"
         className="h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
       />
-      <div className=" lg:text-3xl mb-2 md: text-2xl sm: text-xl">Gender:</div>
+      <p className=" lg:text-3xl mb-2 md: text-2xl sm: text-xl">Gender:</p>
       <div className="lg:text-3xl mb-2 md: text-2xl sm: text-xl">
         <div>
           <input
@@ -72,12 +71,10 @@ const PS1 = ({
         </div>
       </div>
 
-      <div className="flex  lg:gap-8 flex-row md:flex-row gap-2 max-sm:flex-col ">
-        <NextBtn/>
+      <div className="flex w-full justify-center lg:gap-8 flex-row md:flex-row gap-2 max-sm:flex-col ">
+        <NextBtn />
       </div>
     </form>
-
-    // ZNAM DA NE IZGLEDA KA PUNO AL SAN NASA NES ODAKLE DA "POSUĐUJEM" PA CU IDUCI PUT PUNO VISE NAPRAVIT
   );
 };
 export default PS1;

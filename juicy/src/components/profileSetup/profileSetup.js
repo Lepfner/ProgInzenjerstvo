@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import PS1 from "./pS_page_1";
 import PS2 from "./pS_page_2";
 import PS3 from "./pS_page_3";
+import Success from "./Success";
+import { Toaster } from "react-hot-toast";
 
 const initialData = {
   name: "",
@@ -21,7 +23,7 @@ function ProfileSetup() {
   const [formData, setFormData] = useState(initialData);
 
   useEffect(() => {
-    console.log(formData)
+    console.log(formData);
   }, [formData, page]);
 
   const updateData = (fields) => {
@@ -54,11 +56,12 @@ function ProfileSetup() {
       setPage={setPage}
       handleSubmit={handleSubmit}
     />,
-    
+    <Success setPage={setPage} />,
   ];
 
   return (
     <div className="w-full flex flex-col items-center justify-between">
+      <Toaster />
       <div className="h-24 w-full bg-orange-500 mb-8" />
       <div
         className="h-full flex flex-col justify-center max-w-[75%]
@@ -88,7 +91,6 @@ function ProfileSetup() {
         </div>
       </div>
     </div>
-    // ZNAM DA NE IZGLEDA KA PUNO AL SAN NASA NES ODAKLE DA "POSUĐUJEM" PA CU IDUCI PUT PUNO VISE NAPRAVIT
   );
 }
 export default ProfileSetup;
