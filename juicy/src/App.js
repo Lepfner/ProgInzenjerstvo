@@ -22,7 +22,7 @@ function App() {
           <Route path="/Confirmation" element={<Confirmation />}/>
           <Route path="/Recovery" element={<Recovery />}/>
         </Route>
-        <Route path="/Main" element={<Dashboard/>}/>
+        <Route path="/Main" element={<Dashboard currentPage={localStorage.getItem("current")}/>}/>
         <Route path="/Setup" element={<ProfileSetup/>}/>
       </Routes>
     </BrowserRouter>

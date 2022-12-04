@@ -3,9 +3,11 @@ import Content from './Content'
 import Header from './Header'
 import Sidebar from './Sidebar'
 import Settings from './Settings'
-import { Route, BrowserRouter, Routes } from "react-router-dom";
 
-export default function MainMenu() {
+export default function MainMenu({currentPage}) {
+
+
+
     return (
         <div className='h-screen w-full'>
             <Header />
@@ -14,8 +16,7 @@ export default function MainMenu() {
                     <Sidebar/>
                 </div>
                 <div className="h-full lg:w-11/12 md: w-10/12">
-                
-                    <Content/>
+                    {currentPage==="settings" ? <Settings/> : currentPage==="main" ? <Content/> : <Content/>}
                 </div>
             </div>
         </div>
