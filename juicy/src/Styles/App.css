@@ -25,4 +25,8 @@ input:focus{
   border: 1px solid red
 }
 
+.userDiv{
+  display:flex !important;
+}
+
 

@@ -3,9 +3,13 @@ import PrevBtn from "./prevBtn";
 import { toast } from "react-hot-toast";
 import Tags from "./Tags";
 
+
 const PS3 = ({ updateData, setPage, likes, dislikes }) => {
+
   return (
-    <div className="flex justify-center items-center flex-col w-full lg:text-3xl md: text-2xl sm: text-xl">
+    <div
+      className="flex justify-center items-center flex-col w-full lg:text-3xl md: text-2xl sm: text-xl"
+    >
       <p className="step-title mb-4 text-xl">Step 3</p>
       <p>Likes:</p>
       <Tags
