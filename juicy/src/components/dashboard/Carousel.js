@@ -20,7 +20,7 @@ const Carousel = () => {
   const [Users, setUsers] = useState([])
   useEffect(() => {
     axios
-      .get("https://dummyjson.com/users?limit=5&select=firstName,lastName,age,image")
+      .get("https://dummyjson.com/users?limit=10&select=firstName,lastName,age,image")
       .then((res) => {
         const users = res.data.users
         setUsers(users)
@@ -41,7 +41,7 @@ const Carousel = () => {
             <div className="border-4 border-green-300 mb-4 rounded-full h-[10rem] overflow-hidden mx-4 bg-slate-200">
               <img src={image} className="object-cover h-[10rem]" />
             </div>
-            <div className="flex flex-col justify-center max-h-[18rem] overflow-y-auto pt-4 pb-2 items-center rounded-2xl bg-slate-200 w-3/4 ">
+            <div className="flex flex-col justify-center mb-8 max-h-[18rem] overflow-y-auto pt-4 pb-2 items-center rounded-2xl bg-slate-200 w-3/4 ">
               <p className="font-bold mt-2 text-lg">
                 {firstName} {lastName}
               </p>
