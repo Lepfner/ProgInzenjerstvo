@@ -39,7 +39,7 @@ const Carousel = () => {
             className="userDiv flex-col justify-end items-center w-full mt-8 mb-4 h-full"
           >
             <div className="border-4 border-green-300 mb-4 rounded-full h-[10rem] overflow-hidden mx-4 bg-slate-200">
-              <img src={image} className="object-cover h-[10rem]" />
+              <img src={image} className="object-cover h-[10rem]" alt="user"/>
             </div>
             <div className="flex flex-col justify-center mb-8 max-h-[18rem] overflow-y-auto pt-4 pb-2 items-center rounded-2xl bg-slate-200 w-3/4 ">
               <p className="font-bold mt-2 text-lg">
