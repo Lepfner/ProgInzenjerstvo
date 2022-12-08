@@ -9,14 +9,11 @@ export default function Content() {
   });
 
   return (
-    <>
-      
-      <div className="h-full w-full flex flex-col justify-center items-center">
-        <Search search={(q) => setQuery(q)} />
-        <div className="bg-orange-500 w-3/4 h-[60%] min-h-[27rem] mt-8">
-          <Carousel/>
-        </div>
+    <div className="h-full w-full flex flex-col justify-center items-center">
+      <Search search={(q) => setQuery(q)} />
+      <div className="bg-orange-500 w-3/4 min-h-[27rem] mt-8 rounded-2xl h-auto pb-12">
+        <Carousel />
       </div>
-    </>
+    </div>
   );
 }
