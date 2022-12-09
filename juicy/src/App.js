@@ -1,7 +1,7 @@
 import "./Styles/App.css";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import AuthLayout from "./components/Auth/AuthLayout.jsx";
-import Dashboard from "./components/Dashboard/MainMenu"
+import Dashboard from "./components/dashboard/MainMenu"
 import ProfileSetup from "./components/profileSetup/profileSetup";
 import {
   Login,
