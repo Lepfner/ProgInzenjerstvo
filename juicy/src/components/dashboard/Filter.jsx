@@ -1,29 +1,39 @@
-import React, { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSquareCaretDown } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSquareCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function Filter() {
+  const [filter, SetFilter] = useState(false);
 
-    const [filter, SetFilter] = useState(false);
+  const ToggleFilter = () => {
+    SetFilter((prev) => !prev);
+  };
 
-    const ToggleFilter = () => {
-        if(filter == false)
-            SetFilter(true);
-        else
-            SetFilter(false);
-    }
-
-    return (
-        <>
-            <div>
-                {filter && 
-                <div className='absolute top-56 left-40 z-10 h-2/5 w-1/4 bg-white shadow-2xl border-8 border-orange-500 rounded-r-3xl'>
-                    HELLO
-                </div>}
-                <button onClick={ToggleFilter}>
-                    <FontAwesomeIcon id="logoIcon" className='hover:animate-pulse' icon={faSquareCaretDown} size="2x" />
-                </button>
+  return (
+    <>
+      <div>
+        {filter && (
+          <div
+            className="absolute top-[17rem] min-h-[20rem] 
+                       shadow-2xl bg-orange-500  
+                       rounded-r-[2.5rem] z-10 w-1/4 md:w-1/3 
+                       max-sm:w-1/2 left-[7%] max-lg:left-[10%] max-md:left-[15%] 
+                       max-sm:left-[20%]"
+          >
+            <div className="m-4 p-4 bg-white min-h-[18rem] rounded-r-xl z-20">
+              HELLO
             </div>
-        </>
-    )
+          </div>
+        )}
+      </div>
+      <div onClick={ToggleFilter}>
+        <FontAwesomeIcon
+          id="logoIcon"
+          className={`${filter ? "opacity-40" : "opacity-100"}`}
+          icon={faSquareCaretDown}
+          size="2x"
+        />
+      </div>
+    </>
+  );
 }
