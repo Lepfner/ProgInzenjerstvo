@@ -35,35 +35,26 @@ input:focus {
 
 .slick-prev:before,
 .slick-next:before {
-  
   content: "" !important;
-}
-
-.slick-prev {
-  left: 2% !important;
-}
-
-.slick-next {
-  right: 2% !important;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
-  background:
+  background: ;
 }
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
-  border-radius:3px;
+  border-radius: 3px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #BBB;
-  border-radius:3px;
+  background: #bbb;
+  border-radius: 3px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #AAA;
+  background: #aaa;
 }
