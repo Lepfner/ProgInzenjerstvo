@@ -28,13 +28,13 @@ export default function Filter() {
       <div>
         {filter && (
           <div
-            className="absolute top-[15rem] min-h-[20rem] 
-          shadow-2xl bg-orange-500  
-          rounded-r-[2.5rem] z-10 w-1/4 md:w-1/3 
-          max-sm:w-1/2 left-[7%] max-lg:left-[10%] max-md:left-[15%] 
-          max-sm:left-[20%]"
+            className="absolute top-[17rem] min-h-[20rem] shadow-2xl bg-orange-500  
+            rounded-r-[2.5rem] z-10 lg:w-1/4 md:w-1/3 sm:w-1/2 mr-2
+            left-[7%] lg:left-[10%] md:left-[15%] max-sm:left-[20%]"
           >
-            <form className="flex flex-col" onSubmit={handleSubmit}>
+            <form className="flex flex-col bg-slate-200 m-4 rounded-xl pb-4 px-4 relative" onSubmit={handleSubmit}>
+              <div className="absolute top-2 right-2 text-red-500 text-3xl font-bold hover:cursor-pointer"
+                   onClick={(e)=>setFilter(false)}>&times;</div>
               <label className="m-auto pt-[20px]">Age range:</label>
               <div className="px-[30px]">
                 <Slider
@@ -101,8 +101,8 @@ export default function Filter() {
 
               <button
                 type="submit"
-                className="block max-w-min m-auto pb-[5px] bg-white px-4 rounded-md p-2 mt-4 text-black 
-                              hover:bg-orange-600"
+                className="block max-w-min m-auto pb-[5px] bg-orange-500 px-4 
+                           rounded-md p-2 mt-4 text-black hover:bg-orange-600"
               >
                 Apply
               </button>
@@ -121,4 +121,3 @@ export default function Filter() {
     </>
   );
 }
-
