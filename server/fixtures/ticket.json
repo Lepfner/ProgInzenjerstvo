@@ -1,0 +1,38 @@
+[
+    {
+        "data": [
+            {
+                "id": 0,
+                "ticket_name": "Super Series Esport Finals Day 1",
+                "price": 100.0,
+                "quantity": 1,
+                "venue_access": "Standard",
+                "event_id": 0
+            },
+            {
+                "id": 1,
+                "ticket_name": "Super Series Esport Finals Day 1 VIP",
+                "price": 150.0,
+                "quantity": 1,
+                "venue_access": "VIP",
+                "event_id": 0
+            },
+            {
+                "id": 2,
+                "ticket_name": "Hard Metal Concert Access",
+                "price": 40.0,
+                "quantity": 1,
+                "venue_access": "Standard-Front",
+                "event_id": 1
+            },
+            {
+                "id": 3,
+                "ticket_name": "Standup Comedy Live Access",
+                "price": 55.0,
+                "quantity": 1,
+                "venue_access": "Standard",
+                "event_id": 2
+            }
+        ]
+    }
+]

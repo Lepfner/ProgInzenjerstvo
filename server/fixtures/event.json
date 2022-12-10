@@ -1,0 +1,53 @@
+[
+    {
+        "data": [
+            {
+               "id": 0,
+               "event_name": "Super Series Esport Finals",
+               "event_name_abrv": "SSEF",
+               "event_url": "https://pro.eslgaming.com/tour/csgo/rio/",
+               "early_start": "2022-12-10",
+               "early_end": "2022-12-12",
+               "sale_start": "2022-12-13",
+               "sale_end": "2022-12-25",
+               "doors_open": "08:00:00",
+               "last_entry": "18:00:00",
+               "min_age": 12,
+               "venue_id":  0,
+               "event_type": "Tournament",
+               "organizers_id": 0
+            },
+            {
+                "id": 1,
+                "event_name": "Hard Metal Concert",
+                "event_name_abrv": "HMC",
+                "event_url": "https://pro.eslgaming.com/tour/csgo/katowice/?utm_source=eslmain",
+                "early_start": "2023-2-10",
+                "early_end": "2023-3-1",
+                "sale_start": "2023-4-1",
+                "sale_end": "2023-4-15",
+                "doors_open": "20:00:00",
+                "last_entry": "23:00:00",
+                "min_age": 14,
+                "venue_id":  1,
+                "event_type": "Concert",
+                "organizers_id": 1
+             },            {
+                "id": 2,
+                "event_name": "Standup Comedy Live",
+                "event_name_abrv": "SCL",
+                "event_url": "https://pro.eslgaming.com/tour/csgo/cologne/",
+                "early_start": "2023-1-1",
+                "early_end": "2023-1-5",
+                "sale_start": "2023-1-10",
+                "sale_end": "2023-1-15",
+                "doors_open": "19:00:00",
+                "last_entry": "21:00:00",
+                "min_age": 18,
+                "venue_id":  2,
+                "event_type": "Performance",
+                "organizers_id": 2
+             }
+        ]
+    }
+]
