@@ -30,11 +30,18 @@ export default function Filter() {
           <div
             className="absolute top-[17rem] min-h-[20rem] shadow-2xl bg-orange-500  
             rounded-r-[2.5rem] z-10 lg:w-1/4 md:w-1/3 sm:w-1/2 mr-2
-            left-[7%] lg:left-[10%] md:left-[15%] max-sm:left-[20%]"
+            left-[7%] xl:left-[7%] lg:left-[10%] md:left-[15%] max-sm:left-[20%]"
           >
-            <form className="flex flex-col bg-slate-200 m-4 rounded-xl pb-4 px-4 relative" onSubmit={handleSubmit}>
-              <div className="absolute top-2 right-2 text-red-500 text-3xl font-bold hover:cursor-pointer"
-                   onClick={(e)=>setFilter(false)}>&times;</div>
+            <form
+              className="flex flex-col bg-slate-200 m-4 rounded-xl pb-4 px-4 relative"
+              onSubmit={handleSubmit}
+            >
+              <div
+                className="absolute top-2 right-2 text-red-500 text-3xl font-bold hover:cursor-pointer"
+                onClick={(e) => setFilter(false)}
+              >
+                &times;
+              </div>
               <label className="m-auto pt-[20px]">Age range:</label>
               <div className="px-[30px]">
                 <Slider
