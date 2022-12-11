@@ -10,8 +10,26 @@ const settings = {
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 1,
+  slidesToShow: 3,
   slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  responsive: [
+    {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+  ],
   prevArrow: <CarouselPrevArrow />,
   nextArrow: <CarouselNextArrow />,
 };
@@ -20,7 +38,9 @@ const Carousel = () => {
   const [Users, setUsers] = useState([]);
   useEffect(() => {
     axios
-      .get("https://dummyjson.com/users?limit=10&select=firstName,lastName,age,image")
+      .get(
+        "https://dummyjson.com/users?limit=10&select=firstName,lastName,age,image"
+      )
       .then((res) => {
         const users = res.data.users;
         setUsers(users);
@@ -28,14 +48,15 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div>
+    <div className="px-[1rem]">
       <Slider {...settings}>
         {Users.map((user) => {
           const { id, firstName, lastName, age, image } = user;
           return (
             <div
               key={id}
-              className="userDiv flex-col justify-end items-center w-full mt-8 mb-4 h-full"
+              className="userDiv flex-col justify-end items-center w-full mt-4 pt-4 mb-4 h-full bg-slate-100 w-5/6 border-[0.6rem] 
+                         border-orange-500 rounded-3xl"
             >
               <div className="border-4 border-green-300 mb-4 rounded-full h-[10rem] overflow-hidden mx-4 bg-slate-200">
                 <img
@@ -45,8 +66,8 @@ const Carousel = () => {
                 />
               </div>
               <div
-                className="flex flex-col mb-8 h-auto max-h-[15rem] overflow-y-auto py-4 items-center
-                           rounded-2xl bg-slate-200 w-3/4 "
+                className="flex flex-col mb-8 h-auto max-h-[15rem] overflow-y-auto py-2 items-center
+                           rounded-2xl bg-slate-200 w-[90%] "
               >
                 <p className="font-bold mt-2 text-lg">
                   {firstName} {lastName}
@@ -57,9 +78,7 @@ const Carousel = () => {
                 <p className="font-bold text-lg">Description:</p>
                 <p className="text-center w-[90%]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                  ut interdum ex, in iaculis dui. Integer eget orci elit.
-                  Pellentesque sit amet elit sit amet dui interdum laoreet. In
-                  lobortis volutpat erat a dapibus.
+                  ut interdum ex, in iaculis dui.
                 </p>
               </div>
             </div>

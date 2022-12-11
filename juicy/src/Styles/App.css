@@ -33,10 +33,29 @@ input:focus {
   z-index: 20;
 }
 
+.slick-prev{
+  left:-5rem !important;
+}
+
+.slick-next{
+  right:-5rem !important;
+}
+
+@media screen and (max-width:640px){
+  .slick-prev{
+    left:-3rem !important;
+  }
+  .slick-next{
+    right:-3rem !important;
+  }
+}
+
 .slick-prev:before,
 .slick-next:before {
   content: "" !important;
 }
+
+
 
 ::-webkit-scrollbar {
   width: 10px;

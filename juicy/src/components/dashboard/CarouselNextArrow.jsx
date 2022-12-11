@@ -4,7 +4,7 @@ const CarouselNextArrow = (props) => {
   const { className, onClick } = props;
   return (
     <div className={className} onClick={onClick}>
-      <img src="/images/nextArrow.png" alt="next"/>
+      <img src="/images/nextArrow.png" alt="next" />
     </div>
   );
 }
