@@ -27,8 +27,8 @@ export default function Settings() {
        
         <style>:root {`{${primaryColor} ${a11yColor}}`}</style>
       
-          <div className='h-3/4 relative w-full flex justify-center items-center '>
-            <div className='bg-skin-primary w-3/4 h-3/4 p-3 text-center flex items-center space-x-4 shadow-xl flex-col'>
+          <div className=' w-full flex justify-center items-center mt-10'>
+            <div className='bg-skin-primary w-3/4  p-3 text-center flex items-center space-x-4 shadow-xl flex-col'>
             <div>
             <button className="lg:text-3xl mb-2 md: text-2xl sm: text-xl" onClick={() => setIsOn((prevState) => 
             !prevState)}>Notifications</button>
@@ -40,15 +40,22 @@ export default function Settings() {
 
 
               
-            <div className=" bottom-5 sm:bottom-14 rounded-xl bg-white p-3 text-center flex items-center space-x-4 shadow-xl m-10">
+            
+              
+                <div className="bg-skin-primary text-white m-10">REPORT:</div>
+              <textarea
+              className="block p-2.5 w-1/2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Feel free to let us know what is bothering you and write as many details as you like:"/>
+              <button
+              className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white hover:bg-orange-600
+                        lg:text-xl md:text-lg sm: text-lg flex justify-center">Send</button>
+              <div className=" bottom-5 sm:bottom-14 rounded-xl bg-white p-3 text-center flex items-center space-x-4 shadow-xl m-10">
           <ColorPicker
             color={color}
             onChange={setColor}
             presetColors={presetColors}
           /> <p className="text-sm font-medium text-gray-500">Custom Color</p></div>
-            </div>
-          </div>
-          <div className=' flex-col relative w-full flex justify-center items-center bg-white text-black text-center'>
+            <div className='m-10 flex-col relative w-full flex justify-center items-center bg-skin-primary text-white text-center'>
             <div>ABOUT US:</div>
                 <div>
                 Created by a team of several software developers and testers,
@@ -68,6 +75,11 @@ export default function Settings() {
                 Mateo Papuga,
                 Toni Radman,
                 </div>
+                <div>Email: lerner.andi@gmail.com</div>
+            </div>
+            
+          </div>
+         
       </>
     )
   }
