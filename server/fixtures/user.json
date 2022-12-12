@@ -1,0 +1,86 @@
+[
+    {
+        "data": [
+            {
+               "id": 0,
+               "name": "Katarina",
+               "surname": "Harrington",
+               "username": "kateharr",
+               "email": "katarina.harrington@gmail.com",
+               "date_of_birth": "2000-11-25",
+               "gender": "female",
+               "level_of_access": "user",
+               "country": "USA",
+               "state": "New York",
+               "city": "New York",
+               "walletId": "4567",
+               "profile_img_url": "",
+               "password": "hehehe84"
+            },
+            {
+                "id": 1,
+                "name": "David",
+                "surname": "Otterborn",
+                "username": "Neoo",
+                "email": "david@gmail.com",
+                "date_of_birth": "1990-10-1",
+                "gender": "male",
+                "level_of_access": "user",
+                "country": "USA",
+                "state": "Virginia",
+                "city": "Norfolk",
+                "walletId": "1200",
+                "profile_img_url": "",
+                "password": "fhqu3irf382"
+             },
+             {
+                "id": 2,
+                "name": "Carl",
+                "surname": "Durmond",
+                "username": "Coral092",
+                "email": "carldur@gmail.com",
+                "date_of_birth": "2004-4-23",
+                "gender": "male",
+                "level_of_access": "user",
+                "country": "USA",
+                "state": "Texas",
+                "city": "Austin",
+                "walletId": "1207",
+                "profile_img_url": "",
+                "password": "fhjr3897z"
+             },
+             {
+                "id": 3,
+                "name": "Mila",
+                "surname": "Sonora",
+                "username": "lanternFtw",
+                "email": "mila.sonora@gmail.com",
+                "date_of_birth": "12-1-2001",
+                "gender": "female",
+                "level_of_access": "user",
+                "country": "USA",
+                "state": "New Mexico",
+                "city": "Santa Fe",
+                "walletId": "6534",
+                "profile_img_url": "",
+                "password": "90ut45u8dz1"
+             },
+             {
+                "id": 4,
+                "name": "Mike",
+                "surname": "Trant",
+                "username": "MikeyT",
+                "email": "mikeyt@gmail.com",
+                "date_of_birth": "6-5-1999",
+                "gender": "male",
+                "level_of_access": "user",
+                "country": "USA",
+                "state": "Washington",
+                "city": "Seattle",
+                "walletId": "7689",
+                "profile_img_url": "",
+                "password": "f7h278fdz2"
+             }
+        ]
+    }
+]
