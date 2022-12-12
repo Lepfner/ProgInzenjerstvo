@@ -2,8 +2,12 @@ import React from 'react'
 import Content from './Content'
 import Header from './Header'
 import Sidebar from './Sidebar'
+import Settings from './Settings'
 
-export default function MainMenu() {
+export default function MainMenu({currentPage}) {
+
+
+
     return (
         <div className='h-screen w-full'>
             <Header />
@@ -11,8 +15,8 @@ export default function MainMenu() {
                 <div className=" h-[45rem] flex flex-col justify-center lg:w-1/12 md: w-2/12">
                     <Sidebar/>
                 </div>
-                <div className="h-[45rem] lg:w-11/12 md: w-10/12">
-                    <Content/>
+                <div className="h-full lg:w-11/12 md: w-10/12">
+                    {currentPage==="settings" ? <Settings/> : currentPage==="main" ? <Content/> : <Content/>}
                 </div>
             </div>
         </div>

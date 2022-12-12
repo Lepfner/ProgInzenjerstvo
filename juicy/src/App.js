@@ -25,7 +25,7 @@ function App() {
           <Route path="/Recovery" element={<Recovery />}/>
           <Route path='*' element={<ErrorPage />}/>
         </Route>
-        <Route path="/Dashboard" element={<Dashboard/>}/>
+        <Route path="/Main" element={<Dashboard currentPage={localStorage.getItem("current")}/>}/>
         <Route path="/Setup" element={<ProfileSetup/>}/>
       </Routes>
     </BrowserRouter>
