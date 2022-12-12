@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Search from "./Search";
 import Carousel from "./Carousel";
+
 export default function Content() {
+
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    //Work in progress
+    console.log(query);
   });
 
   return (

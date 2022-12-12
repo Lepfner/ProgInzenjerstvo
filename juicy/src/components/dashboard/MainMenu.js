@@ -6,8 +6,6 @@ import Settings from './Settings'
 
 export default function MainMenu({currentPage}) {
 
-
-
     return (
         <div className='h-screen w-full'>
             <Header />

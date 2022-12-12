@@ -1,9 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import ColorPicker from "../dashboard/colorPicker"
 import { getRGBColor, getAccessibleColor } from "../dashboard/utils"
-import ReactDOM from 'react-dom';
-
-
 
 export default function Settings() {
   const [color, setColor] = useState("#ef6c00")
