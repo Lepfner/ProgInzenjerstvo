@@ -1,0 +1,51 @@
+[
+    {
+        "data": [
+            {
+               "id": 0,
+               "name": "Matthew",
+               "surname": "Robinson",
+               "email": "matthew.robinson@gmail.com",
+               "date_of_birth": "12-9-2001",
+               "gender": "male",
+               "level_of_access": "admin",
+               "country": "USA",
+               "state": "California",
+               "city": "San Francisco",
+               "walletId": "1254",
+               "profile_img_url": "",
+               "password": "matthew1234"
+            },
+            {
+                "id": 1,
+                "name": "John",
+                "surname": "Wake",
+                "email": "john.wake@gmail.com",
+                "date_of_birth": "14-7-1994",
+                "gender": "male",
+                "level_of_access": "admin",
+                "country": "USA",
+                "state": "Florida",
+                "city": "Tampa",
+                "walletId": "4874",
+                "profile_img_url": "",
+                "password": "johnbgt34"
+             },
+             {
+                "id": 2,
+                "name": "Alex",
+                "surname": "Riley",
+                "email": "alex.riley@gmail.com",
+                "date_of_birth": "25-1-1987",
+                "gender": "female",
+                "level_of_access": "admin",
+                "country": "USA",
+                "state": "Georgia",
+                "city": "Atlanta",
+                "walletId": "9644",
+                "profile_img_url": "",
+                "password": "htrrdbs4632"
+             }
+        ]
+    }
+]
