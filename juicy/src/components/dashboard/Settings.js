@@ -70,7 +70,7 @@ export default function Settings() {
                 Jozo Krstanović,
                 Andrija Lerner,
                 Mateo Papuga,
-                Toni Radman,
+                Toni Radman
                 </div>
                 <div>Email: lerner.andi@gmail.com</div>
             </div>
