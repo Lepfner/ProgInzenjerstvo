@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Slider from "react-slick";
-import axios from "axios";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CarouselNextArrow from "./CarouselNextArrow";
 import CarouselPrevArrow from "./CarouselPrevArrow";
 
 const settings = {
-  dots: true,
-  infinite: true,
+  dots: false,
+  infinite: false,
   speed: 500,
   slidesToShow: 3,
   slidesToScroll: 1,
@@ -34,23 +33,12 @@ const settings = {
   nextArrow: <CarouselNextArrow />,
 };
 
-const Carousel = () => {
-  const [Users, setUsers] = useState([]);
-  useEffect(() => {
-    axios
-      .get(
-        "https://dummyjson.com/users?limit=10&select=firstName,lastName,age,image"
-      )
-      .then((res) => {
-        const users = res.data.users;
-        setUsers(users);
-      });
-  }, []);
+const Carousel = ({items}) => {
 
   return (
     <div className="px-[1rem]">
       <Slider {...settings}>
-        {Users.map((user) => {
+        {items.filter(age => age.age >= localStorage.getItem("ageMin")).map((user) => {
           const { id, firstName, lastName, age, image } = user;
           return (
             <div
