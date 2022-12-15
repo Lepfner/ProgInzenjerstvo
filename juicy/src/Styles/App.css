@@ -55,11 +55,8 @@ input:focus {
   content: "" !important;
 }
 
-
-
 ::-webkit-scrollbar {
   width: 10px;
-  background: ;
 }
 
 ::-webkit-scrollbar-track {

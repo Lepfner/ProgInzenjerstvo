@@ -16,7 +16,7 @@ export default function Header() {
     }
 
     return (
-        <div className="flex justify-between bg-orange-500 pt-7 pb-7">
+        <div className="flex justify-between bg-skin-primary pt-7 pb-7">
             <div className='ml-10'>
                 <button onClick={() => navMain()}><img src={JuicyLogo} alt='' className="h-20"/></button>
             </div>
