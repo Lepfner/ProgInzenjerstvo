@@ -54,7 +54,7 @@ export default function Settings() {
               Our team is working around the clock to make sure your experience is smooth as possible.<br/>
               You can contact us using email or using the website's report system.
             </div>
-            <div className='mt-12 text-lg'>Meet the team:
+            <div className='mt-12 text-lg'>Meet the team:<br/>
             Toni Grbić,<br/>
             Bruno Ivanković,<br/>
             Jozo Krstanović,<br/>
