@@ -3,17 +3,16 @@ import ColorPicker from "../dashboard/colorPicker"
 import { getRGBColor, getAccessibleColor } from "../dashboard/utils"
 
 export default function Settings() {
-  const [color, setColor] = useState(localStorage.getItem("currentColor"))
-  const primaryColor = getRGBColor(color, "primary")
-  const a11yColor = getRGBColor(getAccessibleColor(color), "a11y")
+  const [color, setColor] = useState(localStorage.getItem("currentColor"));
+  const [isOn, setIsOn] = useState(false);
+  const primaryColor = getRGBColor(color, "primary");
+  const a11yColor = getRGBColor(getAccessibleColor(color), "a11y");
 
   const presetColors = ["#ef6c00", "#6231af", "#db2777", "#2dd4bf", "#06b6d4", "#10b981"];
 
   useEffect(() => {
     localStorage.setItem("currentColor", color);
   })
-
-  const [isOn, setIsOn] = useState(false);
 
   return (
     <>
