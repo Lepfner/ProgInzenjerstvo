@@ -20,6 +20,11 @@ const Admin = sequelize.define(
       required: true,
       allowNull: false,
     },
+    username: {
+      type: Sequelize.STRING,
+      required: true,
+      allowNull: false,
+    },
     email: {
       type: Sequelize.STRING,
       required: true,
@@ -40,27 +45,31 @@ const Admin = sequelize.define(
       type: Sequelize.ENUM("admin", "user"),
       required: true,
     },
-    country: {
+    nationality: {
       type: Sequelize.STRING,
       required: true,
       allowNull: false,
     },
-    state: {
-      type: Sequelize.STRING,
-    },
-    city: {
+    status: {
       type: Sequelize.STRING,
       required: true,
       allowNull: false,
     },
-    wallet_id: {
+    religion: {
       type: Sequelize.STRING,
+      required: true,
+      allowNull: false,
     },
     profile_img_url: {
       type: Sequelize.STRING,
     },
     password: {
       type: Sequelize.STRING,
+      required: true,
+      allowNull: false,
+    },
+    accCreated: {
+      type: Sequelize.DATE,
       required: true,
       allowNull: false,
     },
@@ -71,4 +80,4 @@ const Admin = sequelize.define(
   }
 );
 
-module.exports = Admin.sync();
+module.exports = Admin;

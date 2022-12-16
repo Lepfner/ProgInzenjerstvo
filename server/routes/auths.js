@@ -5,10 +5,6 @@ const Admin = require("../models/admin");
 const bcrypt = require("bcrypt");
 const { authRole } = require("../middleware/authRole");
 const { firebase, auth } = require("../config/admin.js");
-const {
-  authMiddleware,
-  generateToken,
-} = require("../middleware/auth-firebase");
 
 //Log in
 router.post("/login", generateToken, async (req, res) => {

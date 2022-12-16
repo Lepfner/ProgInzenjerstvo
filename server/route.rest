@@ -17,22 +17,6 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5000/api/search/events?event_name=ult
-Content-Type: application/json
-
-
-###
-GET http://localhost:5000/api/events/stats/users/2
-
-###
-PUT http://localhost:5000/api/events/1/edit
-Content-Type: application/json
-
-{
-    "event_name_abrv": "req.body.event_na"
-}
-
-###
 POST http://localhost:5000/api/register
 Content-Type: application/json
 
