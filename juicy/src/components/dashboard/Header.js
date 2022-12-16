@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOut, faGear } from '@fortawesome/free-solid-svg-icons'
 import JuicyLogo from '../images/logo.png';
 
-export default function Header() {
+export default function Header({a11yColor, primaryColor}) {
 
     function navSettings(){
         localStorage.setItem("current", "settings");
@@ -21,8 +21,8 @@ export default function Header() {
                 <button onClick={() => navMain()}><img src={JuicyLogo} alt='' className="h-20"/></button>
             </div>
             <div className="flex">
-                <button onClick={() => navSettings()}><FontAwesomeIcon id="settingsIcon" className='mr-14 hover:animate-spin' icon={faGear} size="2x"/></button>
-                <button><FontAwesomeIcon id="logoutIcon" className='mr-10 hover:animate-ping' icon={faSignOut} size="2x"/></button>
+                <button onClick={() => navSettings()}><FontAwesomeIcon id="settingsIcon" className='mr-14 hover:animate-spin text-skin-a11y' icon={faGear} size="2x"/></button>
+                <button><FontAwesomeIcon id="logoutIcon" className='mr-10 hover:animate-ping text-skin-a11y' icon={faSignOut} size="2x"/></button>
             </div>
         </div>
     )
