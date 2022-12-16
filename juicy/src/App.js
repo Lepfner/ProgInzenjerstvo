@@ -11,8 +11,16 @@ import {
   Recovery,
   AdminLogin,
 } from "./components/Auth";
+import React, {useEffect} from 'react';
 
 function App() {
+
+  useEffect(() => {
+    if(!localStorage.getItem("currentColor")){
+        localStorage.setItem("currentColor", "#ef6c00");
+    }
+})
+
   return (
     <BrowserRouter>
       <Routes>
