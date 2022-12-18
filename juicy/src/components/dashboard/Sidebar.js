@@ -5,6 +5,7 @@ import {
   faBars,
   faSquareCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
+import Filter from "./Filter";
 
 export default function Sidebar() {
     return (
@@ -15,9 +16,7 @@ export default function Sidebar() {
             <div>
             <FontAwesomeIcon id="logoIcon" className='hover:animate-pulse' icon={faUser} size="2x"/>
             </div>
-            <div>
-            <FontAwesomeIcon id="logoIcon" className='hover:animate-pulse' icon={faSquareCaretDown} size="2x"/>
-            </div>
+            <Filter />
         </div>
     )
 }
