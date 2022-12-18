@@ -1,11 +1,28 @@
-import React, { useState} from "react";
-import Header from "./Header"
-import Location from "../images/Location.png"
-import logo from "../images/logo.png"
-import Chip from "@mui/material/Chip"
+import React, { useState } from "react";
+import Header from "./Header";
+import Location from "../images/Location.png";
+import logo from "../images/logo.png";
+import Chip from "@mui/material/Chip";
 
-const likesArr = ["Web Dev", "Nature", "Hiking", "Cycling", "Tehnology", "Good Company", "Interesting conversations","Gaming", "Learning", "Exercising"]
-const dislikesArr = ["University", "Big social gatherings", "Small Talk", "Crowded places", "Wasting time"]
+const likesArr = [
+  "Web Dev",
+  "Nature",
+  "Hiking",
+  "Cycling",
+  "Tehnology",
+  "Good Company",
+  "Interesting conversations",
+  "Gaming",
+  "Learning",
+  "Exercising",
+];
+const dislikesArr = [
+  "University",
+  "Big social gatherings",
+  "Small Talk",
+  "Crowded places",
+  "Wasting time",
+];
 const user = {
   firstName: "Toni",
   lastName: "Grbić",
@@ -15,15 +32,26 @@ const user = {
   dateOfBirth: "31. 08. 2001.",
   nationality: "Croatian",
   status: "looking for friendships",
-  religion:"Agnostic"
+  religion: "Agnostic",
 };
 
 const MyProfilePage = () => {
-  const [likes, setLikes] = useState(likesArr)
-  const [dislikes, setDislikes] = useState(dislikesArr)
-  const [userData, setUserData] = useState(user)
+  const [likes, setLikes] = useState(likesArr);
+  const [dislikes, setDislikes] = useState(dislikesArr);
+  const [userData, setUserData] = useState(user);
 
-  const {firstName, lastName, gender, age, location, dateOfBirth, nationality, status, religion} = userData
+  const {
+    firstName,
+    lastName,
+    gender,
+    age,
+    location,
+    dateOfBirth,
+    nationality,
+    status,
+    religion,
+  } = userData;
+
   return (
     <>
       <Header />
@@ -58,8 +86,7 @@ const MyProfilePage = () => {
                     <span className="inline-block"> {dateOfBirth}</span>
                   </h3>
                   <h3>
-                    <span className="font-bold">Gender:</span>{" "}
-                    {gender}
+                    <span className="font-bold">Gender:</span> {gender}
                   </h3>
                   <h3>
                     <span className="font-bold">Nationality:</span>{" "}
