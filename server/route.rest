@@ -30,9 +30,6 @@ Content-Type: application/json
     "gender": "req.body.gender",
     "levelOfAccess": "admin",
     "country": "req.body.country",
-    "state": "req.body.state",
-    "city": "req.body.city",
-    "walletId":"44435345",
     "profileImageURL": "req.body.profileImageURL",
     "password": "hashedPassword"
 

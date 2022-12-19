@@ -51,6 +51,11 @@ const User = sequelize.define(
       required: true,
       allowNull: false,
     },
+    location: {
+      type: Sequelize.STRING,
+      required: true,
+      allowNull: false,
+    },
     status: {
       type: Sequelize.STRING,
       required: true,
