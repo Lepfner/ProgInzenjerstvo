@@ -1,11 +1,11 @@
 import React from "react";
-import myImage from "../images/prevArrow.png";
+import prevArrow from "../images/prevArrow.png"
 
 const CarouselPrevArrow = (props) => {
   const { className, onClick } = props;
   return (
     <div className={className} onClick={onClick}>
-      <img src={myImage} alt="prev" />
+      <img src={prevArrow} alt="prev" />
     </div>
   );
 };
