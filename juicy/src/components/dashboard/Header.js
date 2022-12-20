@@ -9,6 +9,7 @@ import {
 import JuicyLogo from "../images/logo.png";
 import Filter from "./Filter";
 import { Link, useNavigate } from "react-router-dom";
+import Hamburger from "./Hamburger";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -28,16 +29,6 @@ export default function Header() {
       <div className="md:ml-10 min-w-[50%]">
         <button onClick={() => navMain()}>
           <img src={JuicyLogo} alt="" className="h-20" />
-        </button>
-      </div>
-      <div className="flex justify-between md:hidden">
-        <button>
-          <FontAwesomeIcon
-            id="logoIcon"
-            className="mr-10 hover:animate-pulse"
-            icon={faBars}
-            size="2x"
-          />
         </button>
       </div>
       <div className="flex">
@@ -68,6 +59,11 @@ export default function Header() {
             icon={faSignOut}
             size="2x"
           />
+        </button>
+      </div>
+      <div className="flex justify-between md:hidden">
+        <button>
+          <Hamburger />
         </button>
       </div>
     </div>
