@@ -114,7 +114,7 @@ export default function Filter() {
               <button
                 type="submit"
                 className="block max-w-min m-auto pb-[5px] bg-skin-primary px-4 
-                           rounded-md p-2 mt-4 text-white hover:bg-orange-600"
+                           rounded-md p-2 mt-4 text-white"
               >
                 Apply
               </button>
