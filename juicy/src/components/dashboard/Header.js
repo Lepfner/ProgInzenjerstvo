@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSignOut,
@@ -7,11 +7,24 @@ import {
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import JuicyLogo from "../images/logo.png";
+import BlackLogo from '../images/blackLogo.png';
 import Filter from "./Filter";
 import { Link, useNavigate } from "react-router-dom";
 import Hamburger from "./Hamburger";
 
-export default function Header() {
+export default function Header({ a11yColor, primaryColor }) {
+
+const [currentLogo, setCurrentLogo] = useState("");
+
+  useEffect(() => {
+    if(localStorage.getItem("logoCurrent") === "black"){
+      setCurrentLogo(BlackLogo);
+    }
+    if(localStorage.getItem("logoCurrent") === "white"){
+      setCurrentLogo(JuicyLogo);
+    }
+  },[])
+  
   const navigate = useNavigate();
 
   function navSettings() {
@@ -25,10 +38,10 @@ export default function Header() {
   }
 
   return (
-    <div className="flex justify-between bg-orange-500 pt-7 pb-7 ">
+    <div className="flex justify-between bg-skin-primary pt-7 pb-7 ">
       <div className="md:ml-10 min-w-[50%]">
         <button onClick={() => navMain()}>
-          <img src={JuicyLogo} alt="" className="h-20" />
+          <img src={currentLogo} alt="" className="h-20 text-skin-a11y" />
         </button>
       </div>
       <div className="flex">
