@@ -1,5 +1,5 @@
 import React from "react";
-import prevArrow from "../images/prevArrow.png"
+import prevArrow from '../images/prevArrow.png';
 
 const CarouselPrevArrow = (props) => {
   const { className, onClick } = props;

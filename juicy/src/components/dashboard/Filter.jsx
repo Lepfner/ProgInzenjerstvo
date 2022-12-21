@@ -21,6 +21,9 @@ export default function Filter() {
     setReligion("");
     setNationality("");
     setStatusValue("single");
+    localStorage.setItem("ageMin", ageValue[0]);
+    localStorage.setItem("ageMax", ageValue[1]);
+    window.location.reload(false);
   };
 
   return (
