@@ -11,7 +11,7 @@ export default function Content() {
   useEffect(() => {
     const fetch = async()=> {
       if(query===''){
-        const result = await axios(`https://dummyjson.com/users?&select=firstName,lastName,age,image`);
+        const result = await axios(`https://dummyjson.com/users?&select=firstName,lastName,age,image,eyeColor`);
         setItems(result.data.users);
       } else {
         const result = await axios(`https://dummyjson.com/users/search?q=${query}&select=firstName,lastName,age,image`);

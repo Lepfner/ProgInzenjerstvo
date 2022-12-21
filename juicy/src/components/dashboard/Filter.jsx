@@ -23,6 +23,7 @@ export default function Filter() {
     setStatusValue("single");
     localStorage.setItem("ageMin", ageValue[0]);
     localStorage.setItem("ageMax", ageValue[1]);
+    localStorage.setItem("eyeColor", statusValue);
     window.location.reload(false);
   };
 
@@ -78,7 +79,7 @@ export default function Filter() {
                   onChange={(e) => setGenderValue(e.target.value)}
                 />
               </label>
-
+              {/*
               <label className="m-auto pt-[20px]">Religion:</label>
               <input
                 type="text"
@@ -86,8 +87,8 @@ export default function Filter() {
                 value={religion}
                 className="h-8 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5 m-auto"
                 onChange={(e) => setReligion(e.target.value)}
-              />
-
+               /> */}
+              {/*
               <label className="m-auto">Nationality:</label>
               <input
                 type="text"
@@ -95,20 +96,19 @@ export default function Filter() {
                 value={nationality}
                 className="h-8 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5 m-auto"
                 onChange={(e) => setNationality(e.target.value)}
-              />
+              /> */}
 
-              <label className="m-auto">Relationship Status:</label>
+              <label className="m-auto">Eye Color:</label>
               <select
                 name="relationshipStatus"
                 className="m-auto max-w-min bg-gray-300"
                 value={statusValue}
                 onChange={(e) => setStatusValue(e.target.value)}
               >
-                <option value="single">Single</option>
-                <option value="divorced">Divorced</option>
-                <option value="notMarried">Not married</option>
-                <option value="recentlyBrokeUp">Recently broke up</option>
-                <option value="friendship">Friendship</option>
+                <option value="Green">Green</option>
+                <option value="Blue">Blue</option>
+                <option value="Brown">Brown</option>
+                <option value="Other">Other</option>
               </select>
 
               <button

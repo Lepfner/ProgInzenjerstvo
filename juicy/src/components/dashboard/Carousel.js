@@ -38,7 +38,10 @@ const Carousel = ({items}) => {
   return (
     <div className="px-[1rem]">
       <Slider {...settings}>
-        {items.filter(age => age.age >= localStorage.getItem("ageMin")).map((user) => {
+        {items.filter(age => age.age >= localStorage.getItem("ageMin"))
+        .filter(age => age.age <= localStorage.getItem("ageMax"))
+        .filter(color => color.eyeColor == localStorage.getItem("eyeColor"))
+        .map((user) => {
           const { id, firstName, lastName, age, image } = user;
           return (
             <div

@@ -80,9 +80,6 @@ const SignUp = () => {
               className=" flex flex-col items-center border-solid border-2  border-l-orange-500 
           lg:h-80 pt-6 md:w-2/5 max-sm:h-auto pt-0 mt-4"
             >
-              <p className="text mb-4 font-bold w-4/5 lg:pl-4 max-sm:pl-0">
-                Login using e-mail and password
-              </p>
 
               <p className="text mb-4 font-bold w-4/5 lg:pl-4 max-sm:pl-0">
                 Already have account? <Link to="/Login">Login</Link>
