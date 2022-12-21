@@ -15,7 +15,7 @@ const Success = ({ setPage }) => {
         <PrevBtn setPage={setPage} />
         <button
           className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white hover:bg-orange-600"
-          onClick={() => navigate("/Dashboard")}
+          onClick={() => navigate("/Main")}
         >
           Dashboard
         </button>

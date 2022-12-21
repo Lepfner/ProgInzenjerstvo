@@ -3,6 +3,7 @@ import Header from "./Header";
 import Location from "../images/Location.png";
 import logo from "../images/logo.png";
 import Chip from "@mui/material/Chip";
+import { getRGBColor, getAccessibleColor } from "../dashboard/utils"
 
 const likesArr = [
   "Web Dev",
@@ -39,6 +40,8 @@ const MyProfilePage = () => {
   const [likes, setLikes] = useState(likesArr);
   const [dislikes, setDislikes] = useState(dislikesArr);
   const [userData, setUserData] = useState(user);
+  const primaryColor = getRGBColor(localStorage.getItem("currentColor"), "primary")
+  const a11yColor = getRGBColor(getAccessibleColor(localStorage.getItem("currentColor")), "a11y")
 
   const {
     firstName,
@@ -54,13 +57,14 @@ const MyProfilePage = () => {
 
   return (
     <>
-      <Header />
+      <style>:root {`{${primaryColor} ${a11yColor}}`}</style>
+      <Header primaryColor={primaryColor} a11yColor={a11yColor} />
       <div className="w-full h-full  flex justify-center mt-4">
-        <div className="min-h-[47rem] max-w-[910px] w-[80%] max-sm:w-[90%] shadow-2xl bg-orange-500 rounded-r-[5rem] flex justify-start items-center">
+        <div className="min-h-[47rem] max-w-[910px] w-[80%] max-sm:w-[90%] shadow-2xl bg-skin-primary rounded-r-[5rem] flex justify-start items-center">
           <div className="h-[96%] mx-4 my-2 pb-4 w-[94%] shadow-2xl bg-slate-200 rounded-r-[4rem] flex flex-col gap-4 max-sm:w-[90%]">
             <div className="w-full min-h-[13rem] flex gap-4 mx-4 mt-8">
               <section className="w-[90%] h-full bg-slate-300 rounded-xl flex justify-start py-4 max-sm:flex-col max-sm:items-center">
-                <div className="w-[36%] flex flex-col items-center ml-8 pr-4 border-r-2 border-orange-500 max-sm:border-b-2 max-sm:border-none max-sm:w-[90%] max-sm:mb-4">
+                <div className="w-[36%] flex flex-col items-center ml-8 pr-4 border-r-2 border-skin-primary max-sm:border-b-2 max-sm:border-none max-sm:w-[90%] max-sm:mb-4">
                   <div className=" mt-4 mb-2 rounded-full flex justify-center h-[8rem] w-[8rem] overflow-hidden mx-4 bg-slate-200 ">
                     <img
                       src={logo}
@@ -76,6 +80,7 @@ const MyProfilePage = () => {
                     <img
                       src={Location}
                       className="w-8 h-8 inline-block mix-blend-color-burn"
+                      alt=''
                     />
                     {location}
                   </p>

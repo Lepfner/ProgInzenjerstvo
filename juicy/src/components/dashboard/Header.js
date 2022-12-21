@@ -4,12 +4,11 @@ import {
   faSignOut,
   faGear,
   faUser,
-  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import JuicyLogo from "../images/logo.png";
 import BlackLogo from '../images/blackLogo.png';
 import Filter from "./Filter";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Hamburger from "./Hamburger";
 
 export default function Header({ a11yColor, primaryColor }) {
@@ -27,20 +26,10 @@ const [currentLogo, setCurrentLogo] = useState("");
   
   const navigate = useNavigate();
 
-  function navSettings() {
-    localStorage.setItem("current", "settings");
-    window.location.reload(false);
-  }
-
-  function navMain() {
-    localStorage.setItem("current", "main");
-    window.location.reload(false);
-  }
-
   return (
     <div className="flex justify-between bg-skin-primary pt-7 pb-7 ">
       <div className="md:ml-10 min-w-[50%]">
-        <button onClick={() => navMain()}>
+        <button onClick={() => navigate("/Main")}>
           <img src={currentLogo} alt="" className="h-20 text-skin-a11y" />
         </button>
       </div>
@@ -50,14 +39,14 @@ const [currentLogo, setCurrentLogo] = useState("");
           <Filter />
         </button>
         <button>
-          <FontAwesomeIcon
+          <FontAwesomeIcon onClick={() => navigate("/MyProfile")}
             id="logoIcon"
             className="hidden md:flex mr-14 hover:animate-pulse"
             icon={faUser}
             size="2x"
           />
         </button>
-        <button onClick={() => navSettings()}>
+        <button onClick={() => navigate("/Settings")}>
           <FontAwesomeIcon
             id="settingsIcon"
             className="hidden md:flex mr-14 hover:animate-spin"

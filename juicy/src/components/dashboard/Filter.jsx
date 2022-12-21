@@ -31,7 +31,7 @@ export default function Filter() {
       <div>
         {filter && (
           <div
-            className="absolute  min-h-[20rem] shadow-2xl bg-orange-500  
+            className="absolute  min-h-[20rem] shadow-2xl bg-skin-primary 
             rounded-b-[2.5rem] z-20 lg:w-1/4 md:w-1/3 sm:w-1/2 mr-2 top-[16%]
             xl:left-[70%] lg:left-[65%] md:left-[60%] sm:left-[40%] max-sm:right-0 max-sm:left-2 "
           >
@@ -113,7 +113,7 @@ export default function Filter() {
 
               <button
                 type="submit"
-                className="block max-w-min m-auto pb-[5px] bg-orange-500 px-4 
+                className="block max-w-min m-auto pb-[5px] bg-skin-primary px-4 
                            rounded-md p-2 mt-4 text-white hover:bg-orange-600"
               >
                 Apply

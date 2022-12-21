@@ -12,31 +12,33 @@ import {
   Recovery,
   AdminLogin,
 } from "./components/Auth";
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
+import Settings from "./components/dashboard/Settings";
 
 function App() {
 
   useEffect(() => {
-    if(!localStorage.getItem("currentColor")){
-        localStorage.setItem("currentColor", "#ef6c00");
+    if (!localStorage.getItem("currentColor")) {
+      localStorage.setItem("currentColor", "#ef6c00");
     }
-})
+  })
 
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<AuthLayout />}>
-          <Route path="/" element={<Login />}/>
-          <Route path="/Login" element={<Login />}/>
-          <Route path="/AdminLogin" element={<AdminLogin/>}/>
-          <Route path="/SignUp" element={<SignUp />}/>
-          <Route path="/Confirmation" element={<Confirmation />}/>
-          <Route path="/Recovery" element={<Recovery />}/>
-          <Route path='*' element={<ErrorPage />}/>
+          <Route path="/" element={<Login />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/AdminLogin" element={<AdminLogin />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/Confirmation" element={<Confirmation />} />
+          <Route path="/Recovery" element={<Recovery />} />
+          <Route path='*' element={<ErrorPage />} />
         </Route>
-        <Route path="/Main" element={<Dashboard currentPage={localStorage.getItem("current")}/>}/>
-        <Route path="/Setup" element={<ProfileSetup/>}/>
-        <Route path="/MyProfile" element={<MyProfilePage/>}/>
+        <Route path="/Main" element={<Dashboard />} />
+        <Route path="/Setup" element={<ProfileSetup />} />
+        <Route path="/MyProfile" element={<MyProfilePage />} />
+        <Route path="/Settings" element={<Settings />} />
       </Routes>
     </BrowserRouter>
   );

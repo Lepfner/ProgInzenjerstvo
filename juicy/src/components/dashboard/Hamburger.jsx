@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Menu, SubMenu, Item } from "burger-menu";
+import { Menu, Item } from "burger-menu";
+import { useNavigate } from "react-router-dom";
 import "burger-menu/lib/index.css";
 
 const Hamburger = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -25,7 +27,7 @@ const Hamburger = () => {
       >
         <Item className="" itemKey={"profile"} text={"My Profile"}></Item>
         <Item itemKey={"settings"} text={"Settings"}></Item>
-        <Item itemKey={"logout"} text={"Logout"}></Item>
+        <Item itemKey={"logout"} text={"Logout"} onClick={() => navigate("/Login")}></Item>
       </Menu>
     </>
   );
