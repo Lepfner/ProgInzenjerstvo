@@ -1,12 +1,20 @@
-import React, {useEffect, useState} from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSignOut, faGear } from '@fortawesome/free-solid-svg-icons'
-import JuicyLogo from '../images/logo.png';
-import BlackLogo from '../images/blackLogo.png'
+import React, {useEffect, useState} from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSignOut,
+  faGear,
+  faUser,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
+import JuicyLogo from "../images/logo.png";
+import BlackLogo from '../images/blackLogo.png';
+import Filter from "./Filter";
+import { Link, useNavigate } from "react-router-dom";
+import Hamburger from "./Hamburger";
 
 export default function Header({ a11yColor, primaryColor }) {
 
-  const [currentLogo, setCurrentLogo] = useState("");
+const [currentLogo, setCurrentLogo] = useState("");
 
   useEffect(() => {
     if(localStorage.getItem("logoCurrent") === "black"){
@@ -16,6 +24,8 @@ export default function Header({ a11yColor, primaryColor }) {
       setCurrentLogo(JuicyLogo);
     }
   },[])
+  
+  const navigate = useNavigate();
 
   function navSettings() {
     localStorage.setItem("current", "settings");
@@ -28,19 +38,47 @@ export default function Header({ a11yColor, primaryColor }) {
   }
 
   return (
-    <div className="flex justify-between bg-skin-primary pt-7 pb-7">
-      <div className='ml-10'>
+    <div className="flex justify-between bg-skin-primary pt-7 pb-7 ">
+      <div className="md:ml-10 min-w-[50%]">
         <button onClick={() => navMain()}>
-          <img src={currentLogo} alt='' className="h-20 text-skin-a11y" />
+          <img src={currentLogo} alt="" className="h-20 text-skin-a11y" />
         </button>
       </div>
       <div className="flex">
-        <button onClick={() => navSettings()}><FontAwesomeIcon id="settingsIcon" className='mr-14 hover:animate-spin text-skin-a11y' icon={faGear} size="2x" /></button>
-        <button><FontAwesomeIcon id="logoutIcon" className='mr-10 hover:animate-ping text-skin-a11y' icon={faSignOut} size="2x" /></button>
+        {/* TODO: Find a better way to solve display issues here */}
+        <button className="mr-14">
+          <Filter />
+        </button>
+        <button>
+          <FontAwesomeIcon
+            id="logoIcon"
+            className="hidden md:flex mr-14 hover:animate-pulse"
+            icon={faUser}
+            size="2x"
+          />
+        </button>
+        <button onClick={() => navSettings()}>
+          <FontAwesomeIcon
+            id="settingsIcon"
+            className="hidden md:flex mr-14 hover:animate-spin"
+            icon={faGear}
+            size="2x"
+          />
+        </button>
+        <button onClick={() => navigate("/Login")}>
+          <FontAwesomeIcon
+            id="logoutIcon"
+            className="hidden md:flex mr-10 hover:animate-ping"
+            icon={faSignOut}
+            size="2x"
+          />
+        </button>
+      </div>
+      <div className="flex justify-between md:hidden">
+        <button>
+          <Hamburger />
+        </button>
       </div>
     </div>
-  )
+  );
 }
-
-
-
