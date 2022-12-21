@@ -17,22 +17,6 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5000/api/search/events?event_name=ult
-Content-Type: application/json
-
-
-###
-GET http://localhost:5000/api/events/stats/users/2
-
-###
-PUT http://localhost:5000/api/events/1/edit
-Content-Type: application/json
-
-{
-    "event_name_abrv": "req.body.event_na"
-}
-
-###
 POST http://localhost:5000/api/register
 Content-Type: application/json
 
@@ -46,9 +30,6 @@ Content-Type: application/json
     "gender": "req.body.gender",
     "levelOfAccess": "admin",
     "country": "req.body.country",
-    "state": "req.body.state",
-    "city": "req.body.city",
-    "walletId":"44435345",
     "profileImageURL": "req.body.profileImageURL",
     "password": "hashedPassword"
 
