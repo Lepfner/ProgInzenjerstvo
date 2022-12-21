@@ -97,7 +97,6 @@ export default function Filter() {
                 className="h-8 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5 m-auto"
                 onChange={(e) => setNationality(e.target.value)}
               /> */}
-
               <label className="m-auto">Eye Color:</label>
               <select
                 name="relationshipStatus"
@@ -110,7 +109,6 @@ export default function Filter() {
                 <option value="Brown">Brown</option>
                 <option value="Other">Other</option>
               </select>
-
               <button
                 type="submit"
                 className="block max-w-min m-auto pb-[5px] bg-skin-primary px-4 

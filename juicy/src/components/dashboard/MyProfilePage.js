@@ -85,7 +85,7 @@ const MyProfilePage = () => {
                     {location}
                   </p>
                 </div>
-                <div className="w-[63%] pl-8 pt-2 pb-4 text-lg max-sm:border-t-2 max-sm:border-orange-500 max-sm:w-[90%]">
+                <div className="w-[63%] pl-8 pt-2 pb-4 text-lg max-sm:border-t-2 max-sm:border-skin-primary max-sm:w-[90%]">
                   <h3>
                     <span className="font-bold">Date of Birth:</span>
                     <span className="inline-block"> {dateOfBirth}</span>
