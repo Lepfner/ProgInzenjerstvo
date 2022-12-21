@@ -1,5 +1,6 @@
 import React from "react";
 import nextArrow from "../images/nextArrow.png"
+
 const CarouselNextArrow = (props) => {
   const { className, onClick } = props;
   return (

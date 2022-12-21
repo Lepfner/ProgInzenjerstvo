@@ -3,6 +3,7 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import AuthLayout from "./components/Auth/AuthLayout.jsx";
 import Dashboard from "./components/dashboard/MainMenu"
 import ProfileSetup from "./components/profileSetup/profileSetup";
+import MyProfilePage from "./components/dashboard/MyProfilePage";
 import ErrorPage from "./components/404";
 import {
   Login,
@@ -27,6 +28,7 @@ function App() {
         </Route>
         <Route path="/Main" element={<Dashboard currentPage={localStorage.getItem("current")}/>}/>
         <Route path="/Setup" element={<ProfileSetup/>}/>
+        <Route path="/MyProfile" element={<MyProfilePage/>}/>
       </Routes>
     </BrowserRouter>
   );
