@@ -31,9 +31,9 @@ export default function Filter() {
       <div>
         {filter && (
           <div
-            className="absolute top-[17rem] min-h-[20rem] shadow-2xl bg-orange-500  
-            rounded-r-[2.5rem] z-10 lg:w-1/4 md:w-1/3 sm:w-1/2 mr-2
-            left-[7%] xl:left-[7%] lg:left-[10%] md:left-[15%] max-sm:left-[20%]"
+            className="absolute  min-h-[20rem] shadow-2xl bg-orange-500  
+            rounded-b-[2.5rem] z-20 lg:w-1/4 md:w-1/3 sm:w-1/2 mr-2 top-[16%]
+            xl:left-[70%] lg:left-[65%] md:left-[60%] sm:left-[40%] max-sm:right-0 max-sm:left-2 "
           >
             <form
               className="flex flex-col bg-slate-200 m-4 rounded-xl pb-4 px-4 relative"
@@ -61,6 +61,7 @@ export default function Filter() {
               <label className="m-auto">
                 Male
                 <input
+                  className="ml-1"
                   type="radio"
                   name="gender"
                   value={genderValue}
@@ -70,6 +71,7 @@ export default function Filter() {
               <label className="m-auto">
                 Female
                 <input
+                    className="ml-1"
                   type="radio"
                   name="gender"
                   value={genderValue}

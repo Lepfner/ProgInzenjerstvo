@@ -24,7 +24,7 @@ export default function Content() {
   return (
     <div className="h-full w-full flex flex-col justify-center items-center">
       <Search search={(q) => setQuery(q)} />
-      <div className="bg-orange-500 shadow-2xl w-3/4 min-h-[27rem] mt-8 rounded-2xl h-auto pb-12">
+      <div className="bg-skin-primary text-center shadow-2xl w-3/4 min-h-[30rem] mt-8 rounded-2xl h-auto pb-12">
         <Carousel items={items}/>
       </div>
     </div>

@@ -30,7 +30,7 @@ input:focus {
 
 .slick-prev,
 .slick-next {
-  z-index: 20;
+  z-index: 10;
 }
 
 .slick-prev{
@@ -55,11 +55,8 @@ input:focus {
   content: "" !important;
 }
 
-
-
 ::-webkit-scrollbar {
   width: 10px;
-  background: ;
 }
 
 ::-webkit-scrollbar-track {

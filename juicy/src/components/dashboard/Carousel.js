@@ -44,7 +44,7 @@ const Carousel = ({items}) => {
             <div
               key={id}
               className="userDiv flex-col justify-end items-center w-full mt-4 pt-4 mb-4 h-full bg-slate-100 w-5/6 border-[0.6rem] 
-                         border-orange-500 rounded-3xl"
+                         border-skin-primary rounded-3xl"
             >
               <div className="border-4 border-green-300 mb-4 rounded-full h-[10rem] overflow-hidden mx-4 bg-slate-200">
                 <img
