@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CarouselNextArrow from "./CarouselNextArrow";
 import CarouselPrevArrow from "./CarouselPrevArrow";
+import { useNavigate } from "react-router-dom";
 
 const settings = {
   dots: false,
@@ -33,47 +34,50 @@ const settings = {
   nextArrow: <CarouselNextArrow />,
 };
 
-const Carousel = ({items}) => {
+const Carousel = ({ items }) => {
+
+  const navigate = useNavigate();
 
   return (
     <div className="px-[1rem]">
       <Slider {...settings}>
         {items.filter(age => age.age >= localStorage.getItem("ageMin"))
-        .filter(age => age.age <= localStorage.getItem("ageMax"))
-        .map((user) => {
-          const { id, firstName, lastName, age, image } = user;
-          return (
-            <div
-              key={id}
-              className="userDiv flex-col justify-end items-center w-full mt-4 pt-4 mb-4 h-full bg-slate-100 w-5/6 border-[0.6rem] 
-                         border-skin-primary rounded-3xl"
-            >
-              <div className="border-4 border-green-300 mb-4 rounded-full h-[10rem] overflow-hidden mx-4 bg-slate-200">
-                <img
-                  src={image}
-                  className="object-cover h-[10rem]"
-                  alt="user"
-                />
-              </div>
+          .filter(age => age.age <= localStorage.getItem("ageMax"))
+          .map((user) => {
+            const { id, firstName, lastName, age, image } = user;
+            return (
               <div
-                className="flex flex-col mb-8 h-auto max-h-[15rem] overflow-y-auto py-2 items-center
-                           rounded-2xl bg-slate-200 w-[90%] "
+                key={id}
+                className="userDiv flex-col justify-end items-center w-full mt-4 pt-4 mb-4 h-full bg-slate-100 w-5/6 border-[0.6rem] 
+                         border-skin-primary rounded-3xl"
               >
-                <p className="font-bold mt-2 text-lg">
-                  {firstName} {lastName}
-                </p>
-                <p className="text-lg">
-                  <span className="font-bold">Age:</span> {age}
-                </p>
-                <p className="font-bold text-lg">Description:</p>
-                <p className="text-center w-[90%]">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                  ut interdum ex, in iaculis dui.
-                </p>
+                <div className="border-4 border-green-300 mb-4 rounded-full h-[10rem] overflow-hidden mx-4 bg-slate-200">
+                  <img
+                    src={image}
+                    className="object-cover h-[10rem]"
+                    alt="user"
+                  />
+                </div>
+                <div
+                  className="flex flex-col mb-8 h-auto max-h-[15rem] overflow-y-auto py-2 items-center
+                           rounded-2xl bg-slate-200 w-[90%] "
+                >
+                  <p className="font-bold mt-2 text-lg">
+                    {firstName} {lastName}
+                  </p>
+                  <p className="text-lg">
+                    <span className="font-bold">Age:</span> {age}
+                  </p>
+                  <p className="font-bold text-lg">Description:</p>
+                  <p className="text-center w-[90%]">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+                    ut interdum ex, in iaculis dui.
+                  </p>
+                    <button onClick={() => navigate(`/Profile/${id}`)} className="block max-w-min m-auto pb-[5px] bg-skin-primary px-4 rounded-md p-2 mt-2 text-white">View</button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </Slider>
     </div>
   );
