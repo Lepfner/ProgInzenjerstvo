@@ -76,6 +76,7 @@ const User = sequelize.define(
     },
     accCreated: {
       type: Sequelize.DATE,
+      defaultValue: Sequelize.NOW,
       required: true,
       allowNull: false,
     },
@@ -85,5 +86,10 @@ const User = sequelize.define(
     timestamps: false,
   }
 );
+
+const createUserTable = async (User) => {
+  await User.sync({ force: true });
+};
+createUserTable(User);
 
 module.exports = User;
