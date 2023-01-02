@@ -87,9 +87,4 @@ const User = sequelize.define(
   }
 );
 
-const createUserTable = async (User) => {
-  await User.sync({ force: true });
-};
-createUserTable(User);
-
 module.exports = User;
