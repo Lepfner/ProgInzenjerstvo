@@ -2,7 +2,7 @@ const { Sequelize } = require("sequelize");
 const sequelize = require("../config/database");
 
 const LikesDislikes = sequelize.define(
-    "tbl_likes",
+    "likes/dislikes",
     {
         id: {
             type: Sequelize.INTEGER,

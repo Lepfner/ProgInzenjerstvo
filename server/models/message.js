@@ -2,7 +2,7 @@ const { Sequelize } = require("sequelize");
 const sequelize = require("../config/database");
 
 const Message = sequelize.define(
-    "tbl_msg",
+    "message",
     {
         id: {
             type: Sequelize.INTEGER,
