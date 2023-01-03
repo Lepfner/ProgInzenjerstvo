@@ -5,27 +5,32 @@ const User = require("../../models/user");
 const bcrypt = require("bcrypt");
 const { authRole } = require("../../middleware/authRole");
 //const { firebase, auth } = require("../config/admin.js");
-const uuid = require("uuidv4");
+
 //Log in
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ where: { email: req.body.email } });
     console.log(user);
-    if (!user) return res.status(404).json({ message: "User not found" });
+    if (user === null)
+      return res.status(401).json({ message: "User not found" });
 
     const validPassword = await bcrypt.compare(
       req.body.password,
-      req.user.password
+      user.dataValues.password_digest
     );
 
     if (!validPassword)
-      return res.status(400).json({ message: "Authentication failed" });
+      return res.status(401).json({ message: "Authentication failed" });
 
-    if (req.body.level_of_access === "admin") {
+    if (user.dataValues.is_admin === 1) {
       //Poslati na dodatan authentication & 6-digit code verify
-      res.status(200).json(user);
+      res
+        .status(200)
+        .json({ success: `User ${user.dataValues.email} is logged in!` });
     } else {
-      res.status(200).json(user);
+      res
+        .status(200)
+        .json({ success: `User ${user.dataValues.email} is logged in!` });
     }
   } catch (error) {
     res.send(error);
@@ -50,7 +55,7 @@ router.post("/register", async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(req.body.password, salt);
       const newUser = await User.create({
-        id: req.body.id,
+        id: Date.now(),
         name: req.body.name,
         surname: req.body.surname,
         username: req.body.username,
@@ -61,10 +66,10 @@ router.post("/register", async (req, res) => {
         nationality: req.body.nationality,
         religion: req.body.religion,
         location: req.body.location,
-        profile_img_url: req.body.profileImageURL,
-        level_of_access: req.body.level_of_access,
+        profileimg: req.body.profileImageURL,
+        is_admin: req.body.is_admin,
         created_at: new Date(),
-        password: hashedPassword,
+        password_digest: hashedPassword,
       });
 
       res.status(201).json(newUser);
