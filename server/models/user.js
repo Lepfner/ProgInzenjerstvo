@@ -2,7 +2,7 @@ const { Sequelize } = require("sequelize");
 const sequelize = require("../config/database");
 
 const User = sequelize.define(
-  "tbl_user",
+  "users",
   {
     id: {
       type: Sequelize.INTEGER,
@@ -42,16 +42,7 @@ const User = sequelize.define(
       required: true,
       allowNull: false,
     },
-    level_of_access: {
-      type: Sequelize.ENUM("admin", "user"),
-      required: true,
-    },
     nationality: {
-      type: Sequelize.STRING,
-      required: true,
-      allowNull: false,
-    },
-    location: {
       type: Sequelize.STRING,
       required: true,
       allowNull: false,
@@ -66,19 +57,23 @@ const User = sequelize.define(
       required: true,
       allowNull: false,
     },
-    profile_img_url: {
+    profileimg: {
       type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
     },
-    password: {
+    password_digest: {
       type: Sequelize.STRING,
       required: true,
       allowNull: false,
     },
-    accCreated: {
+    created_at: {
       type: Sequelize.DATE,
-      defaultValue: Sequelize.NOW,
       required: true,
       allowNull: false,
+    },
+    is_admin: {
+      type: Sequelize.INTEGER,
     },
   },
   {
