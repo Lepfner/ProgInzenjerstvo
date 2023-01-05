@@ -1,22 +1,41 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import SuccessPage from "./SuccessPage";
+import axios from "../../api/axios";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [isRegisterd, setIsRegisterd] = useState(false);
-
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
       toast.error("Passwords do not match!");
       return;
     }
-    setIsRegisterd(true);
-    toast.loading("Pending...")
+    try {
+      const username = "tonigrbic";
+
+      const response = await axios.post(
+        "/register",
+        JSON.stringify({ email, password, username }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      console.log(JSON.stringify(response));
+      toast.success("successful registration!");
+      setIsRegisterd(true);
+      navigate("/Login");
+    } catch (err) {
+      console.log(err);
+    }
+
+    //toast.loading("Pending...");
   };
 
   return (
@@ -80,7 +99,6 @@ const SignUp = () => {
               className=" flex flex-col items-center border-solid border-2  border-l-orange-500 
           lg:h-80 pt-6 md:w-2/5 max-sm:h-auto pt-0 mt-4"
             >
-
               <p className="text mb-4 font-bold w-4/5 lg:pl-4 max-sm:pl-0">
                 Already have account? <Link to="/Login">Login</Link>
               </p>
