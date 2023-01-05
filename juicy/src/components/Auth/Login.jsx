@@ -3,19 +3,39 @@ import { Link, useNavigate } from "react-router-dom";
 import SuccessPage from "./SuccessPage";
 import { toast } from "react-hot-toast";
 import Typewriter from "typewriter-effect";
+import axios from "../../api/axios";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const { setAuth } = useAuth();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios.post(
+        "/login",
+        JSON.stringify({ email, password }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      const { id, is_admin } = response?.data;
+      setAuth({ email, password, id, is_admin });
+      setIsLoggedIn(true);
+      toast.success("successful login!");
+      navigate("/Setup");
+    } catch (err) {
+      console.log(err);
+      toast.error("incorrect email or password");
+    }
+
     setEmail("");
     setPassword("");
-    setIsLoggedIn(true);
-    toast.loading("Pending...");
   };
 
   return (
@@ -25,17 +45,17 @@ const Login = () => {
     >
       {!isLoggedIn ? (
         <>
-            <span className="lg:text-6xl mb-2 md:text-5xl sm:text-4xl inline-block w-fit flex flex-row">
-              Go&nbsp;
-              <Typewriter
-                options={{
-                  cursorClassName: "hidden",
-                  strings: ["Register!", "Login!", "Explore!"],
-                  autoStart: true,
-                  loop: true,
-                }}
-              />
-            </span>
+          <span className="lg:text-6xl mb-2 md:text-5xl sm:text-4xl inline-block w-fit flex flex-row">
+            Go&nbsp;
+            <Typewriter
+              options={{
+                cursorClassName: "hidden",
+                strings: ["Register!", "Login!", "Explore!"],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          </span>
           <div
             className="w-full flex flex-col lg:text-lg md:flex-row text-base 
                         sm:flex-col "
@@ -47,8 +67,9 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
-                className={`${email !== "" ? `validate` : ""
-                  } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
+                className={`${
+                  email !== "" ? `validate` : ""
+                } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
               />
               <p>Password:</p>
               <input
@@ -57,8 +78,9 @@ const Login = () => {
                 minLength={7}
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
-                className={`${password !== "" ? `validate` : ""
-                  } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
+                className={`${
+                  password !== "" ? `validate` : ""
+                } h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5`}
               />
               <div className="flex  lg:gap-8 flex-row md:flex-row gap-2 max-sm:flex-col ">
                 <button
