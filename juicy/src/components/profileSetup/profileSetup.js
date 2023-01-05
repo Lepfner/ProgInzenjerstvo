@@ -22,10 +22,6 @@ function ProfileSetup() {
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState(initialData);
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData, page]);
-
   const updateData = (fields) => {
     setFormData((prev) => {
       return { ...prev, ...fields };
