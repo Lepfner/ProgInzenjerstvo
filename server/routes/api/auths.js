@@ -22,15 +22,15 @@ router.post("/login", async (req, res) => {
     if (!validPassword)
       return res.status(401).json({ message: "Authentication failed" });
 
-    if (user.dataValues.is_admin === 1) {
+    if (user.dataValues.is_admin) {
       //Poslati na dodatan authentication & 6-digit code verify
       res
         .status(200)
-        .json({ success: `User ${user.dataValues.email} is logged in!` });
+        .json(user);
     } else {
       res
         .status(200)
-        .json({ success: `User ${user.dataValues.email} is logged in!` });
+        .json(user);
     }
   } catch (error) {
     res.send(error);
