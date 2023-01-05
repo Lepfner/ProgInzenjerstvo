@@ -18,6 +18,12 @@ router.put("/setup", async (req, res) => {
         loaction: req.body.loaction,
         status: req.body.status,
         religion: req.body.religion,
+        work: req.body.work,
+        education: req.body.education,
+        height:req.body.height,
+        hair_color:req.body.hair_color,
+        eye_color:req.body.eye_color,
+        about: req.body.about,
       },
       { where: { id: req.query.id }, returning: true, plain: true }
     );
