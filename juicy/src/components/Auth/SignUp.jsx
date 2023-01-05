@@ -10,6 +10,7 @@ const SignUp = () => {
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [isRegisterd, setIsRegisterd] = useState(false);
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
@@ -17,25 +18,25 @@ const SignUp = () => {
       return;
     }
     try {
-      const username = "tonigrbic";
-
       const response = await axios.post(
         "/register",
-        JSON.stringify({ email, password, username }),
+        JSON.stringify({ email, password }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
-      console.log(JSON.stringify(response));
+      console.log(JSON.stringify(response?.data));
       toast.success("successful registration!");
       setIsRegisterd(true);
       navigate("/Login");
     } catch (err) {
       console.log(err);
+      toast.error("email already taken!");
     }
-
-    //toast.loading("Pending...");
+    setEmail("");
+    setPassword("");
+    setPasswordConfirm("");
   };
 
   return (
