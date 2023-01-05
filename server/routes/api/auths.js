@@ -56,20 +56,10 @@ router.post("/register", async (req, res) => {
       const hashedPassword = await bcrypt.hash(req.body.password, salt);
       const newUser = await User.create({
         id: Date.now(),
-        name: req.body.name,
-        surname: req.body.surname,
-        username: req.body.username,
         email: req.body.email,
-        date_of_birth: req.body.date_of_birth,
-        gender: req.body.gender,
-        status: req.body.status,
-        nationality: req.body.nationality,
-        religion: req.body.religion,
-        location: req.body.location,
-        profileimg: req.body.profileImageURL,
-        is_admin: req.body.is_admin,
-        created_at: new Date(),
         password_digest: hashedPassword,
+        is_admin: "0",
+        created_at: new Date(),
       });
 
       res.status(201).json(newUser);
