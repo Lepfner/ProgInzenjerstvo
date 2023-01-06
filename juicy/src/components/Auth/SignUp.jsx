@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import SuccessPage from "./SuccessPage";
 import axios from "../../api/axios";
+import useAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +11,7 @@ const SignUp = () => {
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [isRegisterd, setIsRegisterd] = useState(false);
   const navigate = useNavigate();
+  const { setAuth } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,10 +28,12 @@ const SignUp = () => {
           withCredentials: true,
         }
       );
-      console.log(JSON.stringify(response?.data));
       toast.success("successful registration!");
       setIsRegisterd(true);
-      navigate("/Login");
+      
+      const { id, is_admin } = response?.data;
+      setAuth({ email, password, id, is_admin})
+      navigate("/Setup");
     } catch (err) {
       console.log(err);
       toast.error("email already taken!");

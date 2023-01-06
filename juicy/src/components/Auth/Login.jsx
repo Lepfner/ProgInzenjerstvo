@@ -28,7 +28,7 @@ const Login = () => {
       setAuth({ email, password, id, is_admin });
       setIsLoggedIn(true);
       toast.success("successful login!");
-      navigate("/Setup");
+      navigate("/main");
     } catch (err) {
       console.log(err);
       toast.error("incorrect email or password");
