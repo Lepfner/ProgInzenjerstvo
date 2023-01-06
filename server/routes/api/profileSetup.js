@@ -2,9 +2,8 @@ const express = require("express");
 const router = express.Router();
 const User = require("../../models/user");
 
-router.put("/setup", async (req, res) => {
+router.put("/setup/:id", async (req, res) => {
   try {
-    
     const user = await User.update(
       {
         profileimg: req.body.profileImg,
@@ -20,12 +19,12 @@ router.put("/setup", async (req, res) => {
         religion: req.body.religion,
         work: req.body.work,
         education: req.body.education,
-        height:req.body.height,
-        hair_color:req.body.hair_color,
-        eye_color:req.body.eye_color,
+        height: req.body.height,
+        hair_color: req.body.hair_color,
+        eye_color: req.body.eye_color,
         about: req.body.about,
       },
-      { where: { id: req.query.id }, returning: true, plain: true }
+      { where: { id: req.params.id }, returning: true, plain: true }
     );
     res.status(200).json(user);
   } catch (err) {
@@ -35,7 +34,6 @@ router.put("/setup", async (req, res) => {
 
 router.get("/users", async (req, res) => {
   try {
-    console.log("Hello");
     const users = await User.findAll();
     res.status(200).json(users);
   } catch (err) {

@@ -24,13 +24,9 @@ router.post("/login", async (req, res) => {
 
     if (user.dataValues.is_admin) {
       //Poslati na dodatan authentication & 6-digit code verify
-      res
-        .status(200)
-        .json(user);
+      res.status(200).json(user);
     } else {
-      res
-        .status(200)
-        .json(user);
+      res.status(200).json(user);
     }
   } catch (error) {
     res.send(error);
@@ -38,13 +34,9 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  const usernameTaken = await User.findOne({
-    where: { username: req.body.username },
-  });
+ 
   const emailTaken = await User.findOne({ where: { email: req.body.email } });
 
-  if (usernameTaken)
-    return res.status(500).json({ message: "Username already in use" });
   if (emailTaken)
     return res.status(500).json({ message: "Email already in use" });
   else {
