@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareCaretDown } from "@fortawesome/free-solid-svg-icons";
 import Slider from "@mui/material/Slider";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import useClickOutside from "./colorPicker/useClickOutside";
+import { useRef } from "react";
 
 export default function Filter() {
+  const popover = useRef();
   const [filter, setFilter] = useState(false);
   const [ageValue, setAgeValue] = useState([18, 99]);
   const [genderValue, setGenderValue] = useState("");
   const [religion, setReligion] = useState("");
   const [nationality, setNationality] = useState("");
   const [statusValue, setStatusValue] = useState("");
+  const color = localStorage.getItem("currentColor");
 
   const toggleFilter = () => {
     setFilter(!filter);
@@ -26,6 +35,12 @@ export default function Filter() {
     localStorage.setItem("eyeColor", statusValue);
     window.location.reload(false);
   };
+
+  const close = useCallback(() => {
+    setFilter(false);
+    window.location.reload(false);
+  }, []);
+  useClickOutside(popover, close);
 
   return (
     <>
@@ -55,30 +70,52 @@ export default function Filter() {
                   valueLabelDisplay="auto"
                   max={99}
                   min={18}
+                  sx={{
+                    color: color,
+                  }}
                 />
               </div>
-
-              <label className="m-auto pt-[20px]">Gender:</label>
-              <label className="m-auto">
-                Male
-                <input
-                  className="ml-1"
-                  type="radio"
-                  name="gender"
-                  value={genderValue}
-                  onChange={(e) => setGenderValue(e.target.value)}
-                />
-              </label>
-              <label className="m-auto">
-                Female
-                <input
-                    className="ml-1"
-                  type="radio"
-                  name="gender"
-                  value={genderValue}
-                  onChange={(e) => setGenderValue(e.target.value)}
-                />
-              </label>
+              <div>
+                <FormControl>
+                  <label>Gender</label>
+                  <RadioGroup
+                    aria-labelledby="demo-controlled-radio-buttons-group"
+                    name="controlled-radio-buttons-group"
+                    value={genderValue}
+                    onChange={(e) => setGenderValue(e.target.value)}
+                    sx={{}}
+                  >
+                    <FormControlLabel
+                      value="female"
+                      control={
+                        <Radio
+                          sx={{
+                            color: color,
+                            "&.Mui-checked": {
+                              color: color,
+                            },
+                          }}
+                        />
+                      }
+                      label="Female"
+                    />
+                    <FormControlLabel
+                      value="male"
+                      control={
+                        <Radio
+                          sx={{
+                            color: color,
+                            "&.Mui-checked": {
+                              color: color,
+                            },
+                          }}
+                        />
+                      }
+                      label="Male"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </div>
               {/*
               <label className="m-auto pt-[20px]">Religion:</label>
               <input
