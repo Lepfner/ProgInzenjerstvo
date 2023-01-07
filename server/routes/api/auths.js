@@ -41,7 +41,6 @@ router.post("/register", async (req, res) => {
     return res.status(500).json({ message: "Email already in use" });
   else {
     try {
-      console.log("User creating");
       //Hash password
 
       const salt = await bcrypt.genSalt(10);
