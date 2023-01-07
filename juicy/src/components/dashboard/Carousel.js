@@ -33,15 +33,18 @@ const settings = {
   nextArrow: <CarouselNextArrow />,
 };
 
-const Carousel = ({items}) => {
-
+const Carousel = ({ items }) => {
   return (
     <div className="px-[1rem]">
       <Slider {...settings}>
-        {items.filter(age => age.age >= localStorage.getItem("ageMin"))
-        .filter(age => age.age <= localStorage.getItem("ageMax"))
-        .map((user) => {
-          const { id, firstName, lastName, age, image } = user;
+        {items && items.map((user) => {
+          const {
+            id,
+            name,
+            surname,
+            date_of_birth,
+            profileimg,
+          } = user;
           return (
             <div
               key={id}
@@ -50,7 +53,7 @@ const Carousel = ({items}) => {
             >
               <div className="border-4 border-green-300 mb-4 rounded-full h-[10rem] overflow-hidden mx-4 bg-slate-200">
                 <img
-                  src={image}
+                  src={profileimg}
                   className="object-cover h-[10rem]"
                   alt="user"
                 />
@@ -60,10 +63,10 @@ const Carousel = ({items}) => {
                            rounded-2xl bg-slate-200 w-[90%] "
               >
                 <p className="font-bold mt-2 text-lg">
-                  {firstName} {lastName}
+                  {name} {surname}
                 </p>
                 <p className="text-lg">
-                  <span className="font-bold">Age:</span> {age}
+                  <span className="font-bold">Date of birth:</span> {date_of_birth}
                 </p>
                 <p className="font-bold text-lg">Description:</p>
                 <p className="text-center w-[90%]">

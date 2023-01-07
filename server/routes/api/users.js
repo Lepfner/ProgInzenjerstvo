@@ -28,7 +28,7 @@ router.put("/profile/:id/edit", async (req, res) => {
 
 router.get("/users", async (req, res) => {
   try {
-    const users = await User.findAll();
+    const users = await User.findAll({ attributes: ["id","name","surname","date_of_birth","profileimg"]});
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json({ message: err.message });
