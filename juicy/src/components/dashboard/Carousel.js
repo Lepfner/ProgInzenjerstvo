@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -35,6 +35,13 @@ const settings = {
 };
 
 const Carousel = ({ items }) => {
+
+  useEffect(() => {
+    if(!localStorage.getItem("ageMin")){
+      localStorage.setItem("ageMin", 18);
+      localStorage.setItem("ageMax", 99);
+    }
+  })
 
   const navigate = useNavigate();
 
