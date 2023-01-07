@@ -2,7 +2,7 @@ import React from "react";
 import NextBtn from "./nextBtn";
 import PrevBtn from "./prevBtn";
 
-const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion }) => {
+const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location,height,hair_color,eye_color }) => {
   return (
     <form
       className="flex justify-center items-center flex-col lg:text-3xl w-4/5 md: text-2xl sm: text-xl"
@@ -35,6 +35,44 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion }) => {
         className="text-lg max-h-[5rem] min-h-[3.5rem] h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
         placeholder="placeholder"
       />
+      <p className="mb-2 ">Location:</p>
+      <input
+        required
+        value={location}
+        onChange={(e) => updateData({ location: e.target.value })}
+        type="text"
+        className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
+        placeholder="placeholder"
+      />
+      <p className="mb-2 ">Height:</p>
+      <input
+        required
+        value={height}
+        onChange={(e) => updateData({ height: e.target.value })}
+        type="text"
+        className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
+        placeholder="placeholder"
+      />
+      <p className="mb-2 ">Hair Color:</p>
+      <input
+        required
+        value={hair_color}
+        onChange={(e) => updateData({ hair_color: e.target.value })}
+        type="text"
+        className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
+        placeholder="placeholder"
+      />
+       <p className="mb-2 ">Eye Color:</p>
+      <input
+        required
+        value={eye_color}
+        onChange={(e) => updateData({ eye_color: e.target.value })}
+        type="text"
+        className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
+        placeholder="placeholder"
+      />
+
+
       <div className="flex justify-center w-full lg:gap-8 flex-row md:flex-row gap-2 max-sm:flex-col">
         <PrevBtn setPage={setPage} />
         <NextBtn />

@@ -13,7 +13,13 @@ const initialData = {
   gender: "",
   status: "",
   nationality: "",
+  location:"",
   religion: "",
+  height:"",
+  hair_color:"",
+  eye_color:"",
+  work:"",
+  education:"",
   likes: [],
   dislikes: [],
 };
