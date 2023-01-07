@@ -26,9 +26,12 @@ const Login = () => {
       );
       const { id, is_admin } = response?.data;
       setAuth({ email, password, id, is_admin });
-      setIsLoggedIn(true);
-      toast.success("successful login!");
-      navigate("/main");
+      if (is_admin) navigate("/Confirmation");
+      else {
+        setIsLoggedIn(true);
+        toast.success("successful login!");
+        navigate("/main");
+      }
     } catch (err) {
       console.log(err);
       toast.error("incorrect email or password");
