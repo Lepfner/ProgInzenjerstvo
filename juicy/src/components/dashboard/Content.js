@@ -13,7 +13,7 @@ export default function Content() {
       // if(query===''){
         const result = await axios(`http://localhost:5000/users`);
         setItems(result.data);
-        //  } else {
+      //  } else {
       //   const result = await axios(`http://localhost:5000/users/search?q=${query}&select=firstName,lastName,age`);
       //   setItems(result.data.users);
       //}

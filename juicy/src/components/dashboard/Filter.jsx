@@ -26,19 +26,16 @@ export default function Filter() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setAgeValue([18, 99]);
-    setReligion("");
-    setNationality("");
-    setStatusValue("single");
-    localStorage.setItem("ageMin", ageValue[0]);
-    localStorage.setItem("ageMax", ageValue[1]);
-    localStorage.setItem("eyeColor", statusValue);
-    window.location.reload(false);
+    if(ageValue[0]!=18 || ageValue[1]!=99 || genderValue!="" || statusValue!=""){
+      localStorage.setItem("ageMin", ageValue[0]);
+      localStorage.setItem("ageMax", ageValue[1]);
+      localStorage.setItem("eyeColor", statusValue);
+      window.location.reload(false);
+    }
   };
 
   const close = useCallback(() => {
     setFilter(false);
-    window.location.reload(false);
   }, []);
   useClickOutside(popover, close);
 
@@ -50,6 +47,7 @@ export default function Filter() {
             className="absolute  min-h-[20rem] shadow-2xl bg-skin-primary 
             rounded-b-[2.5rem] z-20 lg:w-1/4 md:w-1/3 sm:w-1/2 mr-2 top-[16%]
             xl:left-[70%] lg:left-[65%] md:left-[60%] sm:left-[40%] max-sm:right-0 max-sm:left-2 "
+            ref={popover}
           >
             <form
               className="flex flex-col bg-slate-200 m-4 rounded-xl pb-4 px-4 relative"
