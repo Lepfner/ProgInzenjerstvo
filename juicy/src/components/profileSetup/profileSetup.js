@@ -39,6 +39,8 @@ function ProfileSetup() {
     setPage((prev) => prev + 1);
   };
 
+  
+
   const componentList = [
     <PS1
       {...formData}

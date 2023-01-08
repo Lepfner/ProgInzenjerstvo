@@ -23,7 +23,7 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location
         required
         value={nationality}
         onChange={(e) => updateData({ nationality: e.target.value })}
-        type="text"
+        type="text" pattern="[A-Za-z]{1,}"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
         placeholder="placeholder"
       />
@@ -44,12 +44,12 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
         placeholder="placeholder"
       />
-      <p className="mb-2 ">Height:</p>
+      <p className="mb-2 ">Height (in cm):</p>
       <input
         required
         value={height}
         onChange={(e) => updateData({ height: e.target.value })}
-        type="text"
+        type="number" min="100" max="250"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
         placeholder="placeholder"
       />
@@ -58,7 +58,7 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location
         required
         value={hair_color}
         onChange={(e) => updateData({ hair_color: e.target.value })}
-        type="text"
+        type="text" pattern="[A-Za-z]{1,20}"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
         placeholder="placeholder"
       />
@@ -67,7 +67,7 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location
         required
         value={eye_color}
         onChange={(e) => updateData({ eye_color: e.target.value })}
-        type="text"
+        type="text" pattern="[A-Za-z]{1,20}"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
         placeholder="placeholder"
       />
