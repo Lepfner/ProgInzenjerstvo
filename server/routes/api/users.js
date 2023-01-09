@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user");
+const User = require("../../models/user");
 
 router.put("/profile/:id/edit", async (req, res) => {
   try {
@@ -34,6 +34,5 @@ router.get("/users", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
 
 module.exports = router;

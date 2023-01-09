@@ -8,19 +8,19 @@ const cors = require("cors");
 
 sequelize
   .authenticate()
-  .then(() => console.log("Database connected..."))
+  .then(() => console.log("Database connected!"))
   .catch((err) => console.log("Error: " + err));
 
 app.use(bodyParser.json());
 app.use(cors());
 
-const adminsRouter = require("./routes/admins");
-app.use("/api", adminsRouter);
-const authsRouter = require("./routes/auths");
-app.use("/api", authsRouter);
-const profileRouter = require("./routes/users");
-app.use("/api", profileRouter);
+const adminsRouter = require("./routes/api/admins");
+app.use("/", adminsRouter);
+const authsRouter = require("./routes/api/auths");
+app.use("/", authsRouter);
+const profileRouter = require("./routes/api/users");
+app.use("/", profileRouter);
 
-app.listen(PORT, console.log(`Server started on port ${PORT}`));
+app.listen(PORT, console.log(`Server started on http://localhost:${PORT}`));
 
 app.get("/", (req, res) => res.send("index"));

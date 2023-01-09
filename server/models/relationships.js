@@ -2,7 +2,7 @@ const { Sequelize } = require("sequelize");
 const sequelize = require("../config/database");
 
 const Relationship = sequelize.define(
-    "tbl_relationship",
+    "relationship",
     {
         id: {
             type: Sequelize.INTEGER,

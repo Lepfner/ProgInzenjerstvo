@@ -13,7 +13,13 @@ const initialData = {
   gender: "",
   status: "",
   nationality: "",
+  location:"",
   religion: "",
+  height:"",
+  hair_color:"",
+  eye_color:"",
+  work:"",
+  education:"",
   likes: [],
   dislikes: [],
 };
@@ -21,10 +27,6 @@ const initialData = {
 function ProfileSetup() {
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState(initialData);
-
-  useEffect(() => {
-    console.log(formData);
-  }, [formData, page]);
 
   const updateData = (fields) => {
     setFormData((prev) => {
@@ -36,6 +38,8 @@ function ProfileSetup() {
     e.preventDefault();
     setPage((prev) => prev + 1);
   };
+
+  
 
   const componentList = [
     <PS1
