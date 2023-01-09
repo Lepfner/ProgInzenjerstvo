@@ -6,7 +6,7 @@ import emailjs from '@emailjs/browser';
 
 export default function Settings() {
   const [color, setColor] = useState(localStorage.getItem("currentColor"));
-  const [isOn, setIsOn] = useState(false);
+  const [isOn, setIsOn] = useState(true);
   const primaryColor = getRGBColor(color, "primary");
   const a11yColor = getRGBColor(getAccessibleColor(color), "a11y");
 
@@ -16,17 +16,17 @@ export default function Settings() {
     localStorage.setItem("currentColor", color);
   })
 
-    const form = useRef();
-    const sendEmail = (e) => {
-      e.preventDefault();
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-      emailjs.sendForm('service_l72z64l', 'template_mu6s50h', form.current, 'M-karua9jmM9OyLKr')
-        .then((result) => {
-          // show the user a success message
-        }, (error) => {
-          console.log(error);
-        });
-    };
+    emailjs.sendForm('service_l72z64l', 'template_mu6s50h', form.current, 'M-karua9jmM9OyLKr')
+      .then((result) => {
+        // show the user a success message
+      }, (error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -40,12 +40,12 @@ export default function Settings() {
               <input className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black transition duration-200 cursor-pointer ml-4"
                 type="checkbox"
                 checked={isOn}
-                onChange={(e) => setIsOn(e.target.val)} />
+                onChange={(e) => setIsOn(!isOn)} />
             </div>
             <h1 className="bg-skin-primary text-3xl mt-10 mb-4">Report a problem:</h1>
             <form ref={form} onSubmit={sendEmail} className='w-full'>
               <input type='text' name="user" placeholder='Write your username'
-              className="resize-none focus:outline-none block p-2.5 w-5/6 h-10 mb-6 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                className="resize-none focus:outline-none block p-2.5 w-5/6 h-10 mb-6 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               </input>
               <textarea
                 name="message"
