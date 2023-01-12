@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+//Components
 import SuccessPage from "./SuccessPage";
 import axios from "../../api/axios";
 import useAuth from "../../hooks/useAuth";
+//Dependencies
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");

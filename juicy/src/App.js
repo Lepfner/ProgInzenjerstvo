@@ -1,22 +1,19 @@
+//Styles
 import "./Styles/App.css";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+//Components
 import AuthLayout from "./components/Auth/AuthLayout.jsx";
 import Dashboard from "./components/dashboard/MainMenu"
 import ProfileSetup from "./components/profileSetup/profileSetup";
 import MyProfilePage from "./components/dashboard/MyProfilePage";
 import ErrorPage from "./components/404";
-import {
-  Login,
-  SignUp,
-  Confirmation,
-  Recovery,
-  AdminLogin,
-} from "./components/Auth";
-import React, { useEffect } from 'react';
+import { Login, SignUp, Confirmation, Recovery, AdminLogin } from "./components/Auth";
 import Settings from "./components/dashboard/Settings";
+import UserProfile from "./components/dashboard/userProfile";
+//Dependencies
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import React, { useEffect } from 'react';
 import {AuthProvider} from "./context/AuthProvider";
 import { Toaster } from "react-hot-toast";
-import UserProfile from "./components/dashboard/userProfile";
 
 function App() {
 

@@ -1,10 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSignOut,
-  faGear,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSignOut, faGear, faUser } from "@fortawesome/free-solid-svg-icons";
 import JuicyLogo from "../images/logo.png";
 import BlackLogo from '../images/blackLogo.png';
 import Filter from "./Filter";
@@ -13,17 +9,17 @@ import Hamburger from "./Hamburger";
 
 export default function Header({ a11yColor, primaryColor }) {
 
-const [currentLogo, setCurrentLogo] = useState("");
+  const [currentLogo, setCurrentLogo] = useState("");
 
   useEffect(() => {
-    if(localStorage.getItem("logoCurrent") === "black"){
+    if (localStorage.getItem("logoCurrent") === "black") {
       setCurrentLogo(BlackLogo);
     }
-    if(localStorage.getItem("logoCurrent") === "white"){
+    if (localStorage.getItem("logoCurrent") === "white") {
       setCurrentLogo(JuicyLogo);
     }
-  },[])
-  
+  }, [])
+
   const navigate = useNavigate();
 
   return (
@@ -35,13 +31,13 @@ const [currentLogo, setCurrentLogo] = useState("");
       </div>
       <div className="flex">
         {/* TODO: Find a better way to solve display issues here */}
-        <button className="mr-14">
+        <button className="mr-14 text-skin-a11y">
           <Filter />
         </button>
         <button>
           <FontAwesomeIcon onClick={() => navigate("/MyProfile")}
             id="logoIcon"
-            className="hidden md:flex mr-14 hover:animate-pulse"
+            className="hidden md:flex mr-14 hover:animate-pulse text-skin-a11y"
             icon={faUser}
             size="2x"
           />
@@ -49,7 +45,7 @@ const [currentLogo, setCurrentLogo] = useState("");
         <button onClick={() => navigate("/Settings")}>
           <FontAwesomeIcon
             id="settingsIcon"
-            className="hidden md:flex mr-14 hover:animate-spin"
+            className="hidden md:flex mr-14 hover:animate-spin text-skin-a11y"
             icon={faGear}
             size="2x"
           />
@@ -57,7 +53,7 @@ const [currentLogo, setCurrentLogo] = useState("");
         <button onClick={() => navigate("/Login")}>
           <FontAwesomeIcon
             id="logoutIcon"
-            className="hidden md:flex mr-10 hover:animate-ping"
+            className="hidden md:flex mr-10 hover:animate-ping text-skin-a11y"
             icon={faSignOut}
             size="2x"
           />

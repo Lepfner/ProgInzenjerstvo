@@ -2,8 +2,8 @@ import React, {useEffect} from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import CarouselNextArrow from "./CarouselNextArrow";
-import CarouselPrevArrow from "./CarouselPrevArrow";
+import CarouselNextArrow from "../../images/nextArrow.png";
+import CarouselPrevArrow from "../../images/prevArrow.png";
 import { useNavigate } from "react-router-dom";
 
 const settings = {
@@ -57,6 +57,7 @@ const Carousel = ({ items }) => {
           } = user;
           return (
             <div
+              onClick={() => navigate(`/profile/${id}`)}
               key={id}
               className="userDiv flex-col justify-end items-center w-full mt-4 pt-4 mb-4 h-full bg-slate-100 w-5/6 border-[0.6rem] 
                          border-skin-primary rounded-3xl"

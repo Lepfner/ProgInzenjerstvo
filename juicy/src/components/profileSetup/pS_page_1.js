@@ -27,7 +27,6 @@ const PS1 = ({
     >
       <p className="text-xl mb-4">Step 1</p>
       <p className=" lg:text-3xl mb-2 md: text-2xl sm: text-xl">Name:</p>
-      {console.log(maxDate)}
       <input
         required
         value={name}

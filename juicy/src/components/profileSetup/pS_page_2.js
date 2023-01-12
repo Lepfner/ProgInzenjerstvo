@@ -25,15 +25,15 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location
         onChange={(e) => updateData({ nationality: e.target.value })}
         type="text" pattern="[A-Za-z]{1,}"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
-        placeholder="placeholder"
+        placeholder="e.g. Croatian"
       />
       <p className="mb-2">Religion:</p>
       <textarea
         required
         value={religion}
         onChange={(e) => updateData({ religion: e.target.value })}
-        className="text-lg max-h-[5rem] min-h-[3.5rem] h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
-        placeholder="placeholder"
+        className="text-lg max-h-[5rem] min-h-[3.5rem] h-14 px-2 pt-3 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
+        placeholder="e.g. Christian"
       />
       <p className="mb-2 ">Location:</p>
       <input
@@ -42,7 +42,7 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location
         onChange={(e) => updateData({ location: e.target.value })}
         type="text"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
-        placeholder="placeholder"
+        placeholder="e.g. Split, Croatia"
       />
       <p className="mb-2 ">Height (in cm):</p>
       <input
@@ -51,7 +51,6 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location
         onChange={(e) => updateData({ height: e.target.value })}
         type="number" min="100" max="250"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
-        placeholder="placeholder"
       />
       <p className="mb-2 ">Hair Color:</p>
       <input
@@ -60,7 +59,6 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location
         onChange={(e) => updateData({ hair_color: e.target.value })}
         type="text" pattern="[A-Za-z]{1,20}"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
-        placeholder="placeholder"
       />
        <p className="mb-2 ">Eye Color:</p>
       <input
@@ -69,10 +67,7 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location
         onChange={(e) => updateData({ eye_color: e.target.value })}
         type="text" pattern="[A-Za-z]{1,20}"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
-        placeholder="placeholder"
       />
-
-
       <div className="flex justify-center w-full lg:gap-8 flex-row md:flex-row gap-2 max-sm:flex-col">
         <PrevBtn setPage={setPage} />
         <NextBtn />

@@ -3,7 +3,6 @@ import PrevBtn from "./prevBtn";
 import { toast } from "react-hot-toast";
 import Tags from "./Tags";
 
-
 const PS3 = ({ updateData, setPage, likes, dislikes,work,education }) => {
 
   return (
