@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CarouselNextArrow from "./CarouselNextArrow";
 import CarouselPrevArrow from "./CarouselPrevArrow";
+import { useNavigate } from "react-router-dom";
 
 const settings = {
   dots: false,
@@ -34,6 +35,15 @@ const settings = {
 };
 
 const Carousel = ({ items }) => {
+
+  useEffect(() => {
+    if(!localStorage.getItem("ageMin")){
+      localStorage.setItem("ageMin", 18);
+      localStorage.setItem("ageMax", 99);
+    }
+  })
+
+  const navigate = useNavigate();
   return (
     <div className="px-[1rem]">
       <Slider {...settings}>

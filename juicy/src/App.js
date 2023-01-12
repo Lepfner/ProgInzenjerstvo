@@ -14,6 +14,9 @@ import {
 } from "./components/Auth";
 import React, { useEffect } from 'react';
 import Settings from "./components/dashboard/Settings";
+import {AuthProvider} from "./context/AuthProvider";
+import { Toaster } from "react-hot-toast";
+import UserProfile from "./components/dashboard/userProfile";
 
 function App() {
 
@@ -24,6 +27,8 @@ function App() {
   })
 
   return (
+    <AuthProvider>
+    <Toaster/>
     <BrowserRouter>
       <Routes>
         <Route element={<AuthLayout />}>
@@ -39,8 +44,10 @@ function App() {
         <Route path="/Setup" element={<ProfileSetup />} />
         <Route path="/MyProfile" element={<MyProfilePage />} />
         <Route path="/Settings" element={<Settings />} />
+        <Route path="/Profile/:id" element={<UserProfile />} />
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter> 
+    </AuthProvider>
   );
 }
 

@@ -20,7 +20,11 @@ const Delete = (props) => (
 const Help = (props) => (
   <div className="help mb-4 lg:text-xl md: text-lg sm: text-lg" {...props} />
 );
-
+function atLeastOneLetter(str) {
+  return (
+    /[A-Za-z]/.test(str)
+  );
+}
 class Tags extends React.Component {
   constructor() {
     super();
@@ -38,7 +42,7 @@ class Tags extends React.Component {
 
   handleKeyDown(e) {
     let { type, tags, updateData } = this.props;
-    if (e.keyCode === 13 && e.target.value !== "") {
+    if (e.keyCode === 13 && e.target.value !== "" &&atLeastOneLetter(e.target.value)) {
       let newTag = this.state.newTag.trim();
 
       if (tags.indexOf(newTag) === -1) {
