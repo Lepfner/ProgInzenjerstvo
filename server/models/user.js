@@ -10,62 +10,66 @@ const User = sequelize.define(
       primaryKey: true,
       allowNull: false,
     },
-    name: {
-      type: Sequelize.STRING,
-      required: true,
-      allowNull: false,
-    },
-    surname: {
-      type: Sequelize.STRING,
-      required: true,
-      allowNull: false,
-    },
-    username: {
-      type: Sequelize.STRING,
-      required: true,
-      allowNull: false,
-      unique: true,
-    },
     email: {
       type: Sequelize.STRING,
-      required: true,
+      required: false,
       unique: true,
       allowNull: false,
-    },
-    date_of_birth: {
-      type: Sequelize.DATE,
-      required: true,
-      allowNull: false,
-    },
-    gender: {
-      type: Sequelize.ENUM("male", "female"),
-      required: true,
-      allowNull: false,
-    },
-    nationality: {
-      type: Sequelize.STRING,
-      required: true,
-      allowNull: false,
-    },
-    status: {
-      type: Sequelize.STRING,
-      required: true,
-      allowNull: false,
-    },
-    religion: {
-      type: Sequelize.STRING,
-      required: true,
-      allowNull: false,
-    },
-    profileimg: {
-      type: Sequelize.STRING,
-      required: false,
-      allowNull: true,
     },
     password_digest: {
       type: Sequelize.STRING,
       required: true,
       allowNull: false,
+    },
+    name: {
+      type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
+    },
+    surname: {
+      type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
+    },
+    username: {
+      type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
+    },
+    date_of_birth: {
+      type: Sequelize.DATE,
+      required: false,
+      allowNull: true,
+    },
+    gender: {
+      type: Sequelize.ENUM("male", "female"),
+      required: false,
+      allowNull: true,
+    },
+    location: {
+      type: Sequelize.DATE,
+      required: false,
+      allowNull: true,
+    },
+    nationality: {
+      type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
+    },
+    status: {
+      type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
+    },
+    religion: {
+      type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
+    },
+    profileimg: {
+      type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
     },
     created_at: {
       type: Sequelize.DATE,
@@ -74,6 +78,38 @@ const User = sequelize.define(
     },
     is_admin: {
       type: Sequelize.INTEGER,
+      required: true,
+      allowNull: false,
+    },
+    work: {
+      type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
+    },
+    education: {
+      type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
+    },
+    height: {
+      type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
+    },
+    eye_color: {
+      type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
+    },
+    hair_color: {
+      type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
+    },
+    about: {
+      type: Sequelize.STRING,
+      required: false,
+      allowNull: true,
     },
   },
   {

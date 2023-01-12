@@ -2,21 +2,27 @@ const express = require("express");
 const router = express.Router();
 const User = require("../../models/user");
 
-router.put("/profile/:id/edit", async (req, res) => {
+router.put("/setup/:id", async (req, res) => {
   try {
     const user = await User.update(
       {
-        profileImageURL: req.body.profileImageURL,
+        profileimg: req.body.profileImg,
         name: req.body.name,
         surname: req.body.surname,
         username: req.body.username,
-        country: req.body.country,
         email: req.body.email,
         date_of_birth: req.body.date_of_birth,
         gender: req.body.gender,
         nationality: req.body.nationality,
+        loaction: req.body.loaction,
         status: req.body.status,
         religion: req.body.religion,
+        work: req.body.work,
+        education: req.body.education,
+        height: req.body.height,
+        hair_color: req.body.hair_color,
+        eye_color: req.body.eye_color,
+        about: req.body.about,
       },
       { where: { id: req.params.id }, returning: true, plain: true }
     );
