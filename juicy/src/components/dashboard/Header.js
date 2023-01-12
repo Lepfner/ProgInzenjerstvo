@@ -35,13 +35,13 @@ const [currentLogo, setCurrentLogo] = useState("");
       </div>
       <div className="flex">
         {/* TODO: Find a better way to solve display issues here */}
-        <button className="mr-14">
+        <button className="mr-14 text-skin-a11y">
           <Filter />
         </button>
         <button>
           <FontAwesomeIcon onClick={() => navigate("/MyProfile")}
             id="logoIcon"
-            className="hidden md:flex mr-14 hover:animate-pulse"
+            className="hidden md:flex mr-14 hover:animate-pulse text-skin-a11y"
             icon={faUser}
             size="2x"
           />
@@ -49,7 +49,7 @@ const [currentLogo, setCurrentLogo] = useState("");
         <button onClick={() => navigate("/Settings")}>
           <FontAwesomeIcon
             id="settingsIcon"
-            className="hidden md:flex mr-14 hover:animate-spin"
+            className="hidden md:flex mr-14 hover:animate-spin text-skin-a11y"
             icon={faGear}
             size="2x"
           />
@@ -57,7 +57,7 @@ const [currentLogo, setCurrentLogo] = useState("");
         <button onClick={() => navigate("/Login")}>
           <FontAwesomeIcon
             id="logoutIcon"
-            className="hidden md:flex mr-10 hover:animate-ping"
+            className="hidden md:flex mr-10 hover:animate-ping text-skin-a11y"
             icon={faSignOut}
             size="2x"
           />

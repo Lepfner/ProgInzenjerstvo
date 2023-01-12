@@ -6,7 +6,6 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 import useClickOutside from "./colorPicker/useClickOutside";
 import { useRef } from "react";
 
@@ -26,7 +25,7 @@ export default function Filter() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(ageValue[0]!=18 || ageValue[1]!=99 || genderValue!="" || statusValue!=""){
+    if(ageValue[0]!==18 || ageValue[1]!==99 || genderValue!=="" || statusValue!==""){
       localStorage.setItem("ageMin", ageValue[0]);
       localStorage.setItem("ageMax", ageValue[1]);
       localStorage.setItem("eyeColor", statusValue);

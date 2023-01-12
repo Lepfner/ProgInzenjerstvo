@@ -1,7 +1,6 @@
 import React from "react";
 import "../../Styles/App.css";
 import { Outlet } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
 const Layout = ({ children }) => {
   return (
     <div
