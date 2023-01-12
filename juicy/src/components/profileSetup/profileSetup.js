@@ -13,7 +13,13 @@ const initialData = {
   gender: "",
   status: "",
   nationality: "",
+  location:"",
   religion: "",
+  height:"",
+  hair_color:"",
+  eye_color:"",
+  work:"",
+  education:"",
   likes: [],
   dislikes: [],
 };
@@ -32,6 +38,8 @@ function ProfileSetup() {
     e.preventDefault();
     setPage((prev) => prev + 1);
   };
+
+  
 
   const componentList = [
     <PS1
