@@ -1,26 +1,76 @@
-.boxShadowContainer{
-  box-shadow: 7px 8px 7px -2px rgba(0,0,0,0.42);
-  min-height:42%;
+.boxShadowContainer {
+  box-shadow: 7px 8px 7px -2px rgba(0, 0, 0, 0.42);
+  min-height: 42%;
 }
 
-*{
-  font-family: 'Varela Round'
+* {
+  font-family: "Varela Round";
 }
 
-h1{
+h1 {
   font-weight: 600;
 }
 
-a{
-  color:blue;
+a {
+  color: blue;
   text-decoration: underline;
-
 }
 
-input:focus{
-  outline:none;
+input:focus {
+  outline: none;
 }
 
-.validate:required:invalid{
-  border: 1px solid red
+.validate:required:invalid {
+  border: 1px solid red;
+}
+
+.userDiv {
+  display: flex !important;
+}
+
+.slick-prev,
+.slick-next {
+  z-index: 10;
+}
+
+.slick-prev{
+  left:-5rem !important;
+}
+
+.slick-next{
+  right:-5rem !important;
+}
+
+@media screen and (max-width:640px){
+  .slick-prev{
+    left:-3rem !important;
+  }
+  .slick-next{
+    right:-3rem !important;
+  }
+}
+
+.slick-prev:before,
+.slick-next:before {
+  content: "" !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
 }

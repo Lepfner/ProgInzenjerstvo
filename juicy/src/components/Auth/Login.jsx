@@ -2,18 +2,43 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SuccessPage from "./SuccessPage";
 import { toast } from "react-hot-toast";
+import Typewriter from "typewriter-effect";
+import axios from "../../api/axios";
+import useAuth from "../../hooks/useAuth";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const { setAuth } = useAuth();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios.post(
+        "/login",
+        JSON.stringify({ email, password }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      const { id, is_admin } = response?.data;
+      setAuth({ email, password, id, is_admin });
+      if (is_admin) navigate("/Confirmation");
+      else {
+        setIsLoggedIn(true);
+        toast.success("successful login!");
+        navigate("/main");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("incorrect email or password");
+    }
+
     setEmail("");
     setPassword("");
-    setIsLoggedIn(true);
-    toast.loading("Pending...");
   };
 
   return (
@@ -23,7 +48,17 @@ const Login = () => {
     >
       {!isLoggedIn ? (
         <>
-          <h1 className="lg:text-6xl mb-2 md: text-5xl sm: text-4xl">LOGIN:</h1>
+          <span className="lg:text-6xl mb-2 md:text-5xl sm:text-4xl inline-block w-fit flex flex-row">
+            Go&nbsp;
+            <Typewriter
+              options={{
+                cursorClassName: "hidden",
+                strings: ["Register!", "Login!", "Explore!"],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          </span>
           <div
             className="w-full flex flex-col lg:text-lg md:flex-row text-base 
                         sm:flex-col "

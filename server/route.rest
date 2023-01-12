@@ -1,0 +1,36 @@
+GET http://localhost:5000/api/
+Content-Type: application/json
+
+
+###
+
+POST http://localhost:5000/api/login 
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImE5NmFkY2U5OTk5YmJmNWNkMzBmMjlmNDljZDM3ZjRjNWU2NDI3NDAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiSm9zaXAgVnXEjWljYSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BTG01d3UzTjhxcVEyVy1lN1YwNlZnNHEyVk5CU2FLLTZISWFuLWxrdW9jWT1zOTYtYyIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9zaWduaW4tOWFjYzAiLCJhdWQiOiJzaWduaW4tOWFjYzAiLCJhdXRoX3RpbWUiOjE2NjkyOTgwNzQsInVzZXJfaWQiOiJ6eE5xZHhZZENTVzV2M1hFY3FrRnpuR0tyZW0xIiwic3ViIjoienhOcWR4WWRDU1c1djNYRWNxa0Z6bkdLcmVtMSIsImlhdCI6MTY2OTI5ODA3NCwiZXhwIjoxNjY5MzAxNjc0LCJlbWFpbCI6Impvc2lwLnZ1Y2ljYUBuZXRzY2FsZS5hZ2VuY3kiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJnb29nbGUuY29tIjpbIjEwMzkyMDgzNzAyNzEyMjc3MjE2NiJdLCJlbWFpbCI6WyJqb3NpcC52dWNpY2FAbmV0c2NhbGUuYWdlbmN5Il19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.a10rcwtizcQhcEdvNkchrW-uaPhp43ZpeKFHgpX7tUzKePiwnCUm36-USQN3fowu3u2yMSQIlJFZmla0M8jySvDRmEUqQ_3n8tGLEkc9yBtkxO3DOgEFVPhAdNHRKIUucc2vjtRC6E5ZprV0VaH2wnd_u7xkH60uk_ipp8UzOYJ3LioqFEZ5O-v1DH4mjV--osttBcqx9qWKZzNYm5fGot04dbs37sF-6bsmrJafLTbtQvCWzkGkJ2aT1nIVEjqrDTCqbP0aDA6jxpsv-G5OluaxFBSjcFLVF9PVh4Of-m-HW6qpTIKo5ksfwpPZ3qO5n8M6o_IfaHIsWrTDjEowXg
+
+###
+
+PUT http://localhost:5000/api/profile/2/edit
+Content-Type: application/json
+
+{
+"country":"France"
+}
+
+###
+POST http://localhost:5000/api/register
+Content-Type: application/json
+
+{
+    "id":"5",
+    "username": "req.body.username",
+    "name": "req.body.name",
+    "surname": "req.body.surname",
+    "email": "req.body.email",
+    "dateOfBirth": "1999-02-19",
+    "gender": "req.body.gender",
+    "levelOfAccess": "admin",
+    "country": "req.body.country",
+    "profileImageURL": "req.body.profileImageURL",
+    "password": "hashedPassword"
+
+}

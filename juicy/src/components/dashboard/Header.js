@@ -1,17 +1,73 @@
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSignOut, faGear, faPeopleArrows } from '@fortawesome/free-solid-svg-icons'
+import React, {useEffect, useState} from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSignOut,
+  faGear,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+import JuicyLogo from "../images/logo.png";
+import BlackLogo from '../images/blackLogo.png';
+import Filter from "./Filter";
+import { useNavigate } from "react-router-dom";
+import Hamburger from "./Hamburger";
 
-export default function Header() {
-    return (
-        <div className="flex justify-between bg-orange-500 pt-7 pb-7">
-            <div className='ml-16'>
-                <FontAwesomeIcon id="logoIcon" className='mr-10' icon={faPeopleArrows} size="2x"/>
-            </div>
-            <div className="flex">
-                <FontAwesomeIcon id="settingsIcon" className='mr-14 hover:animate-spin' icon={faGear} size="2x"/>
-                <FontAwesomeIcon id="logoutIcon" className='mr-10 hover:animate-ping' icon={faSignOut} size="2x"/>
-            </div>
-        </div>
-    )
+export default function Header({ a11yColor, primaryColor }) {
+
+const [currentLogo, setCurrentLogo] = useState("");
+
+  useEffect(() => {
+    if(localStorage.getItem("logoCurrent") === "black"){
+      setCurrentLogo(BlackLogo);
+    }
+    if(localStorage.getItem("logoCurrent") === "white"){
+      setCurrentLogo(JuicyLogo);
+    }
+  },[])
+  
+  const navigate = useNavigate();
+
+  return (
+    <div className="flex justify-between bg-skin-primary pt-7 pb-7 ">
+      <div className="md:ml-10 min-w-[50%]">
+        <button onClick={() => navigate("/Main")}>
+          <img src={currentLogo} alt="" className="h-20 text-skin-a11y" />
+        </button>
+      </div>
+      <div className="flex">
+        {/* TODO: Find a better way to solve display issues here */}
+        <button className="mr-14">
+          <Filter />
+        </button>
+        <button>
+          <FontAwesomeIcon onClick={() => navigate("/MyProfile")}
+            id="logoIcon"
+            className="hidden md:flex mr-14 hover:animate-pulse"
+            icon={faUser}
+            size="2x"
+          />
+        </button>
+        <button onClick={() => navigate("/Settings")}>
+          <FontAwesomeIcon
+            id="settingsIcon"
+            className="hidden md:flex mr-14 hover:animate-spin"
+            icon={faGear}
+            size="2x"
+          />
+        </button>
+        <button onClick={() => navigate("/Login")}>
+          <FontAwesomeIcon
+            id="logoutIcon"
+            className="hidden md:flex mr-10 hover:animate-ping"
+            icon={faSignOut}
+            size="2x"
+          />
+        </button>
+      </div>
+      <div className="flex justify-between md:hidden">
+        <button>
+          <Hamburger />
+        </button>
+      </div>
+    </div>
+  );
 }
