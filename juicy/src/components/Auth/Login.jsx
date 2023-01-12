@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+//Components
 import SuccessPage from "./SuccessPage";
-import { toast } from "react-hot-toast";
-import Typewriter from "typewriter-effect";
 import axios from "../../api/axios";
 import useAuth from "../../hooks/useAuth";
+//Dependencies
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import Typewriter from "typewriter-effect";
 
 const Login = () => {
   const [email, setEmail] = useState("");

@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import PS1 from "./pS_page_1";
 import PS2 from "./pS_page_2";
 import PS3 from "./pS_page_3";

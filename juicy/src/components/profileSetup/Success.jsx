@@ -1,6 +1,7 @@
 import React from "react";
 import PrevBtn from "./prevBtn";
 import { useNavigate } from "react-router-dom";
+
 const Success = ({ setPage }) => {
   const navigate = useNavigate();
   return (

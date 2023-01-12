@@ -2,8 +2,8 @@ import React, {useEffect} from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import CarouselNextArrow from "./CarouselNextArrow";
-import CarouselPrevArrow from "./CarouselPrevArrow";
+import CarouselNextArrow from "../../images/nextArrow.png";
+import CarouselPrevArrow from "../../images/prevArrow.png";
 import { useNavigate } from "react-router-dom";
 
 const settings = {

@@ -1,21 +1,23 @@
-import React, { useCallback, useState } from "react";
+//Dependencies
+import React, { useCallback, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareCaretDown } from "@fortawesome/free-solid-svg-icons";
+//Material UI
 import Slider from "@mui/material/Slider";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+//Components
 import useClickOutside from "./colorPicker/useClickOutside";
-import { useRef } from "react";
 
 export default function Filter() {
   const popover = useRef();
   const [filter, setFilter] = useState(false);
   const [ageValue, setAgeValue] = useState([18, 99]);
   const [genderValue, setGenderValue] = useState("");
-  const [religion, setReligion] = useState("");
-  const [nationality, setNationality] = useState("");
+  //const [religion, setReligion] = useState("");
+  //const [nationality, setNationality] = useState("");
   const [statusValue, setStatusValue] = useState("");
   const color = localStorage.getItem("currentColor");
 

@@ -68,8 +68,6 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location
         type="text" pattern="[A-Za-z]{1,20}"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
       />
-
-
       <div className="flex justify-center w-full lg:gap-8 flex-row md:flex-row gap-2 max-sm:flex-col">
         <PrevBtn setPage={setPage} />
         <NextBtn />

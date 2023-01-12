@@ -1,7 +1,9 @@
+//Dependencies
 import React, { useState, useEffect } from "react";
-import Search from "./Search";
-import Carousel from "./Carousel";
 import axios from "axios";
+//Components
+import Search from "./Search";
+import Carousel from "../dashboard/Carousel/Carousel";
 
 export default function Content() {
 
