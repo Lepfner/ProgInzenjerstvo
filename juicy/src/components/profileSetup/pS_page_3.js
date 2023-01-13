@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PrevBtn from "./prevBtn";
 import { toast } from "react-hot-toast";
 import Tags from "./Tags";
+import axios from "../../api/axios";
+import useAuth from "../../hooks/useAuth";
 
-const PS3 = ({ updateData, setPage, likes, dislikes,work,education }) => {
+
+const PS3 = ({ updateData, setPage, formData }) => {
+  const { likes, dislikes, work, education } = formData;
+  const {auth} = useAuth()
+  const {id} = auth
+
+ useEffect(()=>{
+  console.log(formData,auth)
+ },[])
+  const handleSubmit = async () => {
+    console.log(id)
+    try {
+      const response = await axios.put(
+        `/setup/${id}`,
+        formData
+      )
+        console.log(response)
+        toast.success("succesfull profile setup!");
+        setPage((prev) => prev + 1);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <div
-      className="flex justify-center items-center flex-col w-full lg:text-3xl md: text-2xl sm: text-xl"
-    >
+    <div className="flex justify-center items-center flex-col w-full lg:text-3xl md: text-2xl sm: text-xl">
       <p className="step-title mb-4 text-xl">Step 3</p>
       <p className="mb-2 ">Work:</p>
       <input
@@ -50,8 +72,7 @@ const PS3 = ({ updateData, setPage, likes, dislikes,work,education }) => {
         <button
           className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white hover:bg-orange-600"
           onClick={() => {
-            toast.success("form submitted succesfully");
-            setPage((prev) => prev + 1);
+            handleSubmit();
           }}
         >
           Submit

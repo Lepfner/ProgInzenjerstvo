@@ -14,7 +14,7 @@ router.put("/setup/:id", async (req, res) => {
         date_of_birth: req.body.date_of_birth,
         gender: req.body.gender,
         nationality: req.body.nationality,
-        loaction: req.body.loaction,
+        location: req.body.location,
         status: req.body.status,
         religion: req.body.religion,
         work: req.body.work,
@@ -34,7 +34,7 @@ router.put("/setup/:id", async (req, res) => {
 
 router.get("/users", async (req, res) => {
   try {
-    const users = await User.findAll({ attributes: ["id","name","surname","date_of_birth","profileimg"]});
+    const users = await User.findAll();
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json({ message: err.message });

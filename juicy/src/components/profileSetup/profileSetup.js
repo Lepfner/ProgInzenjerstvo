@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast";
 const initialData = {
   name: "",
   surname: "",
-  dateOfBirth: "",
+  date_of_birth: "",
   gender: "",
   status: "",
   nationality: "",
@@ -38,8 +38,6 @@ function ProfileSetup() {
     setPage((prev) => prev + 1);
   };
 
-  
-
   const componentList = [
     <PS1
       {...formData}
@@ -54,7 +52,7 @@ function ProfileSetup() {
       handleSubmit={handleSubmit}
     />,
     <PS3
-      {...formData}
+      formData={formData}
       updateData={updateData}
       setPage={setPage}
       handleSubmit={handleSubmit}
