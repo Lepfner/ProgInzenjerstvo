@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Menu, Item } from "burger-menu";
-import { useNavigate } from "react-router-dom";
+import { Menu } from "burger-menu";
 import "burger-menu/lib/index.css";
 
 const Hamburger = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
 
   return (
     <>
       <div onClick={() => setIsOpen(!isOpen)}>
         <FontAwesomeIcon
           id="logoIcon"
-          className="mr-10 hover:animate-pulse"
+          className="mr-10 hover:animate-pulse text-skin-a11y"
           icon={faBars}
           size="2x"
         />
@@ -25,9 +23,11 @@ const Hamburger = () => {
         selectedKey={"entry"}
         onClose={() => setIsOpen(false)}
       >
-        <Item className="" itemKey={"profile"} text={"My Profile"}></Item>
-        <Item itemKey={"settings"} text={"Settings"}></Item>
-        <Item itemKey={"logout"} text={"Logout"} onClick={() => navigate("/Login")}></Item>
+        <div className="flex flex-col">
+        <a href="/MyProfile" className="mb-10">My Profile</a>
+        <a href="/Settings" className="mb-10">Settings</a>
+        <a href="/Login" className="mb-10">Logout</a>
+        </div>
       </Menu>
     </>
   );
