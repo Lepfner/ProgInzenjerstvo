@@ -10,6 +10,7 @@ import Hamburger from "./Hamburger";
 export default function Header({ a11yColor, primaryColor }) {
 
   const [currentLogo, setCurrentLogo] = useState("");
+  const logo = localStorage.getItem("logoCurrent");
 
   useEffect(() => {
     if (localStorage.getItem("logoCurrent") === "black") {
@@ -18,7 +19,7 @@ export default function Header({ a11yColor, primaryColor }) {
     if (localStorage.getItem("logoCurrent") === "white") {
       setCurrentLogo(JuicyLogo);
     }
-  }, [])
+  }, [logo])
 
   const navigate = useNavigate();
 
