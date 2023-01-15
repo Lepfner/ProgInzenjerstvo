@@ -9,6 +9,7 @@ import ErrorPage from "./components/404";
 import { Login, SignUp, Confirmation, Recovery, AdminLogin } from "./components/Auth";
 import Settings from "./components/dashboard/Settings";
 import UserProfile from "./components/dashboard/userProfile";
+import AdminPanel from './components/dashboard/AdminPanel';
 //Dependencies
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import React, { useEffect } from 'react';
@@ -42,6 +43,7 @@ function App() {
         <Route path="/MyProfile" element={<MyProfilePage />} />
         <Route path="/Settings" element={<Settings />} />
         <Route path="/Profile/:id" element={<UserProfile />} />
+        <Route path="/AdminPanel" element={<AdminPanel />} />
       </Routes>
     </BrowserRouter> 
     </AuthProvider>
