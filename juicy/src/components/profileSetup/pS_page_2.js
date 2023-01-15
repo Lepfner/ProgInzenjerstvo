@@ -18,8 +18,9 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion, locatio
         <option value="none" selected disabled hidden>
           Select a option
         </option>
-        <option value="unmarried">unmarried</option>
+        <option value="single">single</option>
         <option value="married">married</option>
+        <option value="looking for friends">looking for friends</option>
       </select>
       <p className="mb-2 ">Nationality:</p>
       <input

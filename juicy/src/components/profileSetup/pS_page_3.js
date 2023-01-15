@@ -15,7 +15,6 @@ const PS3 = ({ updateData, setPage, formData }) => {
   console.log(formData,auth)
  },[])
   const handleSubmit = async () => {
-    console.log(id)
     try {
       const response = await axios.put(
         `/setup/${id}`,
@@ -30,7 +29,7 @@ const PS3 = ({ updateData, setPage, formData }) => {
   };
 
   return (
-    <div className="flex justify-center items-center flex-col w-full lg:text-3xl md: text-2xl sm: text-xl">
+    <div className="flex justify-center items-center flex-col w-full lg:text-2xl md: text-2xl sm: text-xl">
       <p className="step-title mb-4 text-xl">Step 3</p>
       <p className="mb-2 ">Work:</p>
       <input
