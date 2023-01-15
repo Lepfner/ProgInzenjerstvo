@@ -38,9 +38,9 @@ export default function Header({ a11yColor, primaryColor }) {
             size="2x"
           />
         </button>
-        <button className="mr-14 text-skin-a11y">
+        <div className="mr-14 mt-7">
           <Filter />
-        </button>
+        </div>
         <button>
           <FontAwesomeIcon onClick={() => navigate("/MyProfile")}
             id="logoIcon"

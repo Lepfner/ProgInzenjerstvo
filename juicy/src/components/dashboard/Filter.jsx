@@ -158,7 +158,7 @@ export default function Filter() {
         <div onClick={toggleFilter}>
           <FontAwesomeIcon
             id="logoIcon"
-            className={`${filter ? "opacity-40" : "opacity-100"}`}
+            className={`${filter ? "opacity-40" : "opacity-100"} text-skin-a11y`}
             icon={faSquareCaretDown}
             size="2x"
           />
