@@ -1,12 +1,33 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "../../api/axios";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-hot-toast";
 const AdminLogin = () => {
   const [adminCode, setAdminCode] = useState("");
   const navigate = useNavigate();
+  const { auth } = useAuth();
+  const { id } = auth;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const toastId = toast.loading('Pending')
+    try {
+      const response = await axios.post(
+        "/verifyOTP",
+        JSON.stringify({ userId: id, otp: adminCode }),
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      console.log(response);
+      toast.success("Verification successful!", {id: toastId})
+      navigate("/main")
+    } catch (error) {
+      console.log(error);
+      toast.error("invalid or expired OTP, try again!", { id: toastId });
+    }
+
     setAdminCode("");
   };
 
@@ -17,13 +38,13 @@ const AdminLogin = () => {
       </h1>
       <div className="w-full flex flex-col lg:text-lg md:flex-row text-base sm:flex-col ">
         <form className="lg: w-4/5 max-md:w-full" onSubmit={handleSubmit}>
-          <p>6-digit code:</p>
+          <p>5-digit code:</p>
           <input
             required
             value={adminCode}
-            pattern="[0-9]{1,6}"
-            minLength={6}
-            maxLength={6}
+            pattern="[0-9]{1,5}"
+            minLength={5}
+            maxLength={5}
             onChange={(e) => setAdminCode(e.target.value)}
             type="text"
             className={`${

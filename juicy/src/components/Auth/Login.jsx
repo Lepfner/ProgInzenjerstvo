@@ -17,6 +17,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const toastId = toast.loading("Pending")
     try {
       const response = await axios.post(
         "/login",
@@ -26,17 +27,20 @@ const Login = () => {
           withCredentials: true,
         }
       );
+      setIsLoggedIn(true);
       const { id, is_admin } = response?.data;
       setAuth({ email, password, id, is_admin });
-      if (is_admin) navigate("/Confirmation");
-      else {
-        setIsLoggedIn(true);
-        toast.success("successful login!");
+      if (is_admin) {
+        toast.success("redirected to admin login", {id:toastId})
+        navigate("/AdminLogin");
+      }
+      else{
+        toast.success("successful login!",{id: toastId});
         navigate("/main");
       }
     } catch (err) {
       console.log(err);
-      toast.error("incorrect email or password");
+      toast.error("incorrect email or password",{id: toastId});
     }
 
     setEmail("");
@@ -50,7 +54,7 @@ const Login = () => {
     >
       {!isLoggedIn ? (
         <>
-          <span className="lg:text-6xl mb-2 md:text-5xl sm:text-4xl inline-block w-fit flex flex-row">
+          <span className="lg:text-6xl md:text-5xl sm:text-4xl w-fit mb-2 flex flex-row">
             Go&nbsp;
             <Typewriter
               options={{

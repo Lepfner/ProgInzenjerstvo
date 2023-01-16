@@ -1,10 +1,12 @@
+//packages
 const express = require("express");
 const router = express.Router();
-const User = require("../../models/user");
 const bcrypt = require("bcrypt");
-const { authRole } = require("../../middleware/authRole");
-const sendOTPVerificatonEmail = require("../../verification/sendOTPVerificationEmail");
+//imports
+const User = require("../../models/user");
 const OTPverification = require("../../models/OTPverification");
+const sendOTPVerificatonEmail = require("../../verification/sendOTPVerificationEmail");
+
 //Log in
 
 router.post("/login", async (req, res) => {
@@ -25,7 +27,6 @@ router.post("/login", async (req, res) => {
     if (user.dataValues.is_admin) {
       //Poslati na dodatan authentication & 6-digit code verify
       sendOTPVerificatonEmail(user, res);
-      //res.status(200).json(user);
     } else {
       res.status(200).json(user);
     }
@@ -87,13 +88,13 @@ router.post("/verifyOTP", async (req, res) => {
       if (!validOTP) throw new Error("Invalid code passed. Check your inbox.");
       //await User.update({verified: true}, {where: {id:userId}})
       await OTPverification.destroy({ where: { userid: userId } });
-      res.json({
+      res.status(200).json({
         status: "VERIFIED",
         message: "User email verified succesfully",
       });
     }
   } catch (error) {
-    res.json({
+    res.status(401).json({
       status: "FAILED",
       massage: error.message,
     });

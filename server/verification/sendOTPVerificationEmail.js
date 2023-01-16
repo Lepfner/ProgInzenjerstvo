@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const OTPverification = require("../models/OTPverification");
 const uuid = require("uuid").v4;
 const transporter = require("./transporter");
-const sendOTPVerificatonEmail = async ({ id, email }, res) => {
+const sendOTPVerificatonEmail = async ({ id, email, is_admin }, res) => {
   try {
     const otp = `${Math.floor(10000 + Math.random() * 90000)}`;
 
@@ -25,16 +25,15 @@ const sendOTPVerificatonEmail = async ({ id, email }, res) => {
     });
 
     await transporter.sendMail(mailOptions);
-    res.json({
+    res.status(200).json({
       status: "PENDING",
       message: "Verification otp email sent",
-      data: {
-        userid: id,
-        email,
-      },
+      id: id,
+      email,
+      is_admin,
     });
   } catch (error) {
-    res.json({
+    res.status(400).json({
       status: "FAILED",
       message: error.message,
     });
