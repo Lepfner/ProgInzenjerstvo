@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Header from "./Header";
 import Location from "../images/Location.png";
 import logo from "../images/logo.png";
 import Chip from "@mui/material/Chip";
-import { getRGBColor, getAccessibleColor } from "../dashboard/utils"
+import { getRGBColor, getAccessibleColor,visible } from "../dashboard/utils"
+
 
 const likesArr = [
   "Web Dev",
@@ -42,7 +43,6 @@ const MyProfilePage = () => {
   const [userData, setUserData] = useState(user);
   const primaryColor = getRGBColor(localStorage.getItem("currentColor"), "primary")
   const a11yColor = getRGBColor(getAccessibleColor(localStorage.getItem("currentColor")), "a11y")
-
   const {
     firstName,
     lastName,
@@ -54,7 +54,9 @@ const MyProfilePage = () => {
     status,
     religion,
   } = userData;
-
+  useEffect(() => {
+    localStorage.setItem("vis", false);
+  })
   return (
     <>
       <style>:root {`{${primaryColor} ${a11yColor}}`}</style>

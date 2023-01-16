@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOut, faGear, faUser } from "@fortawesome/free-solid-svg-icons";
 import JuicyLogo from "../images/logo.png";
@@ -7,11 +7,10 @@ import Filter from "./Filter";
 import { useNavigate } from "react-router-dom";
 import Hamburger from "./Hamburger";
 
-export default function Header({ a11yColor, primaryColor }) {
+export default function Header({ a11yColor, primaryColor,visible }) {
 
   const [currentLogo, setCurrentLogo] = useState("");
   const logo = localStorage.getItem("logoCurrent");
-
   useEffect(() => {
     if (localStorage.getItem("logoCurrent") === "black") {
       setCurrentLogo(BlackLogo);
@@ -19,10 +18,10 @@ export default function Header({ a11yColor, primaryColor }) {
     if (localStorage.getItem("logoCurrent") === "white") {
       setCurrentLogo(JuicyLogo);
     }
+
   }, [logo])
 
   const navigate = useNavigate();
-
   return (
     <div className="flex justify-between bg-skin-primary pt-7 pb-7 ">
       <div className="md:ml-10 min-w-[50%]">
@@ -32,9 +31,10 @@ export default function Header({ a11yColor, primaryColor }) {
       </div>
       <div className="flex">
         {/* TODO: Find a better way to solve display issues here */}
-        <button className="mr-14 text-skin-a11y">
+        {visible && <button id="fil" className="mr-14 text-skin-a11y">
           <Filter />
-        </button>
+        </button> }
+       
         <button>
           <FontAwesomeIcon onClick={() => navigate("/MyProfile")}
             id="logoIcon"

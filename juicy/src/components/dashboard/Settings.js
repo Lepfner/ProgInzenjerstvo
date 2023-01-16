@@ -34,7 +34,7 @@ export default function Settings() {
       <Header primaryColor={primaryColor} a11yColor={a11yColor} />
       <div className=' w-full flex justify-center items-center mt-10'>
         <div className='bg-skin-primary w-3/4 p-3 rounded-2xl text-center flex items-center space-x-4 shadow-xl flex-col md:flex-row'>
-          <div className='md:w-5/12 w-full flex flex-col justify-center items-center sm:items-baseline md:border-r border-0 text-skin-a11y'>
+          <div className='md:w-5/12 w-full flex flex-col justify-center items-center md:border-r border-0 text-skin-a11y'>
             <div className='mt-8'>
               <h1 className="inline lg:text-3xl mb-2 md:text-2xl sm:text-xl">Notifications:</h1>
               <input className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black transition duration-200 cursor-pointer ml-4"
@@ -45,15 +45,15 @@ export default function Settings() {
             <h1 className="bg-skin-primary text-3xl mt-10 mb-4">Report a problem:</h1>
             <form ref={form} onSubmit={sendEmail} className='w-full'>
               <input type='text' name="user" placeholder='Write your username'
-                className="resize-none focus:outline-none block p-2.5 w-5/6 h-10 mb-6 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                className="resize-none focus:outline-none p-2.5 w-5/6 h-10 mb-6 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               </input>
               <textarea
                 name="message"
-                className="resize-none focus:outline-none block p-2.5 w-5/6 h-32 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="resize-none focus:outline-none p-2.5 w-5/6 h-32 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Feel free to let us know what is bothering you and write as many details as you like:" />
               <button
                 type="submit"
-                className="block bg-gray-700 px-4 w-32 rounded-md p-2 mt-4 text-white hover:text-skin-a11y lg:text-xl md:text-lg sm: text-lg flex justify-center">
+                className=" bg-gray-700 px-4 w-32 rounded-md p-2 mt-4 text-white hover:text-skin-a11y lg:text-xl md:text-lg sm: text-lg">
                 Send
               </button>
             </form>
