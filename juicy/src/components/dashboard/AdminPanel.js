@@ -26,6 +26,23 @@ const MyProfilePage = () => {
     fetch()
   },[query]);
 
+  function deleteHandler() {
+    axios.post('/deleteUser', {
+      firstName: 'Fred',
+      lastName: 'Flintstone'
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  function notifyHandler() {
+    console.log("Work in progress!");
+  }
+
   return (
     <>
       <style>:root {`{${primaryColor} ${a11yColor}}`}</style>
@@ -52,8 +69,8 @@ const MyProfilePage = () => {
                 <p className="w-1/6">Lepfner</p>
                 <p className="w-1/3">lerner.andi@gmail.com</p>
                 <p className="w-1/6">15-1-2023</p>
-                <p className="w-1/12">Delete</p>
-                <p className="w-1/12">Notify</p>
+                <p className="cursor-pointer w-1/12 text-red-500" onClick={() => deleteHandler()}>Delete</p>
+                <p className="cursor-pointer w-1/12 text-blue-500" onClick={() => notifyHandler()}>Notify</p>
               </div>
             </section>
           </div>
