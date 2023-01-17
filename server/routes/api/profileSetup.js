@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../../models/user");
+const sequelize = require("sequelize");
 
 router.put("/setup/:id", async (req, res) => {
   try {
@@ -34,11 +35,32 @@ router.put("/setup/:id", async (req, res) => {
 
 router.get("/users", async (req, res) => {
   try {
-    const users = await User.findAll({ attributes: ["id","name","surname","date_of_birth","profileimg"]});
+    const users = await User.findAll({
+      attributes: ["id", "name", "surname", "date_of_birth", "profileimg"],
+    });
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
+});
+
+router.get("/search/:query", (req, res) => {
+  const query = req.params.query;
+  User.findAll({
+    attributes: ["id", "name", "surname", "date_of_birth", "profileimg"],
+    where: {
+      // name: sequelize.where(
+      //   sequelize.fn("LOWER", sequelize.col("name")),
+      //   "LIKE",
+      //   query.toLowerCase()
+      // ),
+      name: {
+        [sequelize.Op.like]: `%${query}%`
+      }
+    },
+  })
+    .then((users) => res.status(200).json(users))
+    .catch((err) => res.status(500).json({ message: err.message }));
 });
 
 module.exports = router;

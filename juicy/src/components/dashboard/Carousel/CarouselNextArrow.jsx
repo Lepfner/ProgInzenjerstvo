@@ -1,5 +1,5 @@
 import React from "react";
-import nextArrow from '../images/nextArrow.png';
+import nextArrow from "../../images/nextArrow.png";
 
 const CarouselNextArrow = (props) => {
   const { className, onClick } = props;
@@ -8,6 +8,6 @@ const CarouselNextArrow = (props) => {
       <img src={nextArrow} alt="next" />
     </div>
   );
-}
+};
 
-export default CarouselNextArrow
+export default CarouselNextArrow;
