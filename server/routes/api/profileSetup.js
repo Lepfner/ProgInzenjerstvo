@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../../models/user");
-const sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 
 router.put("/setup/:id", async (req, res) => {
   try {
@@ -49,14 +49,18 @@ router.get("/search/:query", (req, res) => {
   User.findAll({
     attributes: ["id", "name", "surname", "date_of_birth", "profileimg"],
     where: {
-      // name: sequelize.where(
-      //   sequelize.fn("LOWER", sequelize.col("name")),
-      //   "LIKE",
-      //   query.toLowerCase()
-      // ),
-      name: {
-        [sequelize.Op.like]: `%${query}%`
-      }
+      [Sequelize.Op.or]: [
+        {
+          name: {
+            [Sequelize.Op.iLike]: `%${query}%`
+          }
+        },
+        {
+          surname: {
+            [Sequelize.Op.iLike]: `%${query}%`
+          }
+        }
+      ]
     },
   })
     .then((users) => res.status(200).json(users))
