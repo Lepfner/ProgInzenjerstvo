@@ -17,7 +17,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const toastId = toast.loading("Pending")
+    const toastId = toast.loading("Pending");
     try {
       const response = await axios.post(
         "/login",
@@ -31,16 +31,15 @@ const Login = () => {
       const { id, is_admin } = response?.data;
       setAuth({ email, password, id, is_admin });
       if (is_admin) {
-        toast.success("redirected to admin login", {id:toastId})
+        toast.success("redirected to admin login", { id: toastId });
         navigate("/AdminLogin");
-      }
-      else{
-        toast.success("successful login!",{id: toastId});
+      } else {
+        toast.success("successful login!", { id: toastId });
         navigate("/main");
       }
     } catch (err) {
       console.log(err);
-      toast.error("incorrect email or password",{id: toastId});
+      toast.error("incorrect email or password", { id: toastId });
     }
 
     setEmail("");
