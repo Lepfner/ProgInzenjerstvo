@@ -23,7 +23,7 @@ const AdminLogin = () => {
       console.log(response);
       console.log(auth, isLoggedIn)
       toast.success("Verification successful!", {id: toastId})
-      navigate("/Main")
+      navigate("/AdminPanel") 
     } catch (error) {
       console.log(error);
       toast.error("invalid or expired OTP, try again!", { id: toastId });
