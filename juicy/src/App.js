@@ -51,12 +51,11 @@ function App() {
           </Route>
 
           <Route element={<RequireAuth requireUser={true}/>}>
-            <Route path="/Main" element={<Dashboard />} /> 
-          </Route>
+            <Route path="/Main" element={<Dashboard />} />
             <Route path="/Setup" element={<ProfileSetup />} />
             <Route path="/MyProfile" element={<MyProfilePage />} />
             <Route path="/Profile/:id" element={<UserProfile />} /> 
-         
+         </Route> 
 
           <Route element={<RequireAuth />}>
             <Route path="/Settings" element={<Settings />} />
