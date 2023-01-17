@@ -11,9 +11,9 @@ import Typewriter from "typewriter-effect";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const navigate = useNavigate();
-  const { setAuth } = useAuth();
+  const { setAuth, isLoggedIn, setIsLoggedIn } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

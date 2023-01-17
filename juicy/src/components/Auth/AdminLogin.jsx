@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 const AdminLogin = () => {
   const [adminCode, setAdminCode] = useState("");
   const navigate = useNavigate();
-  const { auth } = useAuth();
+  const { auth, isLoggedIn } = useAuth();
   const { id } = auth;
 
   const handleSubmit = async (e) => {
@@ -21,8 +21,9 @@ const AdminLogin = () => {
         }
       );
       console.log(response);
+      console.log(auth, isLoggedIn)
       toast.success("Verification successful!", {id: toastId})
-      navigate("/main")
+      navigate("/Main")
     } catch (error) {
       console.log(error);
       toast.error("invalid or expired OTP, try again!", { id: toastId });
