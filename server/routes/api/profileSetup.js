@@ -36,7 +36,7 @@ router.put("/setup/:id", async (req, res) => {
 router.get("/users", async (req, res) => {
   try {
     const users = await User.findAll({
-      attributes: ["id", "name", "surname", "date_of_birth", "profileimg"],
+      attributes: ["id", "name", "surname", "date_of_birth", "profileimg", "gender", "eye_color"],
     });
     res.status(200).json(users);
   } catch (err) {
@@ -47,7 +47,7 @@ router.get("/users", async (req, res) => {
 router.get("/search/:query", (req, res) => {
   const query = req.params.query;
   User.findAll({
-    attributes: ["id", "name", "surname", "date_of_birth", "profileimg"],
+    attributes: ["id", "name", "surname", "date_of_birth", "profileimg", "gender", "eye_color"],
     where: {
       [Sequelize.Op.or]: [
         {
