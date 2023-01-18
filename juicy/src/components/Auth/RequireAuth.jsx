@@ -11,7 +11,6 @@ const RequireAuth = ({ requireAdmin = false, requireUser = false }) => {
  }, [])
  
   if (requireAdmin) {
-
     return isLoggedIn ? (
       auth.is_admin ? (
         <Outlet />

@@ -5,26 +5,36 @@ import Tags from "./Tags";
 import axios from "../../api/axios";
 import useAuth from "../../hooks/useAuth";
 
-
 const PS3 = ({ updateData, setPage, formData }) => {
   const { likes, dislikes, work, education } = formData;
-  const {auth} = useAuth()
-  const {id} = auth
+  const { auth } = useAuth();
+  const { id } = auth;
 
- useEffect(()=>{
-  console.log(formData,auth)
- },[])
   const handleSubmit = async () => {
+    const toastId = toast.loading("Pending")
+    const likesMaped = likes.map((like) => {
+      return { user_id:id, thing: like, "likes/dislikes": 1 };
+    });
+    const dislikesMaped = dislikes.map((dislike) => {
+      return { user_id:id, thing: dislike, "likes/dislikes": 0 };
+    });
+
     try {
-      const response = await axios.put(
-        `/setup/${id}`,
-        formData
+      const formResponse = await axios.put(
+        `/setup/${id}`, 
+        {formData}
+      );
+      const resLikesDislikes = await axios.post(
+        "/likesDislikes",
+        {likes:likesMaped, dislikes:dislikesMaped}
       )
-        console.log(response)
-        toast.success("succesfull profile setup!");
-        setPage((prev) => prev + 1);
+      console.log(formResponse);
+      console.log(resLikesDislikes)
+      toast.success("succesfull profile setup!", {id:toastId});
+      setPage((prev) => prev + 1);
     } catch (error) {
       console.log(error);
+      toast.error("an error occured", {id: toastId})
     }
   };
 
