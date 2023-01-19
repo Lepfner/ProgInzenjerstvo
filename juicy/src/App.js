@@ -51,12 +51,15 @@ function App() {
             <Route path="/unauthorized" element={<Unauthorized />} />
           </Route>
 
+          <Route element={<RequireAuth requireAdmin={true} />}>
+            <Route path="/AdminPanel" element={<AdminPanel />} />
+          </Route>
+
           <Route element={<RequireAuth requireUser={true}/>}>
             <Route path="/Main" element={<Dashboard />} />
             <Route path="/Setup" element={<ProfileSetup />} />
             <Route path="/MyProfile" element={<MyProfilePage />} />
             <Route path="/Profile/:id" element={<UserProfile />} />
-            <Route path="/AdminPanel" element={<AdminPanel />} />
          </Route> 
 
           <Route element={<RequireAuth />}>
