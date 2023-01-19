@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PrevBtn from "./prevBtn";
 import { toast } from "react-hot-toast";
 import Tags from "./Tags";

@@ -3,8 +3,8 @@ import Header from "./Header";
 import Location from "../images/Location.png";
 import logo from "../images/logo.png";
 import Chip from "@mui/material/Chip";
-import { getRGBColor, getAccessibleColor,visible } from "../dashboard/utils"
-
+import { useNavigate } from "react-router-dom";
+import { getRGBColor, getAccessibleColor } from "../dashboard/utils"
 
 const likesArr = [
   "Web Dev",
@@ -54,7 +54,16 @@ const MyProfilePage = () => {
     status,
     religion,
   } = userData;
+  const navigate = useNavigate();
+
+  function checkUserToken() {
+    if (localStorage.getItem("isLoggedIn") === 'false') {
+      return navigate('/login');
+    }
+  }
+
   useEffect(() => {
+    checkUserToken();
     localStorage.setItem("vis", false);
   })
   return (

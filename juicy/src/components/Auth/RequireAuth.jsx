@@ -11,7 +11,7 @@ const RequireAuth = ({ requireAdmin = false, requireUser = false }) => {
  }, [])
  
   if (requireAdmin) {
-    return isLoggedIn ? (
+    return localStorage.getItem("isLoggedIn") ? (
       auth.is_admin ? (
         <Outlet />
       ) : (
@@ -21,7 +21,7 @@ const RequireAuth = ({ requireAdmin = false, requireUser = false }) => {
     );
   } 
   else if(requireUser){
-     return isLoggedIn ? (
+     return localStorage.getItem("isLoggedIn") ? (
       auth.is_admin ? (
          <Navigate to="/unauthorized" state={{ from: location }} replace />
       ) : (
@@ -31,7 +31,7 @@ const RequireAuth = ({ requireAdmin = false, requireUser = false }) => {
     );
   }
   else {
-   return isLoggedIn ? <Outlet />
+   return localStorage.getItem("isLoggedIn") ? <Outlet />
         : <Navigate to="/unauthorized" state={{ from: location }} replace />
     
   }

@@ -3,14 +3,23 @@ import { getRGBColor, getAccessibleColor } from "../dashboard/utils"
 import Location from "../images/Location.png";
 import Header from '../dashboard/Header';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import emailjs from '@emailjs/browser';
 
 const UserProfile = () => {
     const primaryColor = getRGBColor(localStorage.getItem("currentColor"), "primary")
     const a11yColor = getRGBColor(getAccessibleColor(localStorage.getItem("currentColor")), "a11y")
     const [user, setUser] = useState([]);
+    const navigate = useNavigate();
+
+    function checkUserToken() {
+        if (localStorage.getItem("isLoggedIn") === 'false') {
+          return navigate('/login');
+        }
+      }
 
     useEffect(() => {
+        checkUserToken();
         const fetch = async () => {
             const currentUrl = window.location.href.slice(30, 32);
             const result = await axios(`https://dummyjson.com/users/${currentUrl}`);
@@ -79,7 +88,7 @@ const UserProfile = () => {
                                     <h3>
                                         <span className="font-bold">Religion:</span>
                                     </h3>
-                                    <button onClick={() => {sendEmail}}>
+                                    <button onClick={() => sendEmail}>
                                         REPORT USER
                                     </button>
                                 </div>

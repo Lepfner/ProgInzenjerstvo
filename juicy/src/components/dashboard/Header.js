@@ -6,8 +6,11 @@ import BlackLogo from '../images/blackLogo.png';
 import Filter from "./Filter";
 import { useNavigate } from "react-router-dom";
 import Hamburger from "./Hamburger";
+import useAuth from "../../hooks/useAuth";
 
 export default function Header({ a11yColor, primaryColor,visible }) {
+
+  const { setAuth, isLoggedIn, setIsLoggedIn } = useAuth();
 
   const [currentLogo, setCurrentLogo] = useState("");
   const logo = localStorage.getItem("logoCurrent");
@@ -20,6 +23,12 @@ export default function Header({ a11yColor, primaryColor,visible }) {
     }
 
   }, [logo])
+
+  function handleLogout()  {
+    localStorage.setItem("isLoggedIn", false);
+    setAuth({});
+    navigate("/Login");
+  }
 
   const navigate = useNavigate();
   return (
@@ -38,9 +47,9 @@ export default function Header({ a11yColor, primaryColor,visible }) {
             size="2x"
           />
         </button>
-        {visible && <button id="fil" className="mr-14 text-skin-a11y">
+        {visible && <div id="fil" className="mr-14 mt-7 text-skin-a11y">
           <Filter />
-        </button> }
+        </div> }
         <button>
           <FontAwesomeIcon onClick={() => navigate("/MyProfile")}
             id="logoIcon"
@@ -57,7 +66,7 @@ export default function Header({ a11yColor, primaryColor,visible }) {
             size="2x"
           />
         </button>
-        <button onClick={() => navigate("/Login")}>
+        <button onClick={() => handleLogout()}>
           <FontAwesomeIcon
             id="logoutIcon"
             className="hidden md:flex mr-10 hover:animate-ping text-skin-a11y"

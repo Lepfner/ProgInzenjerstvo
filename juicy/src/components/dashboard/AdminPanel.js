@@ -1,6 +1,7 @@
 //Dependencies
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 //Components
 import Header from "./Header";
 import Search from "./Search";
@@ -9,11 +10,18 @@ import { getRGBColor, getAccessibleColor } from "../dashboard/utils"
 const MyProfilePage = () => {
   const primaryColor = getRGBColor(localStorage.getItem("currentColor"), "primary")
   const a11yColor = getRGBColor(getAccessibleColor(localStorage.getItem("currentColor")), "a11y")
-
+  const navigate = useNavigate();
   const [query, setQuery] = useState('');
   const [items, setItems] = useState([]);
 
+  function checkUserToken() {
+    if (localStorage.getItem("isLoggedIn") === 'false') {
+      return navigate('/login');
+    }
+  }
+
   useEffect(() => {
+    checkUserToken();
     const fetch = async()=> {
       // if(query===''){
         const result = await axios(`http://localhost:5000/users`);

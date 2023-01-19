@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PS1 from "./pS_page_1";
 import PS2 from "./pS_page_2";
 import PS3 from "./pS_page_3";
 import Success from "./Success";
 import { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const initialData = {
   name: "",
@@ -12,20 +13,31 @@ const initialData = {
   gender: "",
   status: "",
   nationality: "",
-  location:"",
+  location: "",
   religion: "",
-  height:"",
-  hair_color:"",
-  eye_color:"",
-  work:"",
-  education:"",
+  height: "",
+  hair_color: "",
+  eye_color: "",
+  work: "",
+  education: "",
   likes: [],
   dislikes: [],
 };
 
 function ProfileSetup() {
+  const navigate = useNavigate();
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState(initialData);
+
+  function checkUserToken() {
+    if (localStorage.getItem("isLoggedIn") === 'false') {
+      return navigate('/login');
+    }
+  }
+
+  useEffect(() => {
+    checkUserToken();
+  })
 
   const updateData = (fields) => {
     setFormData((prev) => {
@@ -78,10 +90,10 @@ function ProfileSetup() {
                   page === 0
                     ? "25%"
                     : page === 1
-                    ? "50%"
-                    : page === 2
-                    ? "75%"
-                    : "100%",
+                      ? "50%"
+                      : page === 2
+                        ? "75%"
+                        : "100%",
               }}
             ></div>
           </div>

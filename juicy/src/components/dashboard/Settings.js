@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import ColorPicker from "../dashboard/colorPicker"
 import { getRGBColor, getAccessibleColor } from "../dashboard/utils"
 import Header from '../dashboard/Header';
+import { useNavigate } from "react-router-dom";
 import emailjs from '@emailjs/browser';
 
 export default function Settings() {
@@ -10,9 +11,18 @@ export default function Settings() {
   const primaryColor = getRGBColor(color, "primary");
   const a11yColor = getRGBColor(getAccessibleColor(color), "a11y");
 
+  const navigate = useNavigate();
+
   const presetColors = ["#ef6c00", "#6231af", "#db2777", "#2dd4bf", "#06b6d4", "#10b981"];
 
+  function checkUserToken() {
+    if (localStorage.getItem("isLoggedIn") === 'false') {
+      return navigate('/login');
+    }
+  }
+
   useEffect(() => {
+    checkUserToken();
     localStorage.setItem("currentColor", color);
   })
 

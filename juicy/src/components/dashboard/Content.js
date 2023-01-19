@@ -34,7 +34,6 @@ export default function Content() {
       });
       setItems(result.data);
     }
-    
   };
 
   useEffect(() => {
