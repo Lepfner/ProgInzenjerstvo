@@ -31,6 +31,7 @@ export default function Filter() {
       localStorage.setItem("ageMin", ageValue[0]);
       localStorage.setItem("ageMax", ageValue[1]);
       localStorage.setItem("eyeColor", statusValue);
+      localStorage.setItem("gender", genderValue);
       window.location.reload(false);
     }
   };
@@ -51,7 +52,7 @@ export default function Filter() {
             ref={popover}
           >
             <form
-              className="flex flex-col bg-slate-200 m-4 rounded-xl pb-4 px-4 relative"
+              className="flex flex-col bg-slate-500 m-4 rounded-xl pb-4 px-4 relative"
               onSubmit={handleSubmit}
             >
               <div
@@ -148,7 +149,7 @@ export default function Filter() {
               <button
                 type="submit"
                 className="block max-w-min m-auto pb-[5px] bg-skin-primary px-4 
-                           rounded-md p-2 mt-4 text-white"
+                           rounded-md p-2 mt-4 text-skin-a11y"
               >
                 Apply
               </button>

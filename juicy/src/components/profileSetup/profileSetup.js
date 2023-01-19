@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast";
 const initialData = {
   name: "",
   surname: "",
-  dateOfBirth: "",
+  date_of_birth: "",
   gender: "",
   status: "",
   nationality: "",
@@ -38,8 +38,6 @@ function ProfileSetup() {
     setPage((prev) => prev + 1);
   };
 
-  
-
   const componentList = [
     <PS1
       {...formData}
@@ -54,7 +52,7 @@ function ProfileSetup() {
       handleSubmit={handleSubmit}
     />,
     <PS3
-      {...formData}
+      formData={formData}
       updateData={updateData}
       setPage={setPage}
       handleSubmit={handleSubmit}
@@ -69,7 +67,7 @@ function ProfileSetup() {
       <div
         className="h-full flex flex-col justify-center max-w-[75%]
                      outline outline-orange-500 outline-[1rem] rounded-xl z-0
-                     lg:w-4/5 md:w-4/5"
+                     w-[100%]"
       >
         <div className="w-full rounded-xl p-12 z-10">
           <div className="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">

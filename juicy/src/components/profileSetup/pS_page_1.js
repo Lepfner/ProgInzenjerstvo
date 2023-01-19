@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useMemo } from "react";
 import NextBtn from "./nextBtn";
 
 const today = new Date();
 const PS1 = ({
   name,
   surname,
-  dateOfBirth,
+  date_of_birth,
   gender,
   updateData,
   handleSubmit,
@@ -14,11 +14,11 @@ const PS1 = ({
     return get + 1 < 10 ? "0" : "";
   };
 
-  const maxDate = `${today.getFullYear() - 18}-${
-    format(today.getMonth())}${
-    today.getMonth() + 1
-  }-${format(today.getDay())}${
-    today.getDay() + 1}`;
+  const maxDate = `${today.getFullYear() - 18
+  }-${format(today.getMonth())
+  }${today.getMonth() + 1
+  }-${format(today.getDay())
+  }${today.getDay() + 1}`;
 
   return (
     <form
@@ -49,8 +49,8 @@ const PS1 = ({
       </div>
       <input
         required
-        value={dateOfBirth}
-        onChange={(e) => updateData({ dateOfBirth: e.target.value })}
+        value={date_of_birth}
+        onChange={(e) => updateData({ date_of_birth: e.target.value })}
         type="date"
         max={maxDate}
         className="h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"

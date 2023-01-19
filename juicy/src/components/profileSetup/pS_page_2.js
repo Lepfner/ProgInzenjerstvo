@@ -2,7 +2,7 @@ import React from "react";
 import NextBtn from "./nextBtn";
 import PrevBtn from "./prevBtn";
 
-const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location,height,hair_color,eye_color }) => {
+const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion, location, height, hair_color, eye_color }) => {
   return (
     <form
       className="flex justify-center items-center flex-col lg:text-3xl w-4/5 md: text-2xl sm: text-xl"
@@ -15,15 +15,20 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location
         onChange={(e) => updateData({ status: e.target.value })}
         required
       >
-        <option value="unmarried">unmarried</option>
+        <option value="none" selected disabled hidden>
+          Select a option
+        </option>
+        <option value="single">single</option>
         <option value="married">married</option>
+        <option value="looking for friends">looking for friends</option>
       </select>
       <p className="mb-2 ">Nationality:</p>
       <input
         required
         value={nationality}
         onChange={(e) => updateData({ nationality: e.target.value })}
-        type="text" pattern="[A-Za-z]{1,}"
+        type="text"
+        pattern="[A-Za-z]{1,}"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
         placeholder="e.g. Croatian"
       />
@@ -49,7 +54,9 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location
         required
         value={height}
         onChange={(e) => updateData({ height: e.target.value })}
-        type="number" min="100" max="250"
+        type="number"
+        min="100"
+        max="250"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
       />
       <p className="mb-2 ">Hair Color:</p>
@@ -57,15 +64,17 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion,location
         required
         value={hair_color}
         onChange={(e) => updateData({ hair_color: e.target.value })}
-        type="text" pattern="[A-Za-z]{1,20}"
+        type="text"
+        pattern="[A-Za-z]{1,20}"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
       />
-       <p className="mb-2 ">Eye Color:</p>
+      <p className="mb-2 ">Eye Color:</p>
       <input
         required
         value={eye_color}
         onChange={(e) => updateData({ eye_color: e.target.value })}
-        type="text" pattern="[A-Za-z]{1,20}"
+        type="text"
+        pattern="[A-Za-z]{1,20}"
         className="text-lg h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-4/5 md:w-4/5"
       />
       <div className="flex justify-center w-full lg:gap-8 flex-row md:flex-row gap-2 max-sm:flex-col">
