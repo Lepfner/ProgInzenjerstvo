@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../../models/user");
+const Sequelize = require("sequelize");
 const LikesDislikes = require("../../models/likesDislikes")
 
 router.post("/likesDislikes", async (req, res)=>{
@@ -52,11 +53,37 @@ router.put("/setup/:id", async (req, res) => {
 
 router.get("/users", async (req, res) => {
   try {
-    const users = await User.findAll();
+    const users = await User.findAll({
+      attributes: ["id", "name", "surname", "date_of_birth", "profileimg", "gender", "eye_color"],
+    });
+
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
+});
+
+router.get("/search/:query", (req, res) => {
+  const query = req.params.query;
+  User.findAll({
+    attributes: ["id", "name", "surname", "date_of_birth", "profileimg", "gender", "eye_color"],
+    where: {
+      [Sequelize.Op.or]: [
+        {
+          name: {
+            [Sequelize.Op.iLike]: `%${query}%`
+          }
+        },
+        {
+          surname: {
+            [Sequelize.Op.iLike]: `%${query}%`
+          }
+        }
+      ]
+    },
+  })
+    .then((users) => res.status(200).json(users))
+    .catch((err) => res.status(500).json({ message: err.message }));
 });
 
 module.exports = router;

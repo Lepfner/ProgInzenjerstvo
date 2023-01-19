@@ -31,6 +31,7 @@ export default function Filter() {
       localStorage.setItem("ageMin", ageValue[0]);
       localStorage.setItem("ageMax", ageValue[1]);
       localStorage.setItem("eyeColor", statusValue);
+      localStorage.setItem("gender", genderValue);
       window.location.reload(false);
     }
   };
