@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PrevBtn from "./prevBtn";
 import { toast } from "react-hot-toast";
 import Tags from "./Tags";
+import axios from "../../api/axios";
+import useAuth from "../../hooks/useAuth";
 
-const PS3 = ({ updateData, setPage, likes, dislikes,work,education }) => {
+const PS3 = ({ updateData, setPage, formData }) => {
+  const { likes, dislikes, work, education } = formData;
+  const { auth } = useAuth();
+  const { id } = auth;
+
+  const handleSubmit = async () => {
+    const toastId = toast.loading("Pending")
+    const likesMaped = likes.map((like) => {
+      return { user_id:id, thing: like, "likes/dislikes": 1 };
+    });
+    const dislikesMaped = dislikes.map((dislike) => {
+      return { user_id:id, thing: dislike, "likes/dislikes": 0 };
+    });
+
+    try {
+      const formResponse = await axios.put(
+        `/setup/${id}`, 
+        {formData}
+      );
+      const resLikesDislikes = await axios.post(
+        "/likesDislikes",
+        {likes:likesMaped, dislikes:dislikesMaped}
+      )
+      console.log(formResponse);
+      console.log(resLikesDislikes)
+      toast.success("succesfull profile setup!", {id:toastId});
+      setPage((prev) => prev + 1);
+    } catch (error) {
+      console.log(error);
+      toast.error("an error occured", {id: toastId})
+    }
+  };
 
   return (
-    <div
-      className="flex justify-center items-center flex-col w-full lg:text-3xl md: text-2xl sm: text-xl"
-    >
+    <div className="flex justify-center items-center flex-col w-full lg:text-2xl md: text-2xl sm: text-xl">
       <p className="step-title mb-4 text-xl">Step 3</p>
       <p className="mb-2 ">Work:</p>
       <input
@@ -50,8 +81,7 @@ const PS3 = ({ updateData, setPage, likes, dislikes,work,education }) => {
         <button
           className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white hover:bg-orange-600"
           onClick={() => {
-            toast.success("form submitted succesfully");
-            setPage((prev) => prev + 1);
+            handleSubmit();
           }}
         >
           Submit
