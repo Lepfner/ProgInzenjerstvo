@@ -3,6 +3,7 @@ import { getRGBColor, getAccessibleColor } from "../dashboard/utils"
 import Location from "../images/Location.png";
 import Header from '../dashboard/Header';
 import axios from "axios";
+import emailjs from '@emailjs/browser';
 
 const UserProfile = () => {
     const primaryColor = getRGBColor(localStorage.getItem("currentColor"), "primary")
@@ -10,13 +11,28 @@ const UserProfile = () => {
     const [user, setUser] = useState([]);
 
     useEffect(() => {
-        const fetch = async() => {
+        const fetch = async () => {
             const currentUrl = window.location.href.slice(30, 32);
             const result = await axios(`https://dummyjson.com/users/${currentUrl}`);
             setUser(result.data);
         }
         fetch()
     }, []);
+    
+    const sendEmail = (e) => {
+        var params = {
+            user:  user.firstName,
+            message: `User ${user.firstName} has been reported for inappropriate behaviour`
+        };
+        e.preventDefault();
+
+        emailjs.sendForm('service_l72z64l', 'template_mu6s50h', params, 'M-karua9jmM9OyLKr')
+            .then((result) => {
+                // show the user a success message
+            }, (error) => {
+                console.log(error);
+            });
+    };
 
     return (
         <>
@@ -63,6 +79,9 @@ const UserProfile = () => {
                                     <h3>
                                         <span className="font-bold">Religion:</span>
                                     </h3>
+                                    <button onClick={() => {sendEmail}}>
+                                        REPORT USER
+                                    </button>
                                 </div>
                             </section>
                         </div>
@@ -80,7 +99,7 @@ const UserProfile = () => {
                         </section>
                         <section className="w-[90%] min-h-[13rem] bg-slate-300 mx-4 rounded-xl px-8 py-4">
                             <h2 className="text-center text-2xl">Likes & Dislikes</h2>
-                        {/*
+                            {/*
                             <h3 className="text-lg">Likes:</h3>
                             {likes.map((like, index) => {
                                 return (

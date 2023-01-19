@@ -27,7 +27,7 @@ export default function Filter() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(ageValue[0]!==18 || ageValue[1]!==99 || genderValue!=="" || statusValue!==""){
+    if (ageValue[0] !== 18 || ageValue[1] !== 99 || genderValue !== "" || statusValue !== "") {
       localStorage.setItem("ageMin", ageValue[0]);
       localStorage.setItem("ageMax", ageValue[1]);
       localStorage.setItem("eyeColor", statusValue);
@@ -159,7 +159,7 @@ export default function Filter() {
         <div onClick={toggleFilter}>
           <FontAwesomeIcon
             id="logoIcon"
-            className={`${filter ? "opacity-40" : "opacity-100"}`}
+            className={`${filter ? "opacity-40" : "opacity-100"} text-skin-a11y`}
             icon={faSquareCaretDown}
             size="2x"
           />
