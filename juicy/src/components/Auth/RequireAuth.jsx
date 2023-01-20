@@ -6,8 +6,6 @@ const RequireAuth = ({ requireAdmin = false, requireUser = false }) => {
   const { auth, isLoggedIn } = useAuth();
   const location = useLocation();
  useEffect(() => {
-   console.log(requireAdmin, requireUser)
-   console.log(auth, isLoggedIn)
  }, [])
  
   if (requireAdmin) {

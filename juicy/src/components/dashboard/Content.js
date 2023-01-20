@@ -21,7 +21,6 @@ export default function Content() {
         delete user.dateOfBirth;
       });
       setItems(result.data);
-      console.log(items)
     } else {
       const result = await axios(
         `http://localhost:5000/search/${query}`

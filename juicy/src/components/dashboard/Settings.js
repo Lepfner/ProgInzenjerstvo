@@ -7,7 +7,6 @@ import emailjs from '@emailjs/browser';
 
 export default function Settings() {
   const [color, setColor] = useState(localStorage.getItem("currentColor"));
-  const [isOn, setIsOn] = useState(true);
   const primaryColor = getRGBColor(color, "primary");
   const a11yColor = getRGBColor(getAccessibleColor(color), "a11y");
 
@@ -45,13 +44,6 @@ export default function Settings() {
       <div className=' w-full flex justify-center items-center mt-10'>
         <div className='bg-skin-primary w-3/4 p-3 rounded-2xl text-center flex items-center space-x-4 shadow-xl flex-col md:flex-row'>
           <div className='md:w-5/12 w-full flex flex-col justify-center items-center md:border-r border-0 text-skin-a11y'>
-            <div className='mt-8'>
-              <h1 className="inline lg:text-3xl mb-2 md:text-2xl sm:text-xl">Notifications:</h1>
-              <input className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-black transition duration-200 cursor-pointer ml-4"
-                type="checkbox"
-                checked={isOn}
-                onChange={(e) => setIsOn(!isOn)} />
-            </div>
             <h1 className="bg-skin-primary text-3xl mt-10 mb-4">Report a problem:</h1>
             <form ref={form} onSubmit={sendEmail} className='w-full'>
               <input type='text' name="user" placeholder='Write your username'

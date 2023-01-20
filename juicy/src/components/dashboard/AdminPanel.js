@@ -22,29 +22,31 @@ const MyProfilePage = () => {
 
   useEffect(() => {
     checkUserToken();
-    const fetch = async()=> {
-      // if(query===''){
+    const fetch = async () => {
+      if (query === "") {
         const result = await axios(`http://localhost:5000/users`);
         setItems(result.data);
-      //  } else {
-      //   const result = await axios(`http://localhost:5000/users/search?q=${query}&select=firstName,lastName,age`);
-      //   setItems(result.data.users);
-      //}
+      } else {
+        const result = await axios(
+          `http://localhost:5000/search/${query}`
+        );
+        setItems(result.data);
+      }
     }
     fetch()
-  },[query]);
+  }, [query]);
 
   function deleteHandler() {
     axios.post('/deleteUser', {
       firstName: 'Fred',
       lastName: 'Flintstone'
     })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   function notifyHandler() {
@@ -60,7 +62,7 @@ const MyProfilePage = () => {
           <div className="h-[96%] mx-4 my-2 pb-4 w-[94%] shadow-2xl bg-slate-200 rounded-r-[4rem] flex flex-col gap-4 max-sm:w-[90%]">
             <div className="w-full min-h-[4rem] flex gap-4 mx-4 mt-8">
               <section className="w-[95%] h-full bg-slate-300 rounded-xl flex justify-center py-4 max-sm:flex-col max-sm:items-center">
-              <Search usage="1" search={(q) => setQuery(q)} />
+                <Search usage="1" search={(q) => setQuery(q)} />
               </section>
             </div>
             <section className="w-[95%] min-h-[36rem] bg-slate-300 mx-4 rounded-xl py-4 px-8 overflow-scroll">
@@ -72,6 +74,18 @@ const MyProfilePage = () => {
                 <p className="w-1/12">Delete</p>
                 <p className="w-1/12">Notify</p>
               </div>
+              {items.map((user) => {
+                return (
+                  <div className="flex flex-row border-b border-solid border-skin-primary">
+                    <p className="w-1/6">{user.name} {user.surname}</p>
+                    <p className="w-1/6">Lepfner</p>
+                    <p className="w-1/3">lerner.andi@gmail.com</p>
+                    <p className="w-1/6">15-1-2023</p>
+                    <p className="cursor-pointer w-1/12 text-red-500" onClick={() => deleteHandler()}>Delete</p>
+                    <p className="cursor-pointer w-1/12 text-blue-500" onClick={() => notifyHandler()}>Notify</p>
+                  </div>
+                )
+              })}
               <div className="flex flex-row border-b border-solid border-skin-primary">
                 <p className="w-1/6">Andrija Lerner</p>
                 <p className="w-1/6">Lepfner</p>
