@@ -1,22 +1,30 @@
 //Dependencies
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../api/axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 //Components
 import Header from "./Header";
 import Search from "./Search";
-import { getRGBColor, getAccessibleColor } from "../dashboard/utils"
+import { getRGBColor, getAccessibleColor } from "../dashboard/utils";
+import useAuth from "../../hooks/useAuth";
 
 const MyProfilePage = () => {
-  const primaryColor = getRGBColor(localStorage.getItem("currentColor"), "primary")
-  const a11yColor = getRGBColor(getAccessibleColor(localStorage.getItem("currentColor")), "a11y")
+  const primaryColor = getRGBColor(
+    localStorage.getItem("currentColor"),
+    "primary"
+  );
+  const a11yColor = getRGBColor(
+    getAccessibleColor(localStorage.getItem("currentColor")),
+    "a11y"
+  );
   const navigate = useNavigate();
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [items, setItems] = useState([]);
 
   function checkUserToken() {
-    if (localStorage.getItem("isLoggedIn") === 'false') {
-      return navigate('/login');
+    if (localStorage.getItem("isLoggedIn") === "false") {
+      return navigate("/login");
     }
   }
 
@@ -24,23 +32,22 @@ const MyProfilePage = () => {
     checkUserToken();
     const fetch = async () => {
       if (query === "") {
-        const result = await axios(`http://localhost:5000/users`);
+        const result = await axios(`/users`);
         setItems(result.data);
       } else {
-        const result = await axios(
-          `http://localhost:5000/search/${query}`
-        );
+        const result = await axios(`/search/${query}`);
         setItems(result.data);
       }
-    }
-    fetch()
+    };
+    fetch();
   }, [query]);
 
   function deleteHandler() {
-    axios.post('/deleteUser', {
-      firstName: 'Fred',
-      lastName: 'Flintstone'
-    })
+    axios
+      .post("/deleteUser", {
+        firstName: "Fred",
+        lastName: "Flintstone",
+      })
       .then(function (response) {
         console.log(response);
       })
@@ -49,8 +56,16 @@ const MyProfilePage = () => {
       });
   }
 
-  function notifyHandler() {
-    console.log("Work in progress!");
+  async function notifyHandler(userId) {
+    const toastId = toast.loading("Pending")
+    try {
+      const response = await axios.post(`/notify/${userId}`);
+      toast.success("Notify email was sent!", {id: toastId});
+      console.log(response);
+    } catch (error) {
+      console.log(error.message || error);
+      toast.error("failed to send email to user", {id: toastId});
+    }
   }
 
   return (
@@ -81,10 +96,20 @@ const MyProfilePage = () => {
                     <p className="w-1/6">{user.surname}</p>
                     <p className="w-1/3">{user.email}</p>
                     <p className="w-1/6">{user.date_of_birth}</p>
-                    <p className="cursor-pointer w-1/12 text-red-500" onClick={() => deleteHandler()}>Delete</p>
-                    <p className="cursor-pointer w-1/12 text-blue-500" onClick={() => notifyHandler()}>Notify</p>
+                    <p
+                      className="cursor-pointer w-1/12 text-red-500"
+                      onClick={() => deleteHandler()}
+                    >
+                      Delete
+                    </p>
+                    <p
+                      className="cursor-pointer w-1/12 text-blue-500"
+                      onClick={() => notifyHandler(user.id)}
+                    >
+                      Notify
+                    </p>
                   </div>
-                )
+                );
               })}
             </section>
           </div>
