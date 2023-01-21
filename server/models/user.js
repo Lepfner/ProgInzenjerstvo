@@ -47,7 +47,7 @@ const User = sequelize.define(
       allowNull: true,
     },
     location: {
-      type: Sequelize.DATE,
+      type: Sequelize.STRING,
       required: false,
       allowNull: true,
     },
