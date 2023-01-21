@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 import Header from "./Header";
 import Search from "./Search";
 import { getRGBColor, getAccessibleColor } from "../dashboard/utils";
-import useAuth from "../../hooks/useAuth";
+
 
 const MyProfilePage = () => {
   const primaryColor = getRGBColor(
@@ -42,29 +42,29 @@ const MyProfilePage = () => {
     fetch();
   }, [query]);
 
-  function deleteHandler() {
-    axios
-      .post("/deleteUser", {
-        firstName: "Fred",
-        lastName: "Flintstone",
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  async function deleteHandler(userID) {
+
+    const newItems = items.filter(user => user.id !== userID)
+    setItems(newItems)
+
+    try {
+      const response = await axios.delete(`/delete/${userID}`);
+      console.log(response);
+      toast.success("user deleted!");
+    } catch (error) {
+      toast.error("and error has occured");
+    }
   }
 
-  async function notifyHandler(userId) {
-    const toastId = toast.loading("Pending")
+  async function notifyHandler(userID) {
+    const toastId = toast.loading("Pending");
     try {
-      const response = await axios.post(`/notify/${userId}`);
-      toast.success("Notify email was sent!", {id: toastId});
+      const response = await axios.post(`/notify/${userID}`);
+      toast.success("Notify email was sent!", { id: toastId });
       console.log(response);
     } catch (error) {
       console.log(error.message || error);
-      toast.error("failed to send email to user", {id: toastId});
+      toast.error("failed to send email to user", { id: toastId });
     }
   }
 
@@ -86,8 +86,7 @@ const MyProfilePage = () => {
                 <p className="w-1/6">Surname</p>
                 <p className="w-1/3">Email:</p>
                 <p className="w-1/6">Birthdate:</p>
-                <p className="w-1/12">Delete</p>
-                <p className="w-1/12">Notify</p>
+              
               </div>
               {items.map((user) => {
                 return (
@@ -98,12 +97,12 @@ const MyProfilePage = () => {
                     <p className="w-1/6">{user.date_of_birth}</p>
                     <p
                       className="cursor-pointer w-1/12 text-red-500"
-                      onClick={() => deleteHandler()}
+                      onClick={() => deleteHandler(user.id)}
                     >
                       Delete
                     </p>
                     <p
-                      className="cursor-pointer w-1/12 text-blue-500"
+                      className="cursor-pointer w-1/12 text-blue-500 ml-2"
                       onClick={() => notifyHandler(user.id)}
                     >
                       Notify
