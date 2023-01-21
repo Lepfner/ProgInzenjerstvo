@@ -1,10 +1,12 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Location from "../images/Location.png";
 import logo from "../images/logo.png";
 import Chip from "@mui/material/Chip";
 import { useNavigate } from "react-router-dom";
 import { getRGBColor, getAccessibleColor } from "../dashboard/utils"
+import useAuth from "../../hooks/useAuth";
+import axios from '../../api/axios';
 
 const likesArr = [
   "Web Dev",
@@ -25,36 +27,15 @@ const dislikesArr = [
   "Crowded places",
   "Wasting time",
 ];
-const user = {
-  firstName: "Toni",
-  lastName: "Grbić",
-  gender: "Male",
-  age: 21,
-  location: "Split, Croatia",
-  dateOfBirth: "31. 08. 2001.",
-  nationality: "Croatian",
-  status: "looking for friendships",
-  religion: "Agnostic",
-};
 
 const MyProfilePage = () => {
   const [likes, setLikes] = useState(likesArr);
   const [dislikes, setDislikes] = useState(dislikesArr);
-  const [userData, setUserData] = useState(user);
+  const [userSet, setUser] = useState([]);
   const primaryColor = getRGBColor(localStorage.getItem("currentColor"), "primary")
   const a11yColor = getRGBColor(getAccessibleColor(localStorage.getItem("currentColor")), "a11y")
-  const {
-    firstName,
-    lastName,
-    gender,
-    age,
-    location,
-    dateOfBirth,
-    nationality,
-    status,
-    religion,
-  } = userData;
   const navigate = useNavigate();
+  const { auth } = useAuth();
 
   function checkUserToken() {
     if (localStorage.getItem("isLoggedIn") === 'false') {
@@ -64,8 +45,14 @@ const MyProfilePage = () => {
 
   useEffect(() => {
     checkUserToken();
+    const fetch = async () => {
+      const result = await axios(`users/${auth.id}`);
+      setUser(result.data);
+    }
+    fetch()
+
     localStorage.setItem("vis", false);
-  })
+  }, [])
   return (
     <>
       <style>:root {`{${primaryColor} ${a11yColor}}`}</style>
@@ -78,13 +65,13 @@ const MyProfilePage = () => {
                 <div className="w-[36%] flex flex-col items-center ml-8 pr-4 border-r-2 border-skin-primary max-sm:border-b-2 max-sm:border-none max-sm:w-[90%] max-sm:mb-4">
                   <div className=" mt-4 mb-2 rounded-full flex justify-center h-[8rem] w-[8rem] overflow-hidden mx-4 bg-slate-200 ">
                     <img
-                      src={logo}
+                      src={userSet.profileimg}
                       className="object-cover h-[8rem]"
                       alt="user"
                     />
                   </div>
                   <p className="">
-                    {firstName} {lastName}, {age}
+                    {userSet.name} {userSet.surname}
                   </p>
 
                   <p>
@@ -93,26 +80,25 @@ const MyProfilePage = () => {
                       className="w-8 h-8 inline-block mix-blend-color-burn"
                       alt=''
                     />
-                    {location}
+                    {userSet.location}
                   </p>
                 </div>
                 <div className="w-[63%] pl-8 pt-2 pb-4 text-lg max-sm:border-t-2 max-sm:border-skin-primary max-sm:w-[90%]">
                   <h3>
                     <span className="font-bold">Date of Birth:</span>
-                    <span className="inline-block"> {dateOfBirth}</span>
+                    <span className="inline-block"> {userSet.date_of_birth}</span>
                   </h3>
                   <h3>
-                    <span className="font-bold">Gender:</span> {gender}
+                    <span className="font-bold">Gender:</span> {userSet.gender}
                   </h3>
                   <h3>
-                    <span className="font-bold">Nationality:</span>{" "}
-                    {nationality}
+                    <span className="font-bold">Nationality:</span> {userSet.nationality}
                   </h3>
                   <h3>
-                    <span className="font-bold">Status:</span> {status}
+                    <span className="font-bold">Status:</span> {userSet.status}
                   </h3>
                   <h3>
-                    <span className="font-bold">Religion:</span> {religion}
+                    <span className="font-bold">Religion:</span> {userSet.religion}
                   </h3>
                 </div>
               </section>

@@ -54,10 +54,22 @@ router.put("/setup/:id", async (req, res) => {
 router.get("/users", async (req, res) => {
   try {
     const users = await User.findAll({
-      attributes: ["id", "name", "surname", "date_of_birth", "profileimg", "gender", "eye_color"],
+      attributes: ["id", "name", "surname", "email", "date_of_birth", "profileimg", "gender", "eye_color"],
     });
 
     res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+router.get("/users/:id", async (req, res) => {
+  try {
+    const user = await User.findOne({
+      where: {id: req.params.id}
+    });
+
+    res.status(200).json(user);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

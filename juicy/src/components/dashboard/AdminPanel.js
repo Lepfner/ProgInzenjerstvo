@@ -67,33 +67,25 @@ const MyProfilePage = () => {
             </div>
             <section className="w-[95%] min-h-[36rem] bg-slate-300 mx-4 rounded-xl py-4 px-8 overflow-scroll">
               <div className="flex flex-row border-b border-solid border-skin-primary mb-10">
-                <p className="w-1/6">Full name:</p>
-                <p className="w-1/6">Username:</p>
+                <p className="w-1/6">Name:</p>
+                <p className="w-1/6">Surname</p>
                 <p className="w-1/3">Email:</p>
-                <p className="w-1/6">Created on:</p>
+                <p className="w-1/6">Birthdate:</p>
                 <p className="w-1/12">Delete</p>
                 <p className="w-1/12">Notify</p>
               </div>
               {items.map((user) => {
                 return (
                   <div className="flex flex-row border-b border-solid border-skin-primary">
-                    <p className="w-1/6">{user.name} {user.surname}</p>
-                    <p className="w-1/6">Lepfner</p>
-                    <p className="w-1/3">lerner.andi@gmail.com</p>
-                    <p className="w-1/6">15-1-2023</p>
+                    <p className="w-1/6">{user.name}</p>
+                    <p className="w-1/6">{user.surname}</p>
+                    <p className="w-1/3">{user.email}</p>
+                    <p className="w-1/6">{user.date_of_birth}</p>
                     <p className="cursor-pointer w-1/12 text-red-500" onClick={() => deleteHandler()}>Delete</p>
                     <p className="cursor-pointer w-1/12 text-blue-500" onClick={() => notifyHandler()}>Notify</p>
                   </div>
                 )
               })}
-              <div className="flex flex-row border-b border-solid border-skin-primary">
-                <p className="w-1/6">Andrija Lerner</p>
-                <p className="w-1/6">Lepfner</p>
-                <p className="w-1/3">lerner.andi@gmail.com</p>
-                <p className="w-1/6">15-1-2023</p>
-                <p className="cursor-pointer w-1/12 text-red-500" onClick={() => deleteHandler()}>Delete</p>
-                <p className="cursor-pointer w-1/12 text-blue-500" onClick={() => notifyHandler()}>Notify</p>
-              </div>
             </section>
           </div>
         </div>

@@ -20,6 +20,8 @@ const initialData = {
   eye_color: "",
   work: "",
   education: "",
+  profileimg: "",
+  about: "",
   likes: [],
   dislikes: [],
 };

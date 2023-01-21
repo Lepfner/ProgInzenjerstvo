@@ -27,6 +27,7 @@ export default function Header({ a11yColor, primaryColor,visible }) {
   function handleLogout()  {
     localStorage.setItem("isLoggedIn", false);
     setAuth({});
+    setIsLoggedIn(false);
     navigate("/Login");
   }
 

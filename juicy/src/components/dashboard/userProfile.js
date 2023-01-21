@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getRGBColor, getAccessibleColor } from "../dashboard/utils"
 import Location from "../images/Location.png";
 import Header from '../dashboard/Header';
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import emailjs from '@emailjs/browser';
+import axios from '../../api/axios';
 
 const UserProfile = () => {
     const primaryColor = getRGBColor(localStorage.getItem("currentColor"), "primary")
@@ -14,28 +14,25 @@ const UserProfile = () => {
 
     function checkUserToken() {
         if (localStorage.getItem("isLoggedIn") === 'false') {
-          return navigate('/login');
+            return navigate('/login');
         }
-      }
+    }
 
     useEffect(() => {
         checkUserToken();
         const fetch = async () => {
-            const currentUrl = window.location.href.slice(30, 32);
-            const result = await axios(`https://dummyjson.com/users/${currentUrl}`);
+            const currentUrl = window.location.href.slice(30, 43);
+            const result = await axios(`users/${currentUrl}`);
             setUser(result.data);
         }
         fetch()
     }, []);
-    
+
+    const form = useRef();
     const sendEmail = (e) => {
-        var params = {
-            user:  user.firstName,
-            message: `User ${user.firstName} has been reported for inappropriate behaviour`
-        };
         e.preventDefault();
 
-        emailjs.sendForm('service_l72z64l', 'template_mu6s50h', params, 'M-karua9jmM9OyLKr')
+        emailjs.sendForm('service_l72z64l', 'template_wfsozpb', form.current, 'M-karua9jmM9OyLKr')
             .then((result) => {
                 // show the user a success message
             }, (error) => {
@@ -60,7 +57,7 @@ const UserProfile = () => {
                                             alt=''
                                         />
                                     </div>
-                                    <p className=""> {user.firstName} {user.lastName}, {user.age}
+                                    <p className=""> {user.name} {user.surname}
                                     </p>
 
                                     <p>
@@ -74,36 +71,35 @@ const UserProfile = () => {
                                 <div className="w-[63%] pl-8 pt-2 pb-4 text-lg max-sm:border-t-2 max-sm:border-skin-primary max-sm:w-[90%]">
                                     <h3>
                                         <span className="font-bold">Date of Birth:</span>
-                                        <span className="inline-block">{user.birthDate}</span>
+                                        <span className="inline-block"> {user.date_of_birth}</span>
                                     </h3>
                                     <h3>
                                         <span className="font-bold">Gender:</span> {user.gender}
                                     </h3>
                                     <h3>
-                                        <span className="font-bold">Nationality:</span>{" "}
+                                        <span className="font-bold">Nationality:</span> {user.nationality}
                                     </h3>
                                     <h3>
-                                        <span className="font-bold">Status:</span>
+                                        <span className="font-bold">Status:</span> {user.status}
                                     </h3>
                                     <h3>
-                                        <span className="font-bold">Religion:</span>
+                                        <span className="font-bold">Religion:</span> {user.religion}
                                     </h3>
-                                    <button onClick={() => sendEmail}>
-                                        REPORT USER
+                                    <form className='mt-4' ref={form} onSubmit={sendEmail}>
+                                    <input type='text' name="user" readOnly value={`${user.name} ${user.surname}`}
+                                        className="focus:outline-none p-2.5 sm:w-1/4 w-1/2 h-10 mb-6 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </input>
+                                    <button className="p-2.5 sm:block sm:w-1/4 w-1/2 h-10 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type='submit'>
+                                        REPORT
                                     </button>
+                                    </form>
                                 </div>
                             </section>
                         </div>
                         <section className="w-[90%] min-h-[13rem] bg-slate-300 mx-4 rounded-xl py-4 px-8">
                             <h2 className="text-center text-2xl">About</h2>
                             <p className="text-lg">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                non porta eros. Donec eget diam at ante lacinia cursus.
-                                Phasellus dignissim tortor nibh, at accumsan sem suscipit vitae.
-                                Donec at porttitor risus, nec molestie justo. Pellentesque
-                                vestibulum, nunc a viverra pulvinar, metus mauris facilisis
-                                augue, eget feugiat nunc diam ut diam. Ut non elit nec magna
-                                molestie gravida ac vitae velit.
+                                {user.about}
                             </p>
                         </section>
                         <section className="w-[90%] min-h-[13rem] bg-slate-300 mx-4 rounded-xl px-8 py-4">

@@ -42,7 +42,7 @@ const Carousel = ({ items }) => {
     }
   });
 
-  const genderValue = localStorage.getItem("genderValue");
+  //const genderValue = localStorage.getItem("genderValue");
 
   const navigate = useNavigate();
   return (
@@ -61,7 +61,7 @@ const Carousel = ({ items }) => {
               return true;
             })
             .map((user) => {
-              const { id, name, surname, age, profileimg, gender, eye_color } =
+              const { id, name, surname, age, about, profileimg } =
                 user;
               return (
                 <div
@@ -89,8 +89,7 @@ const Carousel = ({ items }) => {
                     </p>
                     <p className="font-bold text-lg">Description:</p>
                     <p className="text-center w-[90%]">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Cras ut interdum ex, in iaculis dui.
+                      {about}
                     </p>
                   </div>
                 </div>

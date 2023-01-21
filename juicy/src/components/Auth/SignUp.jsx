@@ -33,7 +33,8 @@ const SignUp = () => {
       );
       toast.success("successful registration!", {id:toastId});
       setIsRegisterd(true);
-      setIsLoggedIn(true)
+      setIsLoggedIn(true);
+      localStorage.setItem("isLoggedIn", true);
 
       const { id, is_admin } = response?.data;
       setAuth({ email, password, id, is_admin})
