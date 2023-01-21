@@ -61,6 +61,7 @@ const UserProfile = () => {
                                     </p>
 
                                     <p>
+                                        {user.location}
                                         <img
                                             src={Location}
                                             className="w-8 h-8 inline-block mix-blend-color-burn"

@@ -8,7 +8,6 @@ import Header from "./Header";
 import Search from "./Search";
 import { getRGBColor, getAccessibleColor } from "../dashboard/utils";
 
-
 const MyProfilePage = () => {
   const primaryColor = getRGBColor(
     localStorage.getItem("currentColor"),
@@ -43,7 +42,8 @@ const MyProfilePage = () => {
   }, [query]);
 
   async function deleteHandler(userID) {
-
+    if(!window.confirm("confirm to delete user!"))
+      return
     const newItems = items.filter(user => user.id !== userID)
     setItems(newItems)
 
@@ -83,7 +83,7 @@ const MyProfilePage = () => {
             <section className="w-[95%] min-h-[36rem] bg-slate-300 mx-4 rounded-xl py-4 px-8 overflow-scroll">
               <div className="flex flex-row border-b border-solid border-skin-primary mb-10">
                 <p className="w-1/6">Name:</p>
-                <p className="w-1/6">Surname</p>
+                <p className="w-1/6">Surname:</p>
                 <p className="w-1/3">Email:</p>
                 <p className="w-1/6">Birthdate:</p>
               
