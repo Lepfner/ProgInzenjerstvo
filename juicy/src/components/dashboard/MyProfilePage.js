@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Location from "../images/Location.png";
-import logo from "../images/logo.png";
 import Chip from "@mui/material/Chip";
 import { useNavigate } from "react-router-dom";
 import { getRGBColor, getAccessibleColor } from "../dashboard/utils"

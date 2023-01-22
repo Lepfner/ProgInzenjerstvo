@@ -5,12 +5,15 @@ import Header from '../dashboard/Header';
 import { useNavigate } from "react-router-dom";
 import emailjs from '@emailjs/browser';
 import axios from '../../api/axios';
+import Chat from './Chat';
+import useAuth from "../../hooks/useAuth";
 
 const UserProfile = () => {
     const primaryColor = getRGBColor(localStorage.getItem("currentColor"), "primary")
     const a11yColor = getRGBColor(getAccessibleColor(localStorage.getItem("currentColor")), "a11y")
     const [user, setUser] = useState([]);
     const navigate = useNavigate();
+    const { auth } = useAuth();
 
     function checkUserToken() {
         if (localStorage.getItem("isLoggedIn") === 'false') {
@@ -86,12 +89,12 @@ const UserProfile = () => {
                                         <span className="font-bold">Religion:</span> {user.religion}
                                     </h3>
                                     <form className='mt-4' ref={form} onSubmit={sendEmail}>
-                                    <input type='text' name="user" readOnly value={`${user.name} ${user.surname}`}
-                                        className="focus:outline-none p-2.5 sm:w-1/4 w-1/2 h-10 mb-6 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    </input>
-                                    <button className="p-2.5 sm:block sm:w-1/4 w-1/2 h-10 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type='submit'>
-                                        REPORT
-                                    </button>
+                                        <input type='text' name="user" readOnly value={`${user.name} ${user.surname}`}
+                                            className="focus:outline-none p-2.5 sm:w-1/4 w-1/2 h-10 mb-6 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        </input>
+                                        <button className="p-2.5 sm:block sm:w-1/4 w-1/2 h-10 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type='submit'>
+                                            REPORT
+                                        </button>
                                     </form>
                                 </div>
                             </section>
@@ -128,6 +131,9 @@ const UserProfile = () => {
                                 );
                             })}
                         */}
+                        </section>
+                        <section className="w-[90%] min-h-[32rem] bg-slate-300 mx-4 rounded-xl px-8 py-4">
+                            <Chat user={user} myUser={auth}/>
                         </section>
                     </div>
                 </div>
