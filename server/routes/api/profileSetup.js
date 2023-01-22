@@ -54,7 +54,7 @@ router.put("/setup/:id", async (req, res) => {
 router.get("/users", async (req, res) => {
   try {
     const users = await User.findAll({
-      attributes: ["id", "name", "surname", "email", "date_of_birth", "profileimg", "gender", "eye_color"],
+      attributes: ["id", "name", "surname", "email", "date_of_birth", "profileimg", "gender", "eye_color", "about"],
     });
 
     res.status(200).json(users);

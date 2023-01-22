@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import CarouselNextArrow from "../Carousel/CarouselNextArrow";
 import CarouselPrevArrow from "../Carousel/CarouselPrevArrow";
 import { useNavigate } from "react-router-dom";
-
+import empty_avatar from "../../images/empty_avatar.png"
 const settings = {
   dots: false,
   infinite: false,
@@ -61,8 +61,7 @@ const Carousel = ({ items }) => {
               return true;
             })
             .map((user) => {
-              const { id, name, surname, age, about, profileimg } =
-                user;
+              const { id, name, surname, age, about, profileimg } = user;
               return (
                 <div
                   onClick={() => navigate(`/profile/${id}`)}
@@ -70,11 +69,11 @@ const Carousel = ({ items }) => {
                   className="userDiv flex-col justify-end items-center w-full mt-4 pt-4 mb-4 h-full bg-slate-100 w-5/6 border-[0.6rem] 
                          border-skin-primary rounded-3xl"
                 >
-                  <div className="border-4 border-green-300 mb-4 rounded-full h-[10rem] overflow-hidden mx-4 bg-slate-200">
+                  <div className="">
                     <img
-                      src="https://assets1.cbsnewsstatic.com/hub/i/2018/11/06/0c1af1b8-155a-458e-b105-78f1e7344bf4/2018-11-06t054310z-1334124005-rc1be15a8050-rtrmadp-3-people-sexiest-man.jpg"
-                      className="object-cover h-[10rem]"
-                      alt=''
+                      src={profileimg || empty_avatar}
+                      className="object-cover border-4 border-green-300 mb-4 rounded-full h-[10rem] w-[10rem] overflow-hidden mx-4 bg-slate-200"
+                      alt=""
                     />
                   </div>
                   <div
@@ -88,9 +87,7 @@ const Carousel = ({ items }) => {
                       <span className="font-bold">Age:</span> {age}
                     </p>
                     <p className="font-bold text-lg">Description:</p>
-                    <p className="text-center w-[90%]">
-                      {about}
-                    </p>
+                    <p className="text-center w-[90%]">{about?.substring(0,135).concat("...")}</p>
                   </div>
                 </div>
               );
