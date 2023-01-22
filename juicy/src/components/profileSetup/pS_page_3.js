@@ -7,15 +7,15 @@ import useAuth from "../../hooks/useAuth";
 
 const PS3 = ({ updateData, setPage, formData }) => {
   const { likes, dislikes, work, education, profileimg, about } = formData;
-  const { auth } = useAuth();
+  const { auth, setIsLoggedIn } = useAuth();
   const { id } = auth;
 
   const handleSubmit = async () => {
     const toastId = toast.loading("Pending")
-    const likesMaped = likes.map((like) => {
+    const likesMaped = likes?.map((like) => {
       return { user_id: id, thing: like, "likes/dislikes": 1 };
     });
-    const dislikesMaped = dislikes.map((dislike) => {
+    const dislikesMaped = dislikes?.map((dislike) => {
       return { user_id: id, thing: dislike, "likes/dislikes": 0 };
     });
 
@@ -24,12 +24,13 @@ const PS3 = ({ updateData, setPage, formData }) => {
         `/setup/${id}`,
         formData
       );
+      if(likes?.length > 0 && dislikes?.length > 0){
       const resLikesDislikes = await axios.post(
         "/likesDislikes",
         { likes: likesMaped, dislikes: dislikesMaped }
       )
-      console.log(formResponse);
-      console.log(resLikesDislikes);
+      }
+      setIsLoggedIn(true)
       toast.success("succesfull profile setup!", { id: toastId });
       setPage((prev) => prev + 1);
     } catch (error) {
@@ -66,12 +67,13 @@ const PS3 = ({ updateData, setPage, formData }) => {
         className="h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-full md:w-full"
       />
       <p className="mb-2 ">About:</p>
-      <input
+      <textarea
         required
         value={about}
         onChange={(e) => updateData({ about: e.target.value })}
         type="text"
-        className="h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-full md:w-full"
+
+        className="resize-none p-2 min-h-14 rounded-lg bg-gray-300 mb-8 w-full lg:w-full md:w-full"
       />
       <p>Likes:</p>
       <Tags
