@@ -9,7 +9,6 @@ const ColorPicker = ({ color, onChange, presetColors }) => {
 
   const close = useCallback(() => {
     toggle(false);
-    window.location.reload(false);
   },[])
   useClickOutside(popover, close)
 

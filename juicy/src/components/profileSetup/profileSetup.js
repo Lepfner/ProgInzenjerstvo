@@ -5,9 +5,8 @@ import PS3 from "./pS_page_3";
 import Success from "./Success";
 import { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import emptyAvatar from "../images/empty_avatar.png"
 import useAuth from "../../hooks/useAuth";
-
+import { isEmptyObject } from "../dashboard/utils/isEmptyObject";
 const initialData = {
   name: "",
   surname: "",
@@ -22,25 +21,18 @@ const initialData = {
   eye_color: "",
   work: "",
   education: "",
-  profileimg: `${emptyAvatar}`,
+  profileimg: "",
   about: "",
   likes: [],
   dislikes: [],
 };
 
-function isEmptyObject(obj) {
-  if (typeof obj === "object" && obj != null && Object.keys(obj).length !== 0) {
-    return obj;
-  } else {
-    return initialData;
-  }
-}
-
 function ProfileSetup() {
   const navigate = useNavigate();
   const [page, setPage] = useState(0);
   const {userSet} = useAuth()
-  const [formData, setFormData] = useState(isEmptyObject(userSet));
+  const [formData, setFormData] = 
+        useState(isEmptyObject(userSet) ? initialData : userSet);
   
   function checkUserToken() {
     if (localStorage.getItem("isLoggedIn") === 'false') {
