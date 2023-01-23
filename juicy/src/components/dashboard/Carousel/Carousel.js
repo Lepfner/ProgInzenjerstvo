@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import CarouselNextArrow from "../Carousel/CarouselNextArrow";
 import CarouselPrevArrow from "../Carousel/CarouselPrevArrow";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const settings = {
   dots: false,
@@ -35,6 +36,9 @@ const settings = {
 };
 
 const Carousel = ({ items }) => {
+
+  const { auth } = useAuth();
+
   useEffect(() => {
     if (!localStorage.getItem("ageMin")) {
       localStorage.setItem("ageMin", 18);
@@ -50,6 +54,7 @@ const Carousel = ({ items }) => {
       <Slider {...settings}>
         {items &&
           items
+            .filter((id) => id.id !== auth.id)
             .filter((age) => age.age >= localStorage.getItem("ageMin"))
             .filter((age) => age.age <= localStorage.getItem("ageMax"))
             .filter((gender) => {   //Potrebna dorada, filter jos ne radi, razlog nepoznat
