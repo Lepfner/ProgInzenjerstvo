@@ -5,7 +5,8 @@ import PS3 from "./pS_page_3";
 import Success from "./Success";
 import { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
+import useAuth from "../../hooks/useAuth";
+import { isEmptyObject } from "../dashboard/utils/isEmptyObject";
 const initialData = {
   name: "",
   surname: "",
@@ -29,8 +30,10 @@ const initialData = {
 function ProfileSetup() {
   const navigate = useNavigate();
   const [page, setPage] = useState(0);
-  const [formData, setFormData] = useState(initialData);
-
+  const {userSet} = useAuth()
+  const [formData, setFormData] = 
+        useState(isEmptyObject(userSet) ? initialData : userSet);
+  
   function checkUserToken() {
     if (localStorage.getItem("isLoggedIn") === 'false') {
       return navigate('/login');
@@ -39,7 +42,7 @@ function ProfileSetup() {
 
   useEffect(() => {
     checkUserToken();
-  })
+  },[])
 
   const updateData = (fields) => {
     setFormData((prev) => {
