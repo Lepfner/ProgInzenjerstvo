@@ -24,6 +24,8 @@ const authsRouter = require("./routes/api/auths");
 app.use("/", authsRouter);
 const profileRouter = require("./routes/api/profileSetup");
 app.use("/", profileRouter);
+const likesDislikesRouter = require("./routes/api/likesDislikes")
+app.use("/", likesDislikesRouter);
 app.listen(PORT, console.log(`Server started on http://localhost:${PORT}`));
 
 app.get("/", (req, res) => res.send("index"));

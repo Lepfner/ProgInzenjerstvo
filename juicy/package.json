@@ -18,6 +18,7 @@
     "burger-menu": "^2.0.0",
     "email-js": "^2.0.2",
     "react": "^18.2.0",
+    "react-burger-menu": "^3.0.9",
     "react-colorful": "^5.6.1",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
@@ -25,6 +26,7 @@
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
+    "talkjs": "^0.15.6",
     "typewriter-effect": "^2.19.0",
     "web-vitals": "^2.1.4"
   },

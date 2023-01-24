@@ -1,31 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PS1 from "./pS_page_1";
 import PS2 from "./pS_page_2";
 import PS3 from "./pS_page_3";
 import Success from "./Success";
 import { Toaster } from "react-hot-toast";
-
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { isEmptyObject } from "../dashboard/utils/isEmptyObject";
 const initialData = {
   name: "",
   surname: "",
-  dateOfBirth: "",
+  date_of_birth: "",
   gender: "",
   status: "",
   nationality: "",
-  location:"",
+  location: "",
   religion: "",
-  height:"",
-  hair_color:"",
-  eye_color:"",
-  work:"",
-  education:"",
+  height: "",
+  hair_color: "",
+  eye_color: "",
+  work: "",
+  education: "",
+  profileimg: "",
+  about: "",
   likes: [],
   dislikes: [],
 };
 
 function ProfileSetup() {
+  const navigate = useNavigate();
   const [page, setPage] = useState(0);
-  const [formData, setFormData] = useState(initialData);
+  const {userSet} = useAuth()
+  const [formData, setFormData] = 
+        useState(isEmptyObject(userSet) ? initialData : userSet);
+  
+  function checkUserToken() {
+    if (localStorage.getItem("isLoggedIn") === 'false') {
+      return navigate('/login');
+    }
+  }
+
+  useEffect(() => {
+    checkUserToken();
+  },[])
 
   const updateData = (fields) => {
     setFormData((prev) => {
@@ -37,8 +54,6 @@ function ProfileSetup() {
     e.preventDefault();
     setPage((prev) => prev + 1);
   };
-
-  
 
   const componentList = [
     <PS1
@@ -54,7 +69,7 @@ function ProfileSetup() {
       handleSubmit={handleSubmit}
     />,
     <PS3
-      {...formData}
+      formData={formData}
       updateData={updateData}
       setPage={setPage}
       handleSubmit={handleSubmit}
@@ -69,7 +84,7 @@ function ProfileSetup() {
       <div
         className="h-full flex flex-col justify-center max-w-[75%]
                      outline outline-orange-500 outline-[1rem] rounded-xl z-0
-                     lg:w-4/5 md:w-4/5"
+                     w-[100%]"
       >
         <div className="w-full rounded-xl p-12 z-10">
           <div className="w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700">
@@ -80,10 +95,10 @@ function ProfileSetup() {
                   page === 0
                     ? "25%"
                     : page === 1
-                    ? "50%"
-                    : page === 2
-                    ? "75%"
-                    : "100%",
+                      ? "50%"
+                      : page === 2
+                        ? "75%"
+                        : "100%",
               }}
             ></div>
           </div>

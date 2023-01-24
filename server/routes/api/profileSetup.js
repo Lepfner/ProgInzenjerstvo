@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../../models/user");
+const Sequelize = require("sequelize");
+
 
 router.put("/setup/:id", async (req, res) => {
   try {
@@ -14,7 +16,7 @@ router.put("/setup/:id", async (req, res) => {
         date_of_birth: req.body.date_of_birth,
         gender: req.body.gender,
         nationality: req.body.nationality,
-        loaction: req.body.loaction,
+        location: req.body.location,
         status: req.body.status,
         religion: req.body.religion,
         work: req.body.work,
@@ -34,11 +36,70 @@ router.put("/setup/:id", async (req, res) => {
 
 router.get("/users", async (req, res) => {
   try {
-    const users = await User.findAll({ attributes: ["id","name","surname","date_of_birth","profileimg"]});
+    const users = await User.findAll({
+      where: { is_admin: "0" },
+      attributes: [
+        "id",
+        "name",
+        "surname",
+        "email",
+        "date_of_birth",
+        "profileimg",
+        "gender",
+        "eye_color",
+        "about",
+      ],
+    });
+
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
+
+router.get("/users/:id", async (req, res) => {
+  try {
+    const user = await User.findOne({
+      where: { id: req.params.id },
+    });
+
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+router.get("/search/:query", (req, res) => {
+  const query = req.params.query;
+  User.findAll({
+    attributes: [
+      "id",
+      "name",
+      "surname",
+      "date_of_birth",
+      "profileimg",
+      "gender",
+      "eye_color",
+    ],
+    where: {
+      [Sequelize.Op.or]: [
+        {
+          name: {
+            [Sequelize.Op.iLike]: `%${query}%`,
+          },
+        },
+        {
+          surname: {
+            [Sequelize.Op.iLike]: `%${query}%`,
+          },
+        },
+      ],
+    },
+  })
+    .then((users) => res.status(200).json(users))
+    .catch((err) => res.status(500).json({ message: err.message }));
+});
+
+
 
 module.exports = router;

@@ -13,7 +13,7 @@ const SignUp = () => {
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [isRegisterd, setIsRegisterd] = useState(false);
   const navigate = useNavigate();
-  const { setAuth } = useAuth();
+  const { setAuth, setIsLoggedIn } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +21,7 @@ const SignUp = () => {
       toast.error("Passwords do not match!");
       return;
     }
+    const toastId = toast.loading("Pending")
     try {
       const response = await axios.post(
         "/register",
@@ -30,15 +31,17 @@ const SignUp = () => {
           withCredentials: true,
         }
       );
-      toast.success("successful registration!");
+      toast.success("successful registration!", {id:toastId});
       setIsRegisterd(true);
-      
+      setIsLoggedIn(true);
+      localStorage.setItem("isLoggedIn", true);
+
       const { id, is_admin } = response?.data;
       setAuth({ email, password, id, is_admin})
       navigate("/Setup");
     } catch (err) {
       console.log(err);
-      toast.error("email already taken!");
+      toast.error("email already taken!", {id:toastId});
     }
     setEmail("");
     setPassword("");
