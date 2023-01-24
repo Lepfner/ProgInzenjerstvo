@@ -1,34 +1,31 @@
 //Dependencies
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../api/axios";
 import { debounce } from "@mui/material";
 //Components
 import Search from "./Search";
 import Carousel from "../dashboard/Carousel/Carousel";
-
+import { calculateAge } from "./utils/calculateAge";
 export default function Content() {
   const [query, setQuery] = useState("");
   const [items, setItems] = useState([]);
 
   const fetch = async () => {
     if (query === "") {
-      const result = await axios(`http://localhost:5000/users`);
+      const result = await axios(`/users`);
       result.data.forEach(user => {
-        const dateOfBirth = new Date(user.date_of_birth);
-        const today = new Date();
-        const age = today.getFullYear() - dateOfBirth.getFullYear();
+        const age = calculateAge(user.date_of_birth)
+        console.log(age)
         user.age = age;
         delete user.dateOfBirth;
       });
       setItems(result.data);
     } else {
       const result = await axios(
-        `http://localhost:5000/search/${query}`
+        `/search/${query}`
       );
       result.data.forEach(user => {
-        const dateOfBirth = new Date(user.date_of_birth);
-        const today = new Date();
-        const age = today.getFullYear() - dateOfBirth.getFullYear();
+       const age = calculateAge(user.date_of_birth);
         user.age = age;
         delete user.dateOfBirth;
       });

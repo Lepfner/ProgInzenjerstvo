@@ -73,7 +73,7 @@ class Tags extends React.Component {
         <Help>hit 'Enter' to add</Help>
 
         <div className="flex flex-wrap max-sm:flex-col lg:text-xl md: text-lg sm: text-md">
-          {this.props.tags.map((tag, index) => (
+          {this.props?.tags?.map((tag, index) => (
             <Tag key={index}>
               {tag}
               <Delete onClick={this.handleRemoveTag} />

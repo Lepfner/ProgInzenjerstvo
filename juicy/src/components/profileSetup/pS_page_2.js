@@ -15,9 +15,6 @@ const PS2 = ({ updateData, handleSubmit, setPage, nationality, religion, locatio
         onChange={(e) => updateData({ status: e.target.value })}
         required
       >
-        <option value="none" selected disabled hidden>
-          Select a option
-        </option>
         <option value="single">single</option>
         <option value="married">married</option>
         <option value="looking for friends">looking for friends</option>
