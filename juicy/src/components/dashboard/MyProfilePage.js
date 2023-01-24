@@ -8,25 +8,6 @@ import { getRGBColor, getAccessibleColor } from "../dashboard/utils";
 import axios from "../../api/axios";
 import { calculateAge } from "./utils/calculateAge";
 import useAuth from "../../hooks/useAuth";
-const likesArr = [
-  "Web Dev",
-  "Nature",
-  "Hiking",
-  "Cycling",
-  "Tehnology",
-  "Good Company",
-  "Interesting conversations",
-  "Gaming",
-  "Learning",
-  "Exercising",
-];
-const dislikesArr = [
-  "University",
-  "Big social gatherings",
-  "Small Talk",
-  "Crowded places",
-  "Wasting time",
-];
 
 const MyProfilePage = () => {
   const [likes, setLikes] = useState([]);

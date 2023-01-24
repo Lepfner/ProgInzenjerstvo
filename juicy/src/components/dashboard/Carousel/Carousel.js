@@ -58,7 +58,6 @@ const Carousel = ({ items }) => {
             .filter((age) => age.age >= localStorage.getItem("ageMin"))
             .filter((age) => age.age <= localStorage.getItem("ageMax"))
             .filter((gender) => {
-              //Potrebna dorada, filter jos ne radi, razlog nepoznat
               if (
                 localStorage.getItem("genderValue") &&
                 gender.gender !== localStorage.getItem("genderValue")

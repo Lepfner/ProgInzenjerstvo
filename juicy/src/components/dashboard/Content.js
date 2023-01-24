@@ -15,7 +15,6 @@ export default function Content() {
       const result = await axios(`/users`);
       result.data.forEach(user => {
         const age = calculateAge(user.date_of_birth)
-        console.log(age)
         user.age = age;
         delete user.dateOfBirth;
       });

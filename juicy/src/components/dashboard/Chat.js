@@ -18,21 +18,21 @@ function MyChatComponent({ user, myUser }) {
         Talk.ready.then(() => markTalkLoaded(true));
 
         if (talkLoaded) {
-            const currentUser = new Talk.User({
-                id: loggedUser.id,
-                name: `${loggedUser.firstName} ${loggedUser.surname}`,
-                email: loggedUser.email,
-                photoUrl: loggedUser.profileimg,
+            const otherUser = new Talk.User({
+                id: '1',
+                name: `Luce`,
+                email: 'ante@gmail',
+                photoUrl: 'user',
                 welcomeMessage: 'Hello!',
                 role: 'default',
             });
 
-            const otherUser = new Talk.User({
-                id: user.id,
-                name: `${user.firstName} ${user.surname}`,
-                email: user.email,
-                photoUrl: user.profileimg,
-                welcomeMessage: 'Hello!',
+            const currentUser = new Talk.User({
+                id: `${user.id}`,
+                name: `${user.name}`,
+                email: `${user.email}`,
+                photoUrl: 'user',
+                welcomeMessage: 'Hello2!',
                 role: 'default',
             });
 
@@ -41,7 +41,7 @@ function MyChatComponent({ user, myUser }) {
                 me: otherUser,
             });
 
-            const conversationId = Talk.oneOnOneId(currentUser, otherUser);
+            const conversationId = Talk.oneOnOneId(otherUser, currentUser);
             const conversation = session.getOrCreateConversation(conversationId);
             conversation.setParticipant(currentUser);
             conversation.setParticipant(otherUser);

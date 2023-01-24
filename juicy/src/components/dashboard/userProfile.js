@@ -9,31 +9,33 @@ import axios from "../../api/axios";
 import { calculateAge } from "./utils/calculateAge";
 import { Chip } from "@mui/material";
 import { toast } from "react-hot-toast"
-import Chat from './Chat';
+import Talk from 'talkjs';
 import useAuth from "../../hooks/useAuth";
+
 const UserProfile = () => {
   const [likes, setLikes] = useState([]);
   const [dislikes, setDislikes] = useState([]);
-  const {id} = useParams();
+  const { id } = useParams();
+  const chatboxEl = useRef();
+  const { auth } = useAuth();
   const primaryColor = getRGBColor(localStorage.getItem("currentColor"), "primary");
   const a11yColor = getRGBColor(getAccessibleColor(localStorage.getItem("currentColor")), "a11y");
   const [user, setUser] = useState({});
+  const [talkLoaded, setTalkLoaded] = useState(false);
   const navigate = useNavigate();
-  const { auth } = useAuth();
+
   function checkUserToken() {
     if (localStorage.getItem("isLoggedIn") === "false") {
-        return navigate("/login");
+      return navigate("/login");
     }
   }
 
   useEffect(() => {
-    console.log(`user: ${id}`)
     checkUserToken();
     const fetch = async () => {
       try {
         const result = await axios(`users/${id}`);
         setUser({ ...result.data, likes: likes, dislikes: dislikes });
-
         const likesRes = await axios(`likes/${id}`);
         const dislikesRes = await axios(`dislikes/${id}`);
         setLikes(likesRes.data)
@@ -43,18 +45,60 @@ const UserProfile = () => {
       }
     };
     fetch();
-  }, []);
+
+    const timeout = setTimeout(() => {
+      
+    Talk.ready.then(() => setTalkLoaded(true));
+
+    if (talkLoaded) {
+
+      const otherUser = new Talk.User({
+        id: `${auth.id}`,
+        name: `You`,
+        email: 'youremail@gmail.com',
+        photoUrl: 'user',
+        welcomeMessage: 'Hello!',
+        role: 'default',
+      });
+
+      const currentUser = new Talk.User({
+        id: `${id}`,
+        name: `${user.name}`,
+        email: `${user.email}`,
+        photoUrl: 'user',
+        welcomeMessage: 'Hello2!',
+        role: 'default',
+      });
+
+      const session = new Talk.Session({
+        appId: 'tzA3WwVo',
+        me: otherUser,
+      });
+
+      const conversationId = Talk.oneOnOneId(otherUser, currentUser);
+      const conversation = session.getOrCreateConversation(conversationId);
+      conversation.setParticipant(currentUser);
+      conversation.setParticipant(otherUser);
+
+      const chatbox = session.createChatbox();
+      chatbox.select(conversation);
+      chatbox.mount(chatboxEl.current);
+      return () => session.destroy();
+    }
+    }, 1000)
+
+    return () => clearTimeout(timeout)
+  }, [talkLoaded]);
 
   const form = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs.sendForm("service_l72z64l", "template_wfsozpb", form.current, "M-karua9jmM9OyLKr")
       .then((result) => {
-          toast.success("user reported!")
-        }, (error) => {
-          console.log(error);
-        }
+        toast.success("user reported!")
+      }, (error) => {
+        console.log(error);
+      }
       );
   };
 
@@ -142,40 +186,39 @@ const UserProfile = () => {
             </section>
             <section className="w-[90%] min-h-[13rem] bg-slate-300 mx-4 rounded-xl px-8 py-4">
               <h2 className="text-center text-2xl">Likes & Dislikes</h2>
-                            <h3 className="text-lg">Likes:</h3>
-                            {likes?.map((like, index) => {
-                              
-                                return (
-                                    <Chip
-                                        className="font-bold m-[0.15rem]"
-                                        variant="filled"
-                                        label={like.thing}
-                                        key={index}
-                                    />
-                                );
-                            })}
-                            <h3 className="text-lg">Dislikes:</h3>
-                            {dislikes?.map((dislike, index) => {
-                              
-                                return (
-                                    <Chip
-                                        className="font-bold m-[0.15rem]"
-                                        variant="filled"
-                                        label={dislike.thing}
-                                        key={index}
-                                    />
-                                );
-                            })}
-                        */}
-                        </section>
-                        <section className="w-[90%] min-h-[32rem] bg-slate-300 mx-4 rounded-xl px-8 py-4">
-                            <Chat user={user} myUser={auth}/>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
+              <h3 className="text-lg">Likes:</h3>
+              {likes?.map((like, index) => {
+
+                return (
+                  <Chip
+                    className="font-bold m-[0.15rem]"
+                    variant="filled"
+                    label={like.thing}
+                    key={index}
+                  />
+                );
+              })}
+              <h3 className="text-lg">Dislikes:</h3>
+              {dislikes?.map((dislike, index) => {
+
+                return (
+                  <Chip
+                    className="font-bold m-[0.15rem]"
+                    variant="filled"
+                    label={dislike.thing}
+                    key={index}
+                  />
+                );
+              })}
+            </section>
+            <section className="w-[90%] min-h-[32rem] bg-slate-300 mx-4 rounded-xl px-8 py-4">
+              <div className='h-full' ref={chatboxEl} />
+            </section>
+          </div>
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default UserProfile;
