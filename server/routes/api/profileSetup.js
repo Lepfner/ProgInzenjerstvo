@@ -2,24 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../../models/user");
 const Sequelize = require("sequelize");
-const LikesDislikes = require("../../models/likesDislikes");
 
-router.post("/likesDislikes", async (req, res) => {
-  try {
-    const likes_dislikes = [...req.body.likes, ...req.body.dislikes];
-    //console.log(likes_dislikes)
-    for (let i = 0; i < likes_dislikes.length; i++) {
-      const item = likes_dislikes[i];
-      console.log(item);
-      await LikesDislikes.create({
-        ...item,
-      });
-    }
-    res.status(201).json({ status: "SUCCESS", message: "success" });
-  } catch (error) {
-    res.status(400).json({ status: "FAILED", message: error });
-  }
-});
 
 router.put("/setup/:id", async (req, res) => {
   try {
@@ -116,5 +99,7 @@ router.get("/search/:query", (req, res) => {
     .then((users) => res.status(200).json(users))
     .catch((err) => res.status(500).json({ message: err.message }));
 });
+
+
 
 module.exports = router;

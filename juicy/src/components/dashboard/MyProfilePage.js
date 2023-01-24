@@ -29,8 +29,8 @@ const dislikesArr = [
 ];
 
 const MyProfilePage = () => {
-  const [likes, setLikes] = useState(likesArr);
-  const [dislikes, setDislikes] = useState(dislikesArr);
+  const [likes, setLikes] = useState([]);
+  const [dislikes, setDislikes] = useState([]);
   const { userSet, setUser} = useAuth()
   const primaryColor = getRGBColor(
     localStorage.getItem("currentColor"),
@@ -57,12 +57,22 @@ const MyProfilePage = () => {
     checkUserToken();
     const fetch = async () => {
       const result = await axios(`users/${auth.id}`);
-      setUser(result.data);
+      setUser({...result.data, likes:likes, dislikes:dislikes});
+
+      const likesRes = await axios(`likes/${auth.id}`);
+      const dislikesRes = await axios(`dislikes/${auth.id}`);
+      setLikes(likesRes.data.map(like => `${like.thing}`));
+      setDislikes(dislikesRes.data.map(like => `${like.thing}`));
     };
     fetch();
 
     localStorage.setItem("vis", false);
   }, []);
+
+  useEffect(()=>{
+     setUser({ ...userSet, likes: likes, dislikes: dislikes });
+  },[likes,dislikes])
+
   return (
     <>
       <style>:root {`{${primaryColor} ${a11yColor}}`}</style>

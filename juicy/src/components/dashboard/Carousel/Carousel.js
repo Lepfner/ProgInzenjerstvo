@@ -6,6 +6,8 @@ import CarouselNextArrow from "../Carousel/CarouselNextArrow";
 import CarouselPrevArrow from "../Carousel/CarouselPrevArrow";
 import { useNavigate } from "react-router-dom";
 import empty_avatar from "../../images/empty_avatar.png"
+import useAuth from "../../../hooks/useAuth";
+
 const settings = {
   dots: false,
   infinite: false,
@@ -35,6 +37,7 @@ const settings = {
 };
 
 const Carousel = ({ items }) => {
+  const { auth } = useAuth();
   useEffect(() => {
     if (!localStorage.getItem("ageMin")) {
       localStorage.setItem("ageMin", 18);
@@ -45,14 +48,17 @@ const Carousel = ({ items }) => {
   //const genderValue = localStorage.getItem("genderValue");
 
   const navigate = useNavigate();
+  
   return (
     <div className="px-[1rem]">
       <Slider {...settings}>
         {items &&
           items
+            .filter((id) => id.id !== auth.id)
             .filter((age) => age.age >= localStorage.getItem("ageMin"))
             .filter((age) => age.age <= localStorage.getItem("ageMax"))
-            .filter((gender) => {   //Potrebna dorada, filter jos ne radi, razlog nepoznat
+            .filter((gender) => {
+              //Potrebna dorada, filter jos ne radi, razlog nepoznat
               if (
                 localStorage.getItem("genderValue") &&
                 gender.gender !== localStorage.getItem("genderValue")
@@ -87,7 +93,9 @@ const Carousel = ({ items }) => {
                       <span className="font-bold">Age:</span> {age}
                     </p>
                     <p className="font-bold text-lg">Description:</p>
-                    <p className="text-center w-[90%]">{about?.substring(0,135).concat("...")}</p>
+                    <p className="text-center w-[90%]">
+                      {about?.substring(0, 135).concat("...")}
+                    </p>
                   </div>
                 </div>
               );
