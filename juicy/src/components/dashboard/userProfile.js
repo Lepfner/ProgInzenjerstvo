@@ -9,6 +9,8 @@ import axios from "../../api/axios";
 import { calculateAge } from "./utils/calculateAge";
 import { Chip } from "@mui/material";
 import { toast } from "react-hot-toast"
+import Chat from './Chat';
+import useAuth from "../../hooks/useAuth";
 const UserProfile = () => {
   const [likes, setLikes] = useState([]);
   const [dislikes, setDislikes] = useState([]);
@@ -17,6 +19,7 @@ const UserProfile = () => {
   const a11yColor = getRGBColor(getAccessibleColor(localStorage.getItem("currentColor")), "a11y");
   const [user, setUser] = useState({});
   const navigate = useNavigate();
+  const { auth } = useAuth();
   function checkUserToken() {
     if (localStorage.getItem("isLoggedIn") === "false") {
         return navigate("/login");
@@ -139,7 +142,6 @@ const UserProfile = () => {
             </section>
             <section className="w-[90%] min-h-[13rem] bg-slate-300 mx-4 rounded-xl px-8 py-4">
               <h2 className="text-center text-2xl">Likes & Dislikes</h2>
-              
                             <h3 className="text-lg">Likes:</h3>
                             {likes?.map((like, index) => {
                               
@@ -164,13 +166,16 @@ const UserProfile = () => {
                                     />
                                 );
                             })}
-                        
-            </section>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+                        */}
+                        </section>
+                        <section className="w-[90%] min-h-[32rem] bg-slate-300 mx-4 rounded-xl px-8 py-4">
+                            <Chat user={user} myUser={auth}/>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
 
 export default UserProfile;
