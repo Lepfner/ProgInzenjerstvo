@@ -6,6 +6,7 @@ import { debounce } from "@mui/material";
 import Search from "./Search";
 import Carousel from "../dashboard/Carousel/Carousel";
 import { calculateAge } from "./utils/calculateAge";
+
 export default function Content() {
   const [query, setQuery] = useState("");
   const [items, setItems] = useState([]);

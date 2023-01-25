@@ -64,6 +64,7 @@ const PS3 = ({ updateData, setPage, formData }) => {
         onChange={(e) => updateData({ profileimg: e.target.value })}
         type="text"
         className="h-14 px-2 rounded-lg bg-gray-300 mb-8 w-full lg:w-full md:w-full"
+        placeholder="optional"
       />
       <p className="mb-2 ">About:</p>
       <textarea

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -37,16 +37,9 @@ const settings = {
 };
 
 const Carousel = ({ items }) => {
-  const { auth } = useAuth();
-  useEffect(() => {
-    if (!localStorage.getItem("ageMin")) {
-      localStorage.setItem("ageMin", 18);
-      localStorage.setItem("ageMax", 99);
-    }
-  });
-
-  //const genderValue = localStorage.getItem("genderValue");
-
+  const { auth, ageValue, genderValue, eyecolorValue } = useAuth();
+  const minAge = ageValue[0]
+  const maxAge = ageValue[1]
   const navigate = useNavigate();
   
   return (
@@ -54,17 +47,9 @@ const Carousel = ({ items }) => {
       <Slider {...settings}>
         {items &&
           items
-            .filter((id) => id.id !== auth.id)
-            .filter((age) => age.age >= localStorage.getItem("ageMin"))
-            .filter((age) => age.age <= localStorage.getItem("ageMax"))
-            .filter((gender) => {
-              if (
-                localStorage.getItem("genderValue") &&
-                gender.gender !== localStorage.getItem("genderValue")
-              )
-                return false;
-              return true;
-            })
+            .filter((user) => user.id !== auth.id)
+            .filter((user) => (user.age >= minAge) && (user.age <= maxAge))
+            .filter((user) => user.gender.toLowerCase() === genderValue)
             .map((user) => {
               const { id, name, surname, age, about, profileimg } = user;
               return (

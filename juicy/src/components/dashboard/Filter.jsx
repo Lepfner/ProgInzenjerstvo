@@ -10,36 +10,40 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 //Components
 import useClickOutside from "./colorPicker/useClickOutside";
+import useAuth from "../../hooks/useAuth";
 
 export default function Filter() {
   const popover = useRef();
+  const { auth, ageValue, setAgeValue, genderValue, setGenderValue, eyecolorValue, setEyecolorValue} 
+        = useAuth()
   const [filter, setFilter] = useState(false);
-  const [ageValue, setAgeValue] = useState([18, 99]);
-  const [genderValue, setGenderValue] = useState("");
+
   //const [religion, setReligion] = useState("");
   //const [nationality, setNationality] = useState("");
-  const [statusValue, setStatusValue] = useState("");
+
   const color = localStorage.getItem("currentColor");
 
   const toggleFilter = () => {
     setFilter(!filter);
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (ageValue[0] !== 18 || ageValue[1] !== 99 || genderValue !== "" || statusValue !== "") {
-      localStorage.setItem("ageMin", ageValue[0]);
-      localStorage.setItem("ageMax", ageValue[1]);
-      localStorage.setItem("eyeColor", statusValue);
-      localStorage.setItem("gender", genderValue);
-      window.location.reload(false);
-    }
-  };
-
   const close = useCallback(() => {
     setFilter(false);
   }, []);
   useClickOutside(popover, close);
+
+  const handleSubmit = (e) => {
+    console.log(auth)
+    e.preventDefault();
+    if (ageValue[0] !== 18 || ageValue[1] !== 99 || genderValue !== "" || eyecolorValue !== "") {
+      localStorage.setItem("ageMin", ageValue[0]);
+      localStorage.setItem("ageMax", ageValue[1]);
+      localStorage.setItem("eyeColor", eyecolorValue);
+      localStorage.setItem("gender", genderValue);
+    }
+    close()
+  };
+
+  
 
   return (
     <>
@@ -138,13 +142,13 @@ export default function Filter() {
               <select
                 name="relationshipStatus"
                 className="m-auto max-w-min bg-gray-300"
-                value={statusValue}
-                onChange={(e) => setStatusValue(e.target.value)}
+                value={eyecolorValue}
+                onChange={(e) => setEyecolorValue(e.target.value)}
               >
                 <option value="Green">Green</option>
                 <option value="Blue">Blue</option>
                 <option value="Brown">Brown</option>
-                <option value="Other">Other</option>
+                <option value="All">All</option>
               </select>
               <button
                 type="submit"

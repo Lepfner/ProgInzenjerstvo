@@ -31,6 +31,7 @@ class Tags extends React.Component {
     this.state = {
       newTag: "",
     };
+    
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleRemoveTag = this.handleRemoveTag.bind(this);
@@ -54,10 +55,11 @@ class Tags extends React.Component {
     }
   }
 
-  handleRemoveTag(e) {
-    let tag = e.target.parentNode.textContent.trim();
-    let index = this.props.tags.indexOf(tag);
-    this.props.tags.splice(index, 1);
+  handleRemoveTag(indexDel) {
+    let { type, tags, updateData } = this.props;
+
+    const newTags = tags.filter((item, index) => index !== indexDel)
+    updateData({ [type]: newTags });
     this.setState({ newTag: "" });
   }
 
@@ -76,7 +78,7 @@ class Tags extends React.Component {
           {this.props?.tags?.map((tag, index) => (
             <Tag key={index}>
               {tag}
-              <Delete onClick={this.handleRemoveTag} />
+              <Delete onClick={()=>this.handleRemoveTag(index)} />
             </Tag>
           ))}
         </div>
