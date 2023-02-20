@@ -6,8 +6,15 @@ import { toast } from "react-hot-toast";
 const AdminLogin = () => {
   const [adminCode, setAdminCode] = useState("");
   const navigate = useNavigate();
-  const { auth, isLoggedIn } = useAuth();
+  const { auth, setAuth, isLoggedIn, setIsLoggedIn } = useAuth();
   const { id } = auth;
+
+  function handleLogout()  {
+    localStorage.setItem("isLoggedIn", false);
+    setAuth({});
+    setIsLoggedIn(false);
+    navigate("/Login");
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,7 +70,7 @@ const AdminLogin = () => {
             <button
               type="button"
               className="block bg-orange-500 px-4 rounded-md p-2 mt-4 text-white  hover:bg-orange-600"
-              onClick={() => navigate("/Login")}
+              onClick={() => handleLogout()}
             >
               BACK
             </button>
