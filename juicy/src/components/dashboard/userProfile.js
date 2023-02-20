@@ -93,13 +93,12 @@ const UserProfile = () => {
   const form = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs.sendForm("service_l72z64l", "template_wfsozpb", form.current, "M-karua9jmM9OyLKr")
+    emailjs.sendForm('service_btrio0p', 'template_1n7duvu', form.current, 'xnjBvyWRO-Ew4a6Qz')
       .then((result) => {
-        toast.success("user reported!")
+        toast.success("User reported!");
       }, (error) => {
-        console.log(error);
-      }
-      );
+        console.log(error); 
+      });
   };
 
   return (
@@ -109,8 +108,8 @@ const UserProfile = () => {
       <div className="w-full h-full  flex justify-center mt-4">
         <div className="min-h-[47rem] max-w-[910px] w-[80%] max-sm:w-[90%] shadow-2xl bg-skin-primary rounded-r-[5rem] flex justify-start items-center">
           <div className="h-[96%] mx-4 my-2 pb-4 w-[94%] shadow-2xl bg-slate-200 rounded-r-[4rem] flex flex-col gap-4 max-sm:w-[90%]">
-            <div className="w-full min-h-[13rem] flex gap-4 mx-4 mt-8">
-              <section className="w-[90%] h-full bg-slate-300 rounded-xl flex justify-start py-4 max-sm:flex-col max-sm:items-center">
+            <div className="w-full min-h-[18rem] flex gap-4 mx-4 mt-8">
+              <section className="min-h-[17rem] w-[90%] h-full bg-slate-300 rounded-xl flex justify-start py-4 max-sm:flex-col max-sm:items-center">
                 <div className="w-[36%] flex flex-col items-center ml-8 pr-4 border-r-2 border-skin-primary max-sm:border-b-2 max-sm:border-none max-sm:w-[90%] max-sm:mb-4">
                   <div className=" mt-4 mb-2 rounded-full flex justify-center h-[8rem] w-[8rem] overflow-hidden mx-4 bg-slate-200 ">
                     <img
@@ -163,19 +162,19 @@ const UserProfile = () => {
                     ref={form}
                     onSubmit={sendEmail}
                   >
-                    <input
-                      type="text"
-                      name="user"
-                      readOnly
-                      value={`${user.name} ${user.surname}`}
-                      className="mr-4 mb-2 focus:outline-none px-2.5 w-1/4 min-w-[6rem] max-w-[9rem] h-10 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    ></input>
                     <button
                       className="w-20 p-2.5 h-10 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       type="submit"
                     >
                       REPORT
                     </button>
+                    <input
+                      type="text"
+                      name="user"
+                      readOnly
+                      value={`${user.name} ${user.surname}`}
+                      className="invisible"
+                    ></input>
                   </form>
                 </div>
               </section>

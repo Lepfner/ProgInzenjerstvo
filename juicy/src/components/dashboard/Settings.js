@@ -37,7 +37,7 @@ export default function Settings() {
 
     emailjs.sendForm('service_btrio0p', 'template_1n7duvu', form.current, 'xnjBvyWRO-Ew4a6Qz')
       .then((result) => {
-        toast.success("Report sent!");
+        toast.success("Application problem reported!");
         setUser("");
         setMessage("");
       }, (error) => {
