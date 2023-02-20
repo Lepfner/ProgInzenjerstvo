@@ -80,6 +80,7 @@ router.get("/search/:query", (req, res) => {
       "profileimg",
       "gender",
       "eye_color",
+      "about",
     ],
     where: {
       [Sequelize.Op.or]: [

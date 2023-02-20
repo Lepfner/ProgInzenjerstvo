@@ -5,7 +5,7 @@ const transporter = require("../../verification/transporter");
 
 router.get("/admins", async (req, res) => {
   try {
-    const admins = findAll({ where: { is_admin: true } });
+    const admins = await User.findAll({ where: { is_admin: 1 } });
     res.status(200).json(admins);
   } catch (err) {
     res.status(500).json({ message: err.message });

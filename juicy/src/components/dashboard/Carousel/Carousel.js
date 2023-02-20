@@ -92,8 +92,8 @@ const Carousel = ({ items }) => {
                       <span className="font-bold">Age:</span> {age}
                     </p>
                     <p className="font-bold text-lg">Description:</p>
-                    <p className="text-center w-[90%]">
-                      {about?.substring(0, 135).concat("...")}
+                    <p className="text-center w-[90%] h-[6.25rem]">
+                      {about||"No description"}
                     </p>
                   </div>
                 </div>
